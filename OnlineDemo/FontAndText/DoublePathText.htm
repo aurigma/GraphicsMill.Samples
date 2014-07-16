@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Double Path Text</title>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+	<script src="//code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(function () {
+			var canvas = $("#canvas1");
+
+			var image = null;
+
+			//8 control points - bottom path (4 points), top path (4 points)
+			var points = [{ x: 63, y: 74 }, { x: 137, y: 126 }, { x: 308, y: 18 }, { x: 523, y: 64 },
+				{ x: 62, y: 156 }, { x: 122, y: 189 }, { x: 237, y: 58 }, { x: 522, y: 179 }]
+
+			function render() {
+				var ctx = canvas[0].getContext("2d");
+
+				//Clear
+				ctx.clearRect(0, 0, canvas.width(), canvas.height());
+
+				//Image
+				if (image != null) {
+					ctx.drawImage(image, 0, 0);
+				}
+
+				//Path
+				ctx.strokeStyle = "#4eb5e6";
+				ctx.lineWidth = 1;
+
+				ctx.beginPath();
+				for (var i = 0; i < 8; i += 4) {
+					ctx.moveTo(points[i].x, points[i].y);
+					ctx.bezierCurveTo(points[i + 1].x, points[i + 1].y, points[i + 2].x, points[i + 2].y, points[i + 3].x, points[i + 3].y);
+				}
+				ctx.stroke();
+
+				//Control lines
+				ctx.strokeStyle = "#a62100";
+
+				ctx.beginPath();
+				for (var i = 0; i < 8; i += 2) {
+					ctx.moveTo(points[i].x, points[i].y);
+					ctx.lineTo(points[i + 1].x, points[i + 1].y);
+
+				}
+				ctx.stroke();
+
+				//Control points
+				for (var i = 0; i < 8; i++) {
+					ctx.beginPath();
+					ctx.arc(points[i].x, points[i].y, 5, 0, 2 * Math.PI, false);
+					ctx.fillStyle = "#a62100";
+					ctx.fill();
+				}
+			}
+
+			function loadImage() {
+				$.ajax({
+					url: "../api/FontAndText/RenderDoublePathText",
+					type: "POST",
+					data: {
+						TopPath: points.slice(0, 4),
+						BottomPath: points.slice(4, 8),
+						FontName: $("#selectFontName").val(),
+						FontSize: $("#selectFontSize").val(),
+						Text: $("#inputText").val()
+					},
+					success: function (b64data) {
+						image = new Image();
+						image.src = "data:image/png;base64," + b64data;
+						image.onload = function () {
+							render();
+						}
+					}
+				});
+			}
+
+			function getOffset(e) {
+				var o = $(e.target).offset();
+				return { x: Math.round(e.clientX - o.left + window.pageXOffset), y: Math.round(e.clientY - o.top + window.pageYOffset) };
+			}
+
+			var curPoint = null;
+
+			canvas.bind("mousedown", function (e) {
+				e.preventDefault();
+
+				var o = getOffset(e);
+
+				var delta = 5;
+
+				for (var i = 0; i < 8; i++) {
+					if (Math.abs(points[i].x - o.x) < delta && Math.abs(points[i].y - o.y) < delta) {
+						curPoint = i;
+
+						return;
+					}
+				}
+			});
+
+			canvas.bind("mousemove", function (e) {
+				e.preventDefault();
+
+				if (curPoint != null) {
+					var o = getOffset(e);
+
+					points[curPoint].x = o.x;
+					points[curPoint].y = o.y;
+
+					render();
+				}
+			});
+
+			canvas.bind("mouseup", function (e) {
+				e.preventDefault();
+				curPoint = null;
+				image = null;
+				loadImage();
+
+				$("p").text(JSON.stringify(points));
+			});
+
+			$("#selectFontName, #selectFontSize, #inputText").bind("change keyup", function () {
+				loadImage();
+			});
+
+			function init() {
+				loadImage();
+				render();
+			}
+
+			init();
+		});
+	</script>
+</head>
+<body>
+	<div role="form">
+		<div class="form-group">
+			<label for="selectFontName">Font</label>
+			<select id="selectFontName" class="form-control">
+				<option selected>Arial</option>
+				<option>Comic Sans MS</option>
+				<option>Georgia</option>
+				<option>Times New Roman</option>
+				<option>Verdana</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="selectFontSize">Size</label>
+			<select id="selectFontSize" class="form-control">
+				<option>8</option>
+				<option>9</option>
+				<option>10</option>
+				<option>11</option>
+				<option>12</option>
+				<option>14</option>
+				<option>16</option>
+				<option>18</option>
+				<option>20</option>
+				<option>22</option>
+				<option>24</option>
+				<option>26</option>
+				<option>28</option>
+				<option>36</option>
+				<option selected>48</option>
+				<option>72</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="inputText">Text</label>
+			<input id="inputText" type="text" value="Double path text" class="form-control" />
+		</div>
+	</div>
+	<canvas id="canvas1" width="600" height="250" style="border: 1px solid #f0f0f0;"></canvas>
+</body>
+</html>

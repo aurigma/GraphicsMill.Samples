@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Font and Text", "Font and Text", "{4D462F00-079A-4346-9DEA-82163A24F4BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. Plain and Bounded Text", "FontAndText\PlainAndBoundedText\01. Plain and Bounded Text.csproj", "{DF3B217F-9AC5-48A7-857B-F450D82A29DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02. Font Loading and Text Measuring", "FontAndText\FontLoadingandTextMeasuring\02. Font Loading and Text Measuring.csproj", "{CAA5B10E-8F0E-4A4D-A263-B3B1D94573E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Art Text", "FontAndText\ArtText\03. Art Text.csproj", "{7EACECD5-9967-4BED-929D-B3355C423BF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04. Double Path Text", "FontAndText\DoublePathText\04. Double Path Text.csproj", "{81558DE8-362C-448E-BA6E-C01746A7A600}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. Watermark", "FontAndText\Watermark\05. Watermark.csproj", "{1499DB6F-3487-4AB6-A9DF-0C6831D5CD89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineDemo", "OnlineDemo\OnlineDemo.csproj", "{B1ABA994-E10D-4E7A-B6DF-10043EE419A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06. PDF and EPS Output", "FontAndText\PDFAndEPSOutput\06. PDF and EPS Output.csproj", "{C9CEAC42-56E0-41A2-8774-E25E6FF1DE37}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF3B217F-9AC5-48A7-857B-F450D82A29DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF3B217F-9AC5-48A7-857B-F450D82A29DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF3B217F-9AC5-48A7-857B-F450D82A29DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF3B217F-9AC5-48A7-857B-F450D82A29DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAA5B10E-8F0E-4A4D-A263-B3B1D94573E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAA5B10E-8F0E-4A4D-A263-B3B1D94573E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAA5B10E-8F0E-4A4D-A263-B3B1D94573E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAA5B10E-8F0E-4A4D-A263-B3B1D94573E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EACECD5-9967-4BED-929D-B3355C423BF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EACECD5-9967-4BED-929D-B3355C423BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EACECD5-9967-4BED-929D-B3355C423BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EACECD5-9967-4BED-929D-B3355C423BF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81558DE8-362C-448E-BA6E-C01746A7A600}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81558DE8-362C-448E-BA6E-C01746A7A600}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81558DE8-362C-448E-BA6E-C01746A7A600}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81558DE8-362C-448E-BA6E-C01746A7A600}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1499DB6F-3487-4AB6-A9DF-0C6831D5CD89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1499DB6F-3487-4AB6-A9DF-0C6831D5CD89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1499DB6F-3487-4AB6-A9DF-0C6831D5CD89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1499DB6F-3487-4AB6-A9DF-0C6831D5CD89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1ABA994-E10D-4E7A-B6DF-10043EE419A9}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{B1ABA994-E10D-4E7A-B6DF-10043EE419A9}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{B1ABA994-E10D-4E7A-B6DF-10043EE419A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1ABA994-E10D-4E7A-B6DF-10043EE419A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9CEAC42-56E0-41A2-8774-E25E6FF1DE37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9CEAC42-56E0-41A2-8774-E25E6FF1DE37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9CEAC42-56E0-41A2-8774-E25E6FF1DE37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9CEAC42-56E0-41A2-8774-E25E6FF1DE37}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DF3B217F-9AC5-48A7-857B-F450D82A29DE} = {4D462F00-079A-4346-9DEA-82163A24F4BF}
+		{CAA5B10E-8F0E-4A4D-A263-B3B1D94573E8} = {4D462F00-079A-4346-9DEA-82163A24F4BF}
+		{7EACECD5-9967-4BED-929D-B3355C423BF5} = {4D462F00-079A-4346-9DEA-82163A24F4BF}
+		{81558DE8-362C-448E-BA6E-C01746A7A600} = {4D462F00-079A-4346-9DEA-82163A24F4BF}
+		{1499DB6F-3487-4AB6-A9DF-0C6831D5CD89} = {4D462F00-079A-4346-9DEA-82163A24F4BF}
+		{C9CEAC42-56E0-41A2-8774-E25E6FF1DE37} = {4D462F00-079A-4346-9DEA-82163A24F4BF}
+	EndGlobalSection
+EndGlobal

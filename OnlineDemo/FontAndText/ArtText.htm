@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Art Text</title>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+	<script src="//code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(function () {
+			var canvas = $("#canvas1");
+
+			var image = null;
+
+			function render() {
+				var ctx = canvas[0].getContext("2d");
+
+				//Clear
+				ctx.clearRect(0, 0, canvas.width(), canvas.height());
+
+				//Image
+				if (image != null) {
+					ctx.drawImage(image, 0, 0);
+				}
+			}
+
+			function loadImage() {
+				$.ajax({
+					url: "../api/FontAndText/RenderArtText",
+					type: "POST",
+					data: {
+						FontName: $("#selectFontName").val(),
+						Type: $("#selectType").val(),
+						Effect: $("#selectEffect").val(),
+						Bend: $("#selectBend").val(),
+						Text: $("#inputText").val()
+					},
+					success: function (b64data) {
+						image = new Image();
+						image.src = "data:image/png;base64," + b64data;
+						image.onload = function () {
+							render();
+						}
+					}
+				});
+			}
+
+
+			$("select, input").bind("change keyup", function () {
+				loadImage();
+			});
+
+			function init() {
+				loadImage();
+				render();
+			}
+
+			init();
+		});
+	</script>
+</head>
+<body>
+	<div role="form">
+		<div class="form-group">
+			<label for="selectFontName">Font</label>
+			<select id="selectFontName" class="form-control">
+				<option selected>Arial</option>
+				<option>Comic Sans MS</option>
+				<option>Georgia</option>
+				<option>Times New Roman</option>
+				<option>Verdana</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="selectType">Type</label>
+			<select id="selectType" class="form-control">
+				<option selected>Bridge</option>
+				<option>Bulge</option>
+				<option>Pinch</option>
+				<option selected	>Roof</option>
+				<option>Round</option>
+				<option>Valley</option>
+				<option>Wedge</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="selectBend">Bend</label>
+			<select id="selectBend" class="form-control">
+				<option>1.0</option>
+				<option>0.8</option>
+				<option selected>0.6</option>
+				<option>0.4</option>
+				<option>0.2</option>
+				<option>0.0</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="selectEffect">Effect</label>
+			<select id="selectEffect" class="form-control">
+				<option>None</option>
+				<option selected>Glow</option>
+				<option>Shadow</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="inputText">Text</label>
+			<input id="inputText" type="text" value="Artistic text" class="form-control" />
+		</div>
+	</div>
+	<canvas id="canvas1" width="600" height="250" style="border: 1px solid #f0f0f0;"></canvas>
+</body>
+</html>
