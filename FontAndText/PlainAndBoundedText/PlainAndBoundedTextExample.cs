@@ -14,7 +14,7 @@ class PlainAndBoundedTextExample
 	}
 
 
-	private static void RenderSimpleAndBoundedText()
+	private static void RenderSimpleAndBoundedText() 
 	{
 		using (var bitmap = new Bitmap(400, 250, PixelFormat.Format24bppRgb, new RgbColor(255, 255, 255, 255)))
 		{
