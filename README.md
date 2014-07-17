@@ -14,7 +14,7 @@ Support: http://www.graphicsmill.com/support
 
 ### Plain and Bounded (Multiline) Text
 
-[/FontAndText/PlainAndBoundedText/](github.com/aurigma/GraphicsMill.Samples/tree/master/FontAndText/PlainAndBoundedText)
+[/FontAndText/PlainAndBoundedText/](https://github.com/aurigma/GraphicsMill.Samples/tree/master/FontAndText/PlainAndBoundedText)
 
 Draws text strings and text areas on an image. Includes: horizontal and vertical single line text (with optional effects), multiline text bounded with a specified rectangle.
 
