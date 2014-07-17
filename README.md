@@ -1,6 +1,8 @@
 # Graphics Mill Samples
 
-Graphics Mill is and an advanced image processing library. It  allows loading/saving images (JPEG, PNG, GIF, TIFF, EPS, PDF, EPS, PSD and others) in different formats (RGB, CMYK, 8 and 16-bit), manipulating metadata (EXIF, IPTC, XMP, Adobe Resources), manipulating image channels, image operations (crop, resize, rotate, flip), drawing images, primitives, simple and artistic text,  color management operations, color and tone adjustment and image filtering. 
+Graphics Mill is an advanced image processing library. It allows loading/saving images (JPEG, PNG, GIF, TIFF, EPS, PDF, EPS, PSD and others) in various bitmap formats (RGB, CMYK, 8 and 16-bit per channel), managing metadata (EXIF, IPTC, XMP, Adobe Resources), manipulating image channels and pixels, applying operations on images (crop, resize, rotate, flip), drawing bitmap and vector elements, single and multiline text (including artistic effects and text line distortions),  converting colors with ICC profiles, adjust color/tone/brightness/contrasts and apply image filters. 
+
+Graphics Mill Web Controls is a front end for Graphics Mill image processing library. Set of web controls allow viewing and editing graphics. Use Bitmap Viewer allows to display, zoom, crop and apply different effects on bitmap images. AJAX Vector Objects allows viewing and editing composite images consisting of multiple elements such as bitmaps, texts and vector data which can be used to build rich image editing application like business card or t-shirt editor.
 
 Website: http://www.graphicsmill.com/
 
