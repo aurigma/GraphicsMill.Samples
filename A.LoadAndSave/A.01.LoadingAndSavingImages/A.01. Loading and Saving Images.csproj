@@ -24,7 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,8 +34,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aurigma.GraphicsMill, Version=7.0.28.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.7.0.28\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
