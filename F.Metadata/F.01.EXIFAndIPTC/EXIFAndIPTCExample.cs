@@ -19,7 +19,7 @@ class EXIFAndIPTCExample
 	/// </summary>
 	private static void ReadExifIptc()
 	{
-		using (var jpegReader = new JpegReader("../../../../_Input/Venice.jpg"))
+		using (var jpegReader = new JpegReader("../../../../_Input/Chicago.jpg"))
 		{
 			//Read metadata
 			var exif = jpegReader.Exif;
@@ -97,9 +97,5 @@ class EXIFAndIPTCExample
 		}
 
 	}
-
-
-
-
 }
 

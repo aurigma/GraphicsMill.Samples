@@ -8,9 +8,42 @@ class GIFFormatExample
 {
 	static void Main(string[] args)
 	{
-		//This code example is not completed yet. You can find code snippets in the documentation:
-		//http://www.graphicsmill.com/docs/gm/T_Aurigma_GraphicsMill_Codecs_GifReader.htm
-		//http://www.graphicsmill.com/docs/gm/loading-and-saving-animated-gifs.htm
+		WriteGif("../../../../_Input/Chicago.jpg", "../../../../_Output/WriteGif1.gif");
+		WriteGifMemoryFriendly("../../../../_Input/Chicago.jpg", "../../../../_Output/WriteGifMemoryFriendly1.gif");
+
+		//Image with transparency
+		WriteGif("../../../../_Input/Stamp.png", "../../../../_Output/WriteGif2.gif");
+		WriteGifMemoryFriendly("../../../../_Input/Stamp.png", "../../../../_Output/WriteGifMemoryFriendly2.gif");
+	}
+
+
+	/// <summary>
+	/// Reads image in JPEG format, converts to palette-based pixel format, and saves to GIF format
+	/// </summary>
+	private static void WriteGif(string inputPath, string outputPath)
+	{
+		using (var bitmap = new Bitmap(inputPath))
+		{
+			//Image is automatically converted to the appropriate pixel format on saving, so we can omit the next line
+			//bitmap.ColorManagement.Convert(PixelFormat.Format8bppIndexed);
+			
+			bitmap.Save(outputPath);
+		}
+	}
+
+
+	/// <summary>
+	/// Reads image in JPEG format, converts to palette-based pixel format, and saves to GIF format
+	/// using memory-friendly Pipeline API
+	/// </summary>
+	private static void WriteGifMemoryFriendly(string inputPath, string outputPath)
+	{
+		using (var reader = ImageReader.Create(inputPath))
+		using (var colorConverter = new ColorConverter(PixelFormat.Format8bppIndexed))
+		using (var writer = new GifWriter(outputPath))
+		{
+			Pipeline.Run(reader + colorConverter + writer);
+		}
 	}
 }
 
