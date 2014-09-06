@@ -197,7 +197,7 @@ namespace Main
 				Picture1.Refresh();
 				Picture2.Refresh();
 				
-				if (! Information.IsNothing(_bitmap))
+				if (_bitmap != null)
 				{
 					//_bitmap.Changed += new Aurigma.GraphicsMill.BitmapChangedEventHandler(_bitmap_Changed);
 				}

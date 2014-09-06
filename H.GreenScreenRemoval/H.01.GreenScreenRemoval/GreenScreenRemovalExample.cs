@@ -3,42 +3,39 @@ using Aurigma.GraphicsMill;
 using Aurigma.GraphicsMill.Codecs;
 using Aurigma.GraphicsMill.Transforms;
 
-namespace GreenScreenRemovalExample
+class GreenScreenRemovalExample
 {
-	class Program
+	static void Main(string[] args)
 	{
-		static void Main(string[] args)
+		RemoveGreenScreen();
+		RemoveGreenScreenMemoryFriendly();
+	}
+
+
+	/// <summary>
+	/// Removes green screen using standard approach
+	/// </summary>
+	private static void RemoveGreenScreen()
+	{
+		using (var bitmap = new Bitmap("../../../../_Input/GreenScreen.jpg"))
 		{
-			RemoveGreenScreen();
-			RemoveGreenScreenUsingPipeline();
+			bitmap.Transforms.RemoveGreenScreen();
+
+			bitmap.Save("../../../../_Output/RemoveGreenScreen.png");
 		}
+	}
 
 
-		/// <summary>
-		/// Remove green screen using standard approach
-		/// </summary>
-		private static void RemoveGreenScreen()
+	/// <summary>
+	/// Removes green screen using memory-friendly Pipeline API
+	/// </summary>
+	private static void RemoveGreenScreenMemoryFriendly()
+	{
+		using (var reader = ImageReader.Create("../../../../_Input/GreenScreen.jpg"))
+		using (var greenScreenRemoval = new GreenScreenRemoval())
+		using (var writer = new PngWriter("../../../../_Output/RemoveGreenScreenMemoryFriendly.png"))
 		{
-			using (var bitmap = new Bitmap("../../../../_Input/GreenScreen.jpg"))
-			{
-				bitmap.Transforms.RemoveGreenScreen();
-
-				bitmap.Save("../../../../_Output/RemoveGreenScreen.png");
-			}
-		}
-
-
-		/// <summary>
-		/// Remove green screen using memory-friendly pipeline approach
-		/// </summary>
-		private static void RemoveGreenScreenUsingPipeline()
-		{
-			using (var reader = Aurigma.GraphicsMill.Codecs.ImageReader.Create("../../../../_Input/GreenScreen.jpg"))
-			using (var greenScreenRemoval = new GreenScreenRemoval())
-			using (var writer = new PngWriter("../../../../_Output/RemoveGreenScreenUsingPipeline.png"))
-			{
-				Pipeline.Run(reader + greenScreenRemoval + writer);
-			}
+			Pipeline.Run(reader + greenScreenRemoval + writer);
 		}
 	}
 }
