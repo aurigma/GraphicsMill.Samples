@@ -116,7 +116,7 @@ class JPEGFormatExample
 	private static void ConvertAndWriteJpegMemoryFriendly()
 	{
 		using (var reader = new PngReader("../../../../_Input/Stamp.png"))
-		using (var converter = new ColorConverter(PixelFormat.Format24bppRgb))
+		using (var colorConverter = new ColorConverter(PixelFormat.Format24bppRgb))
 		using (var writer = new JpegWriter("../../../../_Output/ConvertAndWriteJpegMemoryFriendly.jpg"))
 		{
 			//JPEG format supports PixelFormat.Format32bppCmyk and PixelFormat.Format8bppGrayscale 
@@ -127,7 +127,7 @@ class JPEGFormatExample
 			}
 			else
 			{
-				Pipeline.Run(reader + converter + writer);
+				Pipeline.Run(reader + colorConverter + writer);
 			}
 		}
 	}
