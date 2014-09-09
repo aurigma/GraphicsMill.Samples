@@ -30,7 +30,6 @@ class ThumbnailFromEXIFExample
 		}
 	}
 
-
 	/// <summary>
 	/// Gets thumbnail of image via different approaches (EXIF, JPEG scale, resize)
 	/// </summary>

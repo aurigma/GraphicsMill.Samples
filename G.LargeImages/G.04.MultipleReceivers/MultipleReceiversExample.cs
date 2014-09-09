@@ -12,10 +12,13 @@ class MultipleReceiversExample
 	}
 
 
+    /// <summary>
+    /// Writes reader data to multiple receivers
+    /// </summary>	
 	private static void MultipleReceivers()
 	{
-		//reader --->  resizeBig    --->  writerBig
-		//       \-->  resizeSmall  --->  writerSmall
+		// reader --->  resizeBig    --->  writerBig
+		//        \-->  resizeSmall  --->  writerSmall
 		using (var reader = ImageReader.Create("../../../../_Input/Venice.jpg"))
 		using (var resizeBig = new Resize(640, 0, ResizeInterpolationMode.High))
 		using (var writerBig = ImageWriter.Create("../../../../_Output/MultipleReceivers_Big.jpg"))

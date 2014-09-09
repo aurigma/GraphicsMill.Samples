@@ -54,10 +54,10 @@ class CMYKGrayscaleToRGBExample
 	private static void CmykToRgbNoColorManagementMemoryFriendly()
 	{
 		using (var reader = ImageReader.Create("../../../../_Input/Copenhagen_CMYK.jpg"))
-		using (var convertor = new ColorConverter(PixelFormat.Format24bppRgb))
+		using (var converter = new ColorConverter(PixelFormat.Format24bppRgb))
 		using (var writer = ImageWriter.Create("../../../../_Output/CmykToRgbNoColorManagementMemoryFriendly.jpg"))
 		{
-			Pipeline.Run(reader + convertor + writer);
+			Pipeline.Run(reader + converter + writer);
 		}
 	}
 
@@ -84,12 +84,12 @@ class CMYKGrayscaleToRGBExample
 	private static void CmykToRgbWithColorManagementMemoryFriendly()
 	{
 		using (var reader = ImageReader.Create("../../../../_Input/Copenhagen_CMYK.jpg"))
-		using (var convertor = new ColorConverter(PixelFormat.Format24bppRgb))
+		using (var converter = new ColorConverter(PixelFormat.Format24bppRgb))
 		using (var writer = ImageWriter.Create("../../../../_Output/CmykToRgbWithColorManagementMemoryFriendly.jpg"))
 		{
-			convertor.DestinationProfile = ColorProfile.FromSrgb();
+			converter.DestinationProfile = ColorProfile.FromSrgb();
 
-			Pipeline.Run(reader + convertor + writer);
+			Pipeline.Run(reader + converter + writer);
 		}
 	}
 
@@ -114,10 +114,10 @@ class CMYKGrayscaleToRGBExample
 	private static void CmykNoProfileToRgbNoColorManagementMemoryFriendly()
 	{
 		using (var reader = ImageReader.Create("../../../../_Input/Copenhagen_CMYK.jpg"))
-		using (var convertor = new ColorConverter(PixelFormat.Format24bppRgb))
+		using (var converter = new ColorConverter(PixelFormat.Format24bppRgb))
 		using (var writer = ImageWriter.Create("../../../../_Output/CmykNoProfileToRgbNoColorManagementMemoryFriendly.jpg"))
 		{
-			Pipeline.Run(reader + convertor + writer);
+			Pipeline.Run(reader + converter + writer);
 		}
 	}
 
@@ -129,7 +129,7 @@ class CMYKGrayscaleToRGBExample
 	{
 		using (var bitmap = new Bitmap("../../../../_Input/Copenhagen_CMYK_NoColorProfile.jpg"))
 		{
-			//Assign some default color profile
+			// Assign some default color profile
 			if (bitmap.ColorProfile == null)
 			{
 				bitmap.ColorProfile = new ColorProfile("../../../../_Input/ColorProfiles/ISOcoated_v2_eci.icc");
@@ -151,13 +151,13 @@ class CMYKGrayscaleToRGBExample
 	private static void CmykNoProfileToRgbWithColorManagementMemoryFriendly()
 	{
 		using (var reader = ImageReader.Create("../../../../_Input/Copenhagen_CMYK.jpg"))
-		using (var convertor = new ColorConverter(PixelFormat.Format24bppRgb))
+		using (var converter = new ColorConverter(PixelFormat.Format24bppRgb))
 		using (var writer = ImageWriter.Create("../../../../_Output/CmykNoProfileToRgbWithColorManagementMemoryFriendly.jpg"))
 		{
-			convertor.DefaultSourceProfile = new ColorProfile("../../../../_Input/ColorProfiles/ISOcoated_v2_eci.icc");
-			convertor.DestinationProfile = ColorProfile.FromSrgb();
+			converter.DefaultSourceProfile = new ColorProfile("../../../../_Input/ColorProfiles/ISOcoated_v2_eci.icc");
+			converter.DestinationProfile = ColorProfile.FromSrgb();
 
-			Pipeline.Run(reader + convertor + writer);
+			Pipeline.Run(reader + converter + writer);
 		}
 	}
 
@@ -182,10 +182,10 @@ class CMYKGrayscaleToRGBExample
 	private static void GrayscaleToRgbNoColorManagementMemoryFriendly()
 	{
 		using (var reader = ImageReader.Create("../../../../_Input/Copenhagen_Grayscale.jpg"))
-		using (var convertor = new ColorConverter(PixelFormat.Format24bppRgb))
+		using (var converter = new ColorConverter(PixelFormat.Format24bppRgb))
 		using (var writer = ImageWriter.Create("../../../../_Output/GrayscaleToRgbNoColorManagementMemoryFriendly.jpg"))
 		{
-			Pipeline.Run(reader + convertor + writer);
+			Pipeline.Run(reader + converter + writer);
 		}
 	}
 
@@ -195,28 +195,36 @@ class CMYKGrayscaleToRGBExample
 	/// </summary>
 	private static void ConvertTo24bppRgb(string inputPath, string outputPath)
 	{
-		using (var bitmap = new Bitmap(inputPath))
+        // BUGBUG:
+        /*
+         * Сампл немного странноватый, ColorManagment нужно использовать ВСЕГДА, когда у картинки есть профиль. 
+         * Это не фича для повышения качества, это единственно возможный способ ПРАВИЛЬНОЙ интерпретации цветовых данных.
+         * 
+         * Первые два "No need to use color management" просто херят профиль исходного изображения. 
+         * Вообще случаи, когда "не надо" есть внутри и необходимости в подобных финтах нет.
+         * */
+        using (var bitmap = new Bitmap(inputPath))
 		{
-			//No need to use color management
+			// No need to use color management
 			if (bitmap.PixelFormat.IsRgb && bitmap.PixelFormat != PixelFormat.Format24bppRgb)
 			{ 
 				bitmap.ColorManagement.BackgroundColor = RgbColor.White;
 				bitmap.ColorManagement.Convert(PixelFormat.Format24bppRgb);
 			}
 
-			//No need to use color management
+			// No need to use color management
 			if (bitmap.PixelFormat.IsGrayscale)
 			{ 
 				bitmap.ColorManagement.BackgroundColor = new GrayscaleColor(255);
 				bitmap.ColorManagement.Convert(PixelFormat.Format24bppRgb);
 			}
 
-			//Use color management
+			// Use color management
 			if (bitmap.PixelFormat.IsCmyk)
 			{
 				bitmap.ColorManagement.BackgroundColor = new CmykColor(0, 0, 0, 0, 255);
 
-				//Assign some default color profile
+				// Assign some default color profile
 				if (bitmap.ColorProfile == null)
 				{
 					bitmap.ColorProfile = new ColorProfile("../../../../_Input/ColorProfiles/ISOcoated_v2_eci.icc");
@@ -239,26 +247,27 @@ class CMYKGrayscaleToRGBExample
 	/// </summary>
 	private static void ConvertTo24bppRgbMemoryFriendly(string inputPath, string outputPath)
 	{
+        // BUGBUG этот предлагаю убрать вместе с предыдущим
 		using (var reader = ImageReader.Create(inputPath))
-		using (var convertor = new ColorConverter(PixelFormat.Format24bppRgb))
+		using (var converter = new ColorConverter(PixelFormat.Format24bppRgb))
 		using (var writer = ImageWriter.Create(outputPath))
 		{
-			//No need to use color management
+			// No need to use color management
 			if (reader.PixelFormat.IsRgb && reader.PixelFormat != PixelFormat.Format24bppRgb)
 			{
-				convertor.BackgroundColor = RgbColor.White;
+				converter.BackgroundColor = RgbColor.White;
 
-				Pipeline.Run(reader + convertor + writer);
+				Pipeline.Run(reader + converter + writer);
 
 				return;
 			}
 
-			//No need to use color management
+			// No need to use color management
 			if (reader.PixelFormat.IsGrayscale)
 			{
-				convertor.BackgroundColor = new GrayscaleColor(255);
+				converter.BackgroundColor = new GrayscaleColor(255);
 
-				Pipeline.Run(reader + convertor + writer);
+				Pipeline.Run(reader + converter + writer);
 
 				return;
 			}
@@ -266,13 +275,13 @@ class CMYKGrayscaleToRGBExample
 			//Use color management
 			if (reader.PixelFormat.IsCmyk)
 			{
-				convertor.BackgroundColor = new CmykColor(0, 0, 0, 0, 255);
+				converter.BackgroundColor = new CmykColor(0, 0, 0, 0, 255);
 				//Assign some default color profile
-				convertor.DefaultSourceProfile = new ColorProfile("../../../../_Input/ColorProfiles/ISOcoated_v2_eci.icc");
-				convertor.DestinationProfile = ColorProfile.FromSrgb();
+				converter.DefaultSourceProfile = new ColorProfile("../../../../_Input/ColorProfiles/ISOcoated_v2_eci.icc");
+				converter.DestinationProfile = ColorProfile.FromSrgb();
 
 
-				Pipeline.Run(reader + convertor + writer);
+				Pipeline.Run(reader + converter + writer);
 
 				return;
 			}

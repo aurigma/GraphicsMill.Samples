@@ -13,110 +13,102 @@ class PDFAndEPSOutputExample
 	}
 
 
+    /// <summary>
+    /// Generates PDF file with two pages.
+    /// </summary>
 	public static void GenerateRgbPdf()
 	{
 		var dpi = 300f;
 
+        var unitFactory = new UnitFactory(dpi);
+
 		using (var pdfWriter = new PdfWriter("../../../../_Output/PDFAndEPSOutput.pdf"))
+        using (var graphics = pdfWriter.GetGraphics())
+        using (var bitmap = new Bitmap("../../../../_Input/Chicago.jpg"))
 		{
-			//Front side 3.5"×2.5" size
-			pdfWriter.AddPage(UnitConverter.ConvertUnitsToPixels(dpi, 3.5f, Unit.Inch),
-				UnitConverter.ConvertUnitsToPixels(dpi, 2.0f, Unit.Inch), dpi, dpi);
+			// Front side 3.5"×2.5" size
 
-			using (var graphics = pdfWriter.GetGraphics())
-			{
-				//Pen 1pt width
-				var pen = new Pen(RgbColor.Red, UnitConverter.ConvertUnitsToPixels(dpi, 1.0f, Unit.Point));
+			pdfWriter.AddPage(unitFactory.Inch(3.5f), unitFactory.Inch(2.0f), dpi, dpi);
 
-				//Rectangle
-				graphics.DrawRectangle(pen, UnitConverter.ConvertUnitsToPixels(dpi, 0.125f, Unit.Inch),
-					UnitConverter.ConvertUnitsToPixels(dpi, 0.125f, Unit.Inch),
-					UnitConverter.ConvertUnitsToPixels(dpi, 3.5f - 0.125f * 2, Unit.Inch),
-					UnitConverter.ConvertUnitsToPixels(dpi, 2 - 0.125f * 2, Unit.Inch));
+            {
+                // Rectangle
+                var pen = new Pen(RgbColor.Red, unitFactory.Point(1));
 
-				//Image
-				using (var bitmap = new Bitmap("../../../../_Input/Chicago.jpg"))
-				{
-					graphics.DrawImage(bitmap, new System.Drawing.RectangleF(
-						UnitConverter.ConvertUnitsToPixels(dpi, 0.25f, Unit.Inch),
-						UnitConverter.ConvertUnitsToPixels(dpi, 0.75f, Unit.Inch),
-						UnitConverter.ConvertUnitsToPixels(dpi, 0.25f + 0.5f * (float)bitmap.Height / (float)bitmap.Width, Unit.Inch),
-						UnitConverter.ConvertUnitsToPixels(dpi, 1.25f, Unit.Inch)));
-				}
+                graphics.DrawRectangle(pen, unitFactory.Inch(0.125f), unitFactory.Inch(0.125f),
+                    unitFactory.Inch(3.5f - 0.125f * 2), unitFactory.Inch(2 - 0.125f * 2));
 
-				//Text
-				var font = graphics.CreateFont("Arial", 32f);
-				var text = new PlainText("Front Side", font, new SolidBrush(RgbColor.Navy));
-				text.Alignment = TextAlignment.Left;
-				text.Position = new System.Drawing.PointF(UnitConverter.ConvertUnitsToPixels(dpi, 1.125f, Unit.Inch)
-					, UnitConverter.ConvertUnitsToPixels(dpi, 1.125f, Unit.Inch));
-				graphics.DrawText(text);
-			}
+                // Image	
+                graphics.DrawImage(bitmap, new System.Drawing.RectangleF(
+                        unitFactory.Inch(0.25f), unitFactory.Inch(0.75f),
+                        unitFactory.Inch(0.25f + 0.5f * (float)bitmap.Height / (float)bitmap.Width), unitFactory.Inch(1.25f)));
 
-			//Back side	3.5"×2.5" size
-			pdfWriter.AddPage(UnitConverter.ConvertUnitsToPixels(dpi, 3.5f, Unit.Inch),
-				UnitConverter.ConvertUnitsToPixels(dpi, 2.0f, Unit.Inch), dpi, dpi);
+                // Text
+                var font = graphics.CreateFont("Arial", 32f);
+                var text = new PlainText("Front Side", font, new SolidBrush(RgbColor.Navy))
+                {
+                    Alignment = TextAlignment.Left,
+                    Position = new System.Drawing.PointF(unitFactory.Inch(1.125f), unitFactory.Inch(1.125f))
+                };
 
-			using (var graphics = pdfWriter.GetGraphics())
-			{
-				//Pen 0.5pt width
-				var pen = new Pen(RgbColor.Blue, UnitConverter.ConvertUnitsToPixels(dpi, 0.5f, Unit.Point));
+                graphics.DrawText(text);
+            }
 
-				graphics.DrawRectangle(pen, UnitConverter.ConvertUnitsToPixels(dpi, 0.125f, Unit.Inch),
-					UnitConverter.ConvertUnitsToPixels(dpi, 0.125f, Unit.Inch),
-					UnitConverter.ConvertUnitsToPixels(dpi, 3.5f - 0.125f * 2, Unit.Inch),
-					UnitConverter.ConvertUnitsToPixels(dpi, 2 - 0.125f * 2, Unit.Inch));
+			// Back side	3.5"×2.5" size
 
-				//Artistic (bridge) text
-				var font = graphics.CreateFont("Times New Roman", "Italic", 24f);
-				var bridgeText = new BridgeText("Back Side", font, new SolidBrush(RgbColor.Green));
-				bridgeText.Bend = 0.2f;
-				bridgeText.Center = new System.Drawing.PointF(UnitConverter.ConvertUnitsToPixels(dpi, 3.5f / 2, Unit.Inch)
-					, UnitConverter.ConvertUnitsToPixels(dpi, 1f, Unit.Inch));
-				graphics.DrawText(bridgeText);
-			}
+            pdfWriter.AddPage(unitFactory.Inch(3.5f), unitFactory.Inch(2.0f), dpi, dpi);
+
+            {
+                // Pen 0.5pt width
+                var pen = new Pen(RgbColor.Blue, unitFactory.Point(0.5f));
+
+                graphics.DrawRectangle(pen, unitFactory.Inch(0.125f), unitFactory.Inch(0.125f),
+                    unitFactory.Inch(3.5f - 0.125f * 2), unitFactory.Inch(2 - 0.125f * 2));
+
+                // Artistic (bridge) text
+                var font = graphics.CreateFont("Times New Roman", "Italic", 24f);
+                var bridgeText = new BridgeText("Back Side", font, new SolidBrush(RgbColor.Green))
+                {
+                    Bend = 0.2f,
+                    Center = new System.Drawing.PointF(unitFactory.Inch(3.5f / 2), unitFactory.Inch(1f))
+                };
+                graphics.DrawText(bridgeText);
+            }
 		}	
 	}
 
-
+    /// <summary>
+    /// Generates CMYK EPS
+    /// </summary>
 	public static void GenerateCmykEps()
 	{
 		var dpi = 300f;
 
-		using (var epsWriter = new EpsWriter("../../../../_Output/PDFAndEPSOutput.eps", UnitConverter.ConvertUnitsToPixels(dpi, 3.5f, Unit.Inch),
-				UnitConverter.ConvertUnitsToPixels(dpi, 2.0f, Unit.Inch)
-				, dpi, dpi))
+        var unitFactory = new UnitFactory(dpi);
+
+        using (var epsWriter = new EpsWriter("../../../../_Output/PDFAndEPSOutput.eps", unitFactory.Inch(3.5f), unitFactory.Inch(2.0f), dpi, dpi))
+        using (var graphics = epsWriter.GetGraphics())
+        using (var bitmap = new Bitmap("../../../../_Input/Chicago.jpg"))
 		{
-			using (var graphics = epsWriter.GetGraphics())
-			{
-				//Pen 1pt width
-				var pen = new Pen(new CmykColor(0, 255, 255, 0), UnitConverter.ConvertUnitsToPixels(dpi, 1.0f, Unit.Point));
+			// Pen 1pt width
+            var pen = new Pen(new CmykColor(0, 255, 255, 0), unitFactory.Point(1.0f));
 
-				//Rectangle
-				graphics.DrawRectangle(pen, UnitConverter.ConvertUnitsToPixels(dpi, 0.125f, Unit.Inch),
-					UnitConverter.ConvertUnitsToPixels(dpi, 0.125f, Unit.Inch),
-					UnitConverter.ConvertUnitsToPixels(dpi, 3.5f - 0.125f * 2, Unit.Inch),
-					UnitConverter.ConvertUnitsToPixels(dpi, 2 - 0.125f * 2, Unit.Inch));
+			// Rectangle
+            graphics.DrawRectangle(pen, unitFactory.Inch(0.125f), unitFactory.Inch(0.125f),
+                unitFactory.Inch(3.5f - 0.125f * 2), unitFactory.Inch(2 - 0.125f * 2));
 
-				//Image
-				using (var bitmap = new Bitmap("../../../../_Input/Chicago.jpg"))
-				{
-					graphics.DrawImage(bitmap, new System.Drawing.RectangleF(
-						UnitConverter.ConvertUnitsToPixels(dpi, 0.25f, Unit.Inch),
-						UnitConverter.ConvertUnitsToPixels(dpi, 0.75f, Unit.Inch),
-						UnitConverter.ConvertUnitsToPixels(dpi, 0.25f + 0.5f * (float)bitmap.Height / (float)bitmap.Width, Unit.Inch),
-						UnitConverter.ConvertUnitsToPixels(dpi, 1.25f, Unit.Inch)));
-				}
+			// Image
+			graphics.DrawImage(bitmap, new System.Drawing.RectangleF(
+				unitFactory.Inch(0.25f), unitFactory.Inch(0.75f),
+				unitFactory.Inch(0.25f + 0.5f * (float)bitmap.Height / (float)bitmap.Width), unitFactory.Inch(1.25f)));
 
-				//Text
-				var font = graphics.CreateFont("Arial", 32f);
-				var text = new PlainText("Front Side", font, new SolidBrush(RgbColor.Navy));
-				text.Alignment = TextAlignment.Left;
-				text.Position = new System.Drawing.PointF(UnitConverter.ConvertUnitsToPixels(dpi, 1.125f, Unit.Inch)
-					, UnitConverter.ConvertUnitsToPixels(dpi, 1.125f, Unit.Inch));
-				graphics.DrawText(text);
-			}
-
+			// Text
+			var font = graphics.CreateFont("Arial", 32f);
+            var text = new PlainText("Front Side", font, new SolidBrush(RgbColor.Navy))
+            {
+                Alignment = TextAlignment.Left,
+                Position = new System.Drawing.PointF(unitFactory.Inch(1.125f), unitFactory.Inch(1.125f))
+            };
+			graphics.DrawText(text);
 		}
 	}
 }

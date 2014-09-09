@@ -55,7 +55,7 @@ class LoadingAndSavingImagesExample
 	{
 		using (var bitmap = new Bitmap("../../../../_Input/Chicago.jpg"))
 		{
-			//Set value of JPEG quality to 85
+			// Set value of JPEG quality to 85
 			bitmap.Save("../../../../_Output/LoadSaveFileWithOptions.jpg", new JpegSettings(85));
 		}
 	}
@@ -67,12 +67,13 @@ class LoadingAndSavingImagesExample
 	private static void LoadSaveFileWithOptionsMemoryFriendly()
 	{
 		using (var reader = new JpegReader("../../../../_Input/Chicago.jpg"))
-		//Set value of JPEG quality to 85
+		// Set value of JPEG quality to 85
 		using (var writer = new JpegWriter("../../../../_Output/LoadSaveFileWithOptionsMemoryFriendly.jpg", 85))
 		{
 			Pipeline.Run(reader + writer);
 		}
 	}
+
 
 	/// <summary>
 	/// Loads and saves image to file with specified encoder options using alternative syntax and memory-friendly Pipeline API
@@ -80,7 +81,7 @@ class LoadingAndSavingImagesExample
 	private static void LoadSaveFileAltSyntaxMemoryFriendly()
 	{
 		using (var reader = ImageReader.Create("../../../../_Input/Chicago.jpg"))
-		//Set value of JPEG quality to 85
+		// Set value of JPEG quality to 85
 		using (var writer = ImageWriter.Create("../../../../_Output/LoadSaveFileAltSyntaxMemoryFriendly.jpg", new JpegSettings(85)))
 		{
 			Pipeline.Run(reader + writer);

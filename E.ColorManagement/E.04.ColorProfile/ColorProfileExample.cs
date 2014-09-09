@@ -44,7 +44,7 @@ class ColorProfileExample
 	{
 		using (var bitmap = new Bitmap("../../../../_Input/Copenhagen_CMYK.jpg"))
 		{
-			//Display location of the embedded profile
+			// Display location of the embedded profile
 			Console.WriteLine("ICC Profile is located here:" + bitmap.ColorProfile.FileName);
 		}	
 	}
@@ -57,7 +57,7 @@ class ColorProfileExample
 	{
 		using (var reader = ImageReader.Create("../../../../_Input/Copenhagen_CMYK.jpg"))
 		{
-			//Bitmap isn't loaded to memory
+			// Bitmap isn't loaded to memory
 			Console.WriteLine("ICC Profile is located here:" + reader.ColorProfile.FileName);
 		}
 	}
@@ -84,7 +84,7 @@ class ColorProfileExample
 	{
 		using (var bitmap = new Bitmap("../../../../_Input/Copenhagen_CMYK.jpg"))
 		{
-			//bitmap.ColorProfile is automatically retained after modification of bitmap
+			// bitmap.ColorProfile is automatically retained after modification of bitmap
 			bitmap.Transforms.Resize(640, 0, ResizeInterpolationMode.High);
 
 			bitmap.Save("../../../../_Output/RetainEmbeddedProfile.jpg");
@@ -101,7 +101,7 @@ class ColorProfileExample
 		using (var resize = new Resize(640, 0, ResizeInterpolationMode.High))
 		using (var writer = ImageWriter.Create("../../../../_Output/RetainEmbeddedProfileMemoryFriendly.jpg"))
 		{
-			//Color profile is automatically retained from reading to writing
+			// Color profile is automatically retained from reading to writing
 			Pipeline.Run(reader + resize + writer);
 		}
 	}

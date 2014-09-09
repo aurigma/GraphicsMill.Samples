@@ -24,6 +24,17 @@ class RGBToCMYKExample
 	/// </summary>
 	private static void RgbToCmykNoColorManagement()
 	{
+        // BUGBUG
+        /*
+         * Кому нужна конвертация без ColorManagement'а? Вот прям, чтобы это специально было сделано?
+         * Если есть профиль, то CC, если нет, то скорее подсунут какой-нибудь неправильный дефолтовый
+         * и получат более-менее вменяемый результат.
+         * 
+         * Исходя из того, что у нас есть сампл на это дело, можно подумать, 
+         * что это нормальный use case, хотя это не так.
+         * 
+         */
+
 		using (var bitmap = new Bitmap("../../../../_Input/Copenhagen_RGB.jpg"))
 		{
 			bitmap.ColorManagement.Convert(PixelFormat.Format32bppCmyk);

@@ -28,9 +28,11 @@ class TIFFFormatExample
 		{
 			bitmap.Transforms.Flip(FlipType.Vertical);
 
-			var tiffSettings = new TiffSettings();
-			tiffSettings.Compression = CompressionType.Jpeg;
-			tiffSettings.Quality = 85;
+            var tiffSettings = new TiffSettings()
+            {
+                Compression = CompressionType.Jpeg,
+                Quality = 85
+            };
 
 			bitmap.Save("../../../../_Output/WriteTiff.tif", tiffSettings);
 		}

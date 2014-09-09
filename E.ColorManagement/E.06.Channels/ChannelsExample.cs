@@ -59,6 +59,7 @@ class ChannelsExample
 			combiner.M = readerM;
 			combiner.Y = readerY;
 			combiner.K = readerK;
+
 			Pipeline.Run(combiner + writer);
 		}
 	}
@@ -70,14 +71,11 @@ class ChannelsExample
 	private static void AddAlphaChannel()
 	{
 		using (var bitmap = new Bitmap("../../../../_Input/Chicago.jpg"))
-		using (var alpha = new Bitmap(bitmap.Width, bitmap.Height, 
-			PixelFormat.Format8bppGrayscale , new GrayscaleColor(0)))
+		using (var alpha = new Bitmap(bitmap.Width, bitmap.Height, PixelFormat.Format8bppGrayscale , new GrayscaleColor(0)))
+        using (var graphics = alpha.GetAdvancedGraphics())
 		{
-			using (var graphics = alpha.GetAdvancedGraphics())
-			{
-				graphics.FillEllipse(new SolidBrush(new GrayscaleColor(255)), 
-					0, 0, bitmap.Width, bitmap.Height); 
-			}
+			graphics.FillEllipse(new SolidBrush(new GrayscaleColor(255)), 
+				0, 0, bitmap.Width, bitmap.Height);
 
 			bitmap.Channels.SetAlpha(alpha);
 
@@ -168,8 +166,8 @@ class ChannelsExample
 		//                       \           X          /
 		//                        \-- (B) --/ \-- (G)--/ 
 		using (var reader = ImageReader.Create("../../../../_Input/Chicago.jpg"))
-		using (var splitter = new Aurigma.GraphicsMill.RgbChannelSplitter())
-		using (var combiner = new Aurigma.GraphicsMill.RgbChannelCombiner())
+		using (var splitter = new RgbChannelSplitter())
+		using (var combiner = new RgbChannelCombiner())
 		using (var writer = ImageWriter.Create("../../../../_Output/SwapChannelsMemoryFriendly.jpg"))
 		{
 			reader.Receivers.Add(splitter);

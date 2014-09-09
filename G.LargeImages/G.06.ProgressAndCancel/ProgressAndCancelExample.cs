@@ -22,7 +22,7 @@ class ProgressAndCancelExample
 	{
 		Console.WriteLine("Progress Sample\r\n");
 
-		//reader --->  resize  --->  progress  --->  writer
+		// reader --->  resize  --->  progress  --->  writer
 		using (var reader = ImageReader.Create("../../../../_Input/Venice.jpg"))
 		using (var resize = new Resize(3200, 0, ResizeInterpolationMode.High))
 		using (var progress = new ProgressReporter())
@@ -55,7 +55,7 @@ class ProgressAndCancelExample
 
 		var task = Task.Factory.StartNew(() =>
 		{
-			//reader --->  resize  --->  progress  --->  writer
+			// reader --->  resize  --->  progress  --->  writer
 			using (var reader = ImageReader.Create("../../../../_Input/Venice.jpg"))
 			using (var resize = new Resize(16000, 0, ResizeInterpolationMode.High))
 			using (var progress = new ProgressReporter())

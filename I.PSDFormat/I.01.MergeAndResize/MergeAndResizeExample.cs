@@ -13,7 +13,9 @@ class MergeAndResizeExample
 		MergeAndMultipleResize();
 	}
 
-
+    /// <summary>
+    /// Merges PSD layers
+    /// </summary>	
 	private static void MergeAndResize()
 	{
 		using (var psdReader = new PsdReader("../../../../_Input/BusinessCard.psd"))
@@ -25,7 +27,9 @@ class MergeAndResizeExample
 		}
 	}
 
-
+    /// <summary>
+    /// Writes merged PSD layers to different sizes
+    /// </summary>	
 	private static void MergeAndMultipleResize()
 	{
 		using (var psdReader = new PsdReader("../../../../_Input/BusinessCard.psd"))

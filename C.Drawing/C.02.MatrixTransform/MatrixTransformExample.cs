@@ -11,33 +11,33 @@ class MatrixTransformExample
 		TransformCoordinates();
 	}
 
-
+    /// <summary>
+    /// Applies matrix transformation to graphics
+    /// </summary>
 	private static void TransformCoordinates()
 	{
 		using (var bitmap = new Bitmap(600, 300, PixelFormat.Format24bppRgb, RgbColor.White))
+        using (var graphics = bitmap.GetAdvancedGraphics())
 		{
-			using (var graphics = bitmap.GetAdvancedGraphics())
-			{
-				//Move cordinate system
-				var matrix1 = new System.Drawing.Drawing2D.Matrix();
-				matrix1.Translate(bitmap.Width / 2, bitmap.Height / 2);
+			// Move coordinate system
+			var matrix1 = new System.Drawing.Drawing2D.Matrix();
+			matrix1.Translate(bitmap.Width / 2, bitmap.Height / 2);
 
-				graphics.Transform = matrix1;
+			graphics.Transform = matrix1;
 
-				DrawEllipseAndText(graphics, 30);
+			DrawEllipseAndText(graphics, 30);
 
-				//Move, shear and rotate cordinate system
-				var matrix2 = new System.Drawing.Drawing2D.Matrix();
-				matrix2.Translate(bitmap.Width / 2, bitmap.Height / 2);
-				matrix2.Shear(0.5f, 0.1f);
-				matrix2.Rotate(30f);
+			// Move, shear and rotate coordinate system
+			var matrix2 = new System.Drawing.Drawing2D.Matrix();
+			matrix2.Translate(bitmap.Width / 2, bitmap.Height / 2);
+			matrix2.Shear(0.5f, 0.1f);
+			matrix2.Rotate(30f);
 
-				graphics.Transform = matrix2;
+			graphics.Transform = matrix2;
 
-				DrawEllipseAndText(graphics, 255);
-			}
+			DrawEllipseAndText(graphics, 255);
 
-			bitmap.Save("../../../../_Output/TransformCoordinates.png");
+            bitmap.Save("../../../../_Output/TransformCoordinates.png");
 		}
 	}
 

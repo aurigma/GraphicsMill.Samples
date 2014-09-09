@@ -17,6 +17,11 @@ class TIFFExtraChannelsExample
 		ReadExtraChannel();
 	}
 
+    // BUGBUG
+    /*
+     * Не нравится, что есть целый раздел для TiffExtraChannels. Можно же просто самим сгенерить и самим записать. Зачем этот сложный этап генерации визиток?
+     * Предлагаю сократить и перенести в A.04. Tiff Format
+     */
 
 	/// <summary>
 	/// Creates business card 3.5"x2.0" size with extra channel
@@ -27,7 +32,7 @@ class TIFFExtraChannelsExample
 		using (var writer = new TiffWriter("../../../../_Output/BusinessCard.tif"))
 		{
 			// Load bitmap for the extra channel.
-			// Note: image for extra channel must be gray scale and have the same dimensions and DPI as the source one. 
+			// Note: image for extra channel must be grayscale and have the same dimensions and DPI as the source one. 
 			using (var extraBitmap = new Bitmap("../../../../_Output/BusinessCard_Extra.tif"))
 			{
 				// Create extra channel options based on extraBitmap.
@@ -54,8 +59,7 @@ class TIFFExtraChannelsExample
 			bitmap.Save("../../../../_Output/BusinessCard_ReadExtra.tif");
 		}
 	}
-
-
+    
 
 	/// <summary>
 	/// Prepares example images for demonstration purposes only

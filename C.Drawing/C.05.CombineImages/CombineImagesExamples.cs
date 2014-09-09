@@ -22,11 +22,9 @@ class CombineImagesExamples
 	{
 		using (var bitmap = new Bitmap("../../../../_Input/Venice.jpg"))
 		using (var watermark = new Bitmap("../../../../_Input/Stamp.png"))
+        using (var graphics = bitmap.GetAdvancedGraphics())
 		{
-			using (var graphics = bitmap.GetAdvancedGraphics())
-			{
-				graphics.DrawImage(watermark, 10, bitmap.Height - watermark.Height - 40);
-			}
+		    graphics.DrawImage(watermark, 10, bitmap.Height - watermark.Height - 40);
 
 			bitmap.Save("../../../../_Output/DrawImage.jpg");
 		}
@@ -70,5 +68,13 @@ class CombineImagesExamples
 			Pipeline.Run(reader);
 		}
 	}
+
+    // BUGBUG
+    /*
+     * Combine images вроде как больше к трансформам относится. На graphics'е мы тоже можем рисовать картинки, 
+     * но без combine mode, так как есть векторые форматы, к которым это неприменимо.
+     * 
+     * Предлагаю в трансформы.
+     */
 }
 

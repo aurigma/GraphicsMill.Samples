@@ -32,7 +32,7 @@ class SplitImageIntoTilesExample
 			Directory.CreateDirectory(outputPath);
 		}
 
-		//Store reference to all pipeline elements for further correct object disposing
+		// Store reference to all pipeline elements for further correct object disposing
 		var pipelineElements = new List<PipelineElement>();
 
 		try

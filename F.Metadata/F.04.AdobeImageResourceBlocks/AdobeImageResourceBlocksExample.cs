@@ -12,9 +12,13 @@ class AdobeImageResourceBlocksExample
 		WriteAdobeResourceBlock(@"../../../../_Input/Venice.jpg", @"../../../../_Output/Venice_AdobeResourceBlock.jpg");
 	}
 
+    /// <summary>
+    /// Write copyright XMP block
+    /// </summary>
 	private static void WriteAdobeResourceBlock(string inputPath, string outputPath)
 	{
 		using (var reader = new JpegReader(inputPath))
+        using (var writer = new JpegWriter(outputPath))
 		{
 			var adobeResources = reader.AdobeResources;
 			if (adobeResources == null)
@@ -29,11 +33,8 @@ class AdobeImageResourceBlocksExample
 			// Remove a block with 0x0409 (thumbnail data)
 			adobeResources.Remove(0x0409);
 
-			using (var writer = new JpegWriter(outputPath))
-			{
-				writer.AdobeResources = adobeResources;
-				Pipeline.Run(reader + writer);
-			}
+			writer.AdobeResources = adobeResources;
+			Pipeline.Run(reader + writer);
 		}
 	}
 }

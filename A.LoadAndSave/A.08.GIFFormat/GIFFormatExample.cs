@@ -11,7 +11,7 @@ class GIFFormatExample
 		WriteGif("../../../../_Input/Chicago.jpg", "../../../../_Output/WriteGif1.gif");
 		WriteGifMemoryFriendly("../../../../_Input/Chicago.jpg", "../../../../_Output/WriteGifMemoryFriendly1.gif");
 
-		//Image with transparency
+		// Image with transparency
 		WriteGif("../../../../_Input/Stamp.png", "../../../../_Output/WriteGif2.gif");
 		WriteGifMemoryFriendly("../../../../_Input/Stamp.png", "../../../../_Output/WriteGifMemoryFriendly2.gif");
 	}
@@ -24,8 +24,8 @@ class GIFFormatExample
 	{
 		using (var bitmap = new Bitmap(inputPath))
 		{
-			//Image is automatically converted to the appropriate pixel format on saving, so we can omit the next line
-			//bitmap.ColorManagement.Convert(PixelFormat.Format8bppIndexed);
+			// Image is automatically converted to the appropriate pixel format on saving, so we can omit the next line
+			// bitmap.ColorManagement.Convert(PixelFormat.Format8bppIndexed);
 			
 			bitmap.Save(outputPath);
 		}

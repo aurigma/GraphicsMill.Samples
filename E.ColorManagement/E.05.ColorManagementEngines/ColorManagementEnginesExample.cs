@@ -25,8 +25,8 @@ class ColorManagementEnginesExample
 	{
 		using (var bitmap = new Bitmap("../../../../_Input/Copenhagen_CMYK.jpg"))
 		{
-			//LittleCMS is a default color management engine, so no need to specify it
-			//bitmap.ColorManagement.ColorManagementEngine = ColorManagementEngine.LittleCms;
+			// LittleCMS is a default color management engine, so no need to specify it
+			// bitmap.ColorManagement.ColorManagementEngine = ColorManagementEngine.LittleCms;
 			bitmap.ColorManagement.DestinationProfile = ColorProfile.FromSrgb();
 			bitmap.ColorManagement.Convert(PixelFormat.Format24bppRgb);
 			bitmap.Save("../../../../_Output/ConvertColorsLittleCms.jpg");
@@ -43,8 +43,8 @@ class ColorManagementEnginesExample
 		using (var converter = new ColorConverter())
 		using (var writer = ImageWriter.Create("../../../../_Output/ConvertColorsLittleCmsMemoryFriendly.jpg"))
 		{
-			//LittleCMS is a default color management engine, so no need to specify it
-			//converter.ColorManagementEngine = ColorManagementEngine.LittleCms;
+			// LittleCMS is a default color management engine, so no need to specify it
+			// converter.ColorManagementEngine = ColorManagementEngine.LittleCms;
 			converter.DestinationProfile = ColorProfile.FromSrgb();
 
 			Pipeline.Run(reader + converter + writer);

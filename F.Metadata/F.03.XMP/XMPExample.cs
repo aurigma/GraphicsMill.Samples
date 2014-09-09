@@ -35,8 +35,9 @@ class XMPExample
 		}
 	}
 
-
-	/// Reads specific XMP property
+    /// <summary>
+    /// Reads specific XMP property
+    /// </summary>
 	private static void ReadXmpProperty()
 	{
 		using (var reader = new Aurigma.GraphicsMill.Codecs.JpegReader(@"../../../../_Input/Chicago.jpg"))

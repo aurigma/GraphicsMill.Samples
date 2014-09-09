@@ -71,40 +71,44 @@ class AnimatedGIFExample
 		using (var reader = new GifReader("../../../../_Output/WriteAnimatedGif.gif"))
 		using (var writer = new GifWriter("../../../../_Output/ResizesAnimatedGif.gif"))
 		{
-			//Copy general properties of the source file
+			// Copy general properties of the source file
 			writer.BackgroundIndex = reader.BackgroundEntryIndex;
 			writer.Palette = reader.Palette;
 			writer.PlaybackCount = reader.PlaybackCount;
 
 			for (int i = 0; i < reader.Frames.Count; i++)
 			{
-				//Read a frame
+				// Read a frame
 				using (var frame = (GifFrame)reader.Frames[i])
 				using (var bitmap = frame.GetBitmap())
 				{
-					//Preserve the original palette
+					// Preserve the original palette
 					ColorPalette palette = bitmap.Palette;
-					//Preserve the original pixel format
+					// Preserve the original pixel format
 					PixelFormat pixelFormat = bitmap.PixelFormat;
 
-					//Convert the bitmap to a non-indexed format
+					// Convert the bitmap to a non-indexed format
 					bitmap.ColorManagement.Convert(Aurigma.GraphicsMill.ColorSpace.Rgb, true, false);
 
-					//Resize the bitmap in a high quality mode
-					bitmap.Transforms.Resize(frame.Width / 2, frame.Height / 2,
-						Aurigma.GraphicsMill.Transforms.ResizeInterpolationMode.High);
+					// Resize the bitmap in a high quality mode
+					bitmap.Transforms.Resize(frame.Width / 2, frame.Height / 2, ResizeInterpolationMode.High);
 
-					//Return to the indexed format
+					// Return to the indexed format
 					bitmap.Palette = palette;
 					bitmap.ColorManagement.Convert(pixelFormat);
 
-					//Copy frame delay
+					// Copy frame delay
 					writer.FrameOptions.Delay = frame.Delay;
 
-					//Add the frame
+					// Add the frame
 					Pipeline.Run(bitmap + writer);
 				}
 			}
 		}
+
+        // BUGBUG
+        /*
+         * Может тоже в GIF Format перенести?
+         */
 	}
 }

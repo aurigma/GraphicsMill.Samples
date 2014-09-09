@@ -15,8 +15,7 @@ class JPEGFormatExample
 		RemoveAlphaAndWriteJpegMemoryFriendly();
 	}
 
-
-
+    
 	/// <summary>
 	/// Reads and writes image in JPEG format
 	/// </summary>
@@ -26,15 +25,14 @@ class JPEGFormatExample
 		{
 			bitmap.Transforms.Flip(FlipType.Vertical);
 
-			var jpegSettings = new JpegSettings();
-			jpegSettings.Quality = 90;
-			jpegSettings.UseSubsampling = false;
-			jpegSettings.IsProgressive = true;
+            var jpegSettings = new JpegSettings()
+            {
+                Quality = 90,
+                UseSubsampling = false,
+                IsProgressive = true
+            };
 
 			bitmap.Save("../../../../_Output/ReadWriteJpeg.jpg", jpegSettings);
-
-			//The simplified syntax
-			//bitmap.Save("../../../../_Output/ReadWriteJpeg.jpg", new JpegSettings(90, false, true));
 		}
 
 	}
@@ -52,6 +50,7 @@ class JPEGFormatExample
 			writer.Quality = 90;
 			writer.UseSubsampling = false;
 			writer.IsProgressive = true;
+
 			Pipeline.Run(reader + flip + writer);
 		}
 	}
@@ -86,5 +85,11 @@ class JPEGFormatExample
 			Pipeline.Run(reader + removeAlpha + writer);
 		}
 	}
+
+    // BUGBUG
+    /*
+     * Remove alpha самплы тут немного не в тему, да и не запускаются к тому же
+     * Предлагаю добавить JpegScale
+     */
 }
 

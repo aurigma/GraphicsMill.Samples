@@ -66,15 +66,15 @@ namespace LosslessJPEGTransformsExample
 
 			using (var patchBitmap = new Bitmap())
 			{
-				//Apply crop and mosaic transfroms
+				// Apply crop and mosaic transfroms
 				using (var reader = ImageReader.Create("../../../../_Input/Chicago.jpg"))
 				using (var crop = new Crop(rect))
 				using (var mosaic = new Mosaic(10, 10))
 				{
-					Aurigma.GraphicsMill.Pipeline.Run(reader + crop + mosaic + patchBitmap);
+					Pipeline.Run(reader + crop + mosaic + patchBitmap);
 				}
 
-				//Patch JPEG
+				// Patch JPEG
 				using (var losslessJpeg = new LosslessJpeg("../../../../_Input/Chicago.jpg"))
 				{
 					rect = losslessJpeg.AlignToMCUSize(rect, JpegAlignToSampleSizeMode.Patch);
@@ -121,8 +121,10 @@ namespace LosslessJPEGTransformsExample
 					losslessJpeg.AdobeResources = new AdobeResourceDictionary();
 				}
 
+                const int copyrightFlag = 0x040A;
+
 				var arBlock = new AdobeResourceBlock("Copyright", new byte[] { 1 });
-				losslessJpeg.AdobeResources[0x040A] = arBlock;
+                losslessJpeg.AdobeResources[copyrightFlag] = arBlock;
 
 				losslessJpeg.Write("../../../../_Output/UpdateJpegMetadataLosslessly.jpg");
 			}

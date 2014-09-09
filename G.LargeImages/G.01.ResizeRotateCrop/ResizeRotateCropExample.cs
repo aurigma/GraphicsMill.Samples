@@ -17,7 +17,14 @@ class ResizeRotateCropExample
 		ConvertColors();
 	}
 
-
+    // BUGBUG
+    /*
+     * Вроде бы это уже было в B.Filters and Transforms, причем как Bitmap так и Pipeline.
+     * Вообще почти везде самплы идут на оба API, а тут бац - отдельно Large Images. Может переименовать в Pipeline API syntax?
+     * Ну и, судя по названию, Brightness, CombineImages и convert colors тут быть не должно.
+     * 
+     * + комментов не хватает
+     */
 	private static void Resize()
 	{
 		using (var reader = ImageReader.Create("../../../../_Input/Venice.jpg"))

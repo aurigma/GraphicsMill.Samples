@@ -77,7 +77,7 @@ class ConvertingPixelFormatsExample
 	{
 		using (var bitmap = new Bitmap("../../../../_Input/Copenhagen_CMYK_NoColorProfile.jpg"))
 		{
-			//Assign some default color profile
+			// Assign some default color profile
 			if (bitmap.ColorProfile == null)
 			{
 				bitmap.ColorProfile = new ColorProfile("../../../../_Input/ColorProfiles/ISOcoated_v2_eci.icc");
@@ -98,13 +98,13 @@ class ConvertingPixelFormatsExample
 	private static void ConvertCmykToRgbMemoryFriendly()
 	{
 		using (var reader = ImageReader.Create("../../../../_Input/Copenhagen_CMYK.jpg"))
-		using (var convertor = new ColorConverter(PixelFormat.Format24bppRgb))
+		using (var converter = new ColorConverter(PixelFormat.Format24bppRgb))
 		using (var writer = ImageWriter.Create("../../../../_Output/PF_ConvertCmykToRgbMemoryFriendly.jpg"))
 		{
-			convertor.DefaultSourceProfile = new ColorProfile("../../../../_Input/ColorProfiles/ISOcoated_v2_eci.icc");
-			convertor.DestinationProfile = ColorProfile.FromSrgb();
+			converter.DefaultSourceProfile = new ColorProfile("../../../../_Input/ColorProfiles/ISOcoated_v2_eci.icc");
+			converter.DestinationProfile = ColorProfile.FromSrgb();
 
-			Pipeline.Run(reader + convertor + writer);
+			Pipeline.Run(reader + converter + writer);
 		}
 	}
 
@@ -116,10 +116,10 @@ class ConvertingPixelFormatsExample
 	{
 		using (var bitmap = new Bitmap("../../../../_Input/GreenScreen.jpg"))
 		{
-			//Use PixelFormat.Format40bppAcmyk for CMYK images
+			// Use PixelFormat.Format40bppAcmyk for CMYK images
 			bitmap.ColorManagement.Convert(PixelFormat.Format32bppArgb);
 
-			//Remove background just to demonstrate alpha channel
+			// Remove background just to demonstrate alpha channel
 			bitmap.Transforms.RemoveGreenScreen();
 
 			bitmap.Save("../../../../_Output/PF_AddAlphaChannel.png");
@@ -133,9 +133,9 @@ class ConvertingPixelFormatsExample
 	private static void AddAlphaChannelMemoryFriendly()
 	{
 		using (var reader = ImageReader.Create("../../../../_Input/GreenScreen.jpg"))
-		//Use PixelFormat.Format40bppAcmyk for CMYK images
+		// Use PixelFormat.Format40bppAcmyk for CMYK images
 		using (var converter = new ColorConverter(PixelFormat.Format32bppArgb))
-		//Remove background just to demonstrate alpha channel
+		// Remove background just to demonstrate alpha channel
 		using (var greenScreenRemoval = new GreenScreenRemoval())
 		using (var writer = ImageWriter.Create("../../../../_Output/PF_AddAlphaChannelMemoryFriendly.png"))
 		{
@@ -204,7 +204,7 @@ class ConvertingPixelFormatsExample
 
 
 	/// <summary>
-	/// Converts to 16-bit precssion per channel
+    /// Converts to 16-bit precision per channel
 	/// </summary>
 	private static void ConvertToExtended()
 	{
@@ -218,7 +218,7 @@ class ConvertingPixelFormatsExample
 
 
 	/// <summary>
-	/// Converts to 16-bit precssion per channel using memory-friendly Pipeline API
+    /// Converts to 16-bit precision per channel using memory-friendly Pipeline API
 	/// </summary>
 	private static void ConvertToExtendedMemoryFriendly()
 	{
