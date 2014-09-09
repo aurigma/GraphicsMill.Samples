@@ -35,7 +35,7 @@ class FontLoadingAndTextMeasuringExample
             Console.WriteLine("  Descender:             {0}px", font.Metrics.Descender);
             Console.WriteLine("  Height:                {0}px", font.Metrics.Height);
             Console.WriteLine("  Underline position:    {0}px", font.Metrics.UnderlinePosition);
-            Console.WriteLine("  Underline thinkness:   {0}px", font.Metrics.UnderlineThinkness);
+            Console.WriteLine("  Underline thickness:   {0}px", font.Metrics.UnderlineThickness);
             Console.WriteLine();
         }
     }
