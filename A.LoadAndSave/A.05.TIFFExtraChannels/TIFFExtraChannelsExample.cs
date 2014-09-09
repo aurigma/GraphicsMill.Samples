@@ -17,11 +17,6 @@ class TIFFExtraChannelsExample
 		ReadExtraChannel();
 	}
 
-    // BUGBUG
-    /*
-     * Не нравится, что есть целый раздел для TiffExtraChannels. Можно же просто самим сгенерить и самим записать. Зачем этот сложный этап генерации визиток?
-     * Предлагаю сократить и перенести в A.04. Tiff Format
-     */
 
 	/// <summary>
 	/// Creates business card 3.5"x2.0" size with extra channel
