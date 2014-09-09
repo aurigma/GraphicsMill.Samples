@@ -122,9 +122,9 @@ Demonstrates how to draw complicated graphics using Graphics Paths.
 
 Demonstrates drawing inside a region (also known as Clipping Path). Only those portions of graphics which are located inside a Clipping Path are visible.
 
-### C.05. Combine Images
+### C.05. Draw Image
 
-*/C.Drawing/C.05.CombineImages/*
+*/C.Drawing/C.05.DrawImage/*
 
 Combines several images by drawing a bitmap over another one. It respects the transparency and alpha channels.
 
