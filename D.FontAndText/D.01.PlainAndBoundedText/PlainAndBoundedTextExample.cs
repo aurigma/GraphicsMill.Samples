@@ -44,8 +44,10 @@ class PlainAndBoundedTextExample
 			    }
             };
 
-            foreach (var text in texts)
-                graphics.DrawText(text);
+			foreach (var text in texts)
+			{
+				graphics.DrawText(text);
+			}
 
 			graphics.DrawRectangle(new Pen(new RgbColor(0x4e, 0xb5, 0xe6)), boundedTextRect);
 
