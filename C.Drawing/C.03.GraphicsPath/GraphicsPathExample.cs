@@ -11,8 +11,9 @@ class GraphicsPathExample
 		DrawPath();
 	}
 
+
     /// <summary>
-    /// Draws Path on Graphics
+    /// Draws path on Graphics
     /// </summary>
 	private static void DrawPath()
 	{
@@ -34,6 +35,7 @@ class GraphicsPathExample
 			bitmap.Save("../../../../_Output/DrawPath.tif");
 		}
 	}
+
 
     private static Path CreatePath(Graphics graphics)
     {
