@@ -31,7 +31,7 @@ class ThumbnailFromEXIFExample
 	}
 
 	/// <summary>
-	/// Gets thumbnail of image via different approaches (EXIF, JPEG scale, resize)
+	/// Gets thumbnail of image using different approaches (EXIF, JPEG scale, resize)
 	/// </summary>
 	private static void GetThumbnail(string inputPath, string outputPath, int thumbnailSize)
 	{
