@@ -22,12 +22,12 @@ class ChannelsExample
 	}
 
 	/// <summary>
-	/// Combines image channels into multiple receivers
+	/// Splits image channels into multiple receivers
 	/// </summary>	
 	private static void SplitChannels()
 	{
 		using (var reader = ImageReader.Create("../../../../_Input/Copenhagen_CMYK.jpg"))
-		using (var splitter = new Aurigma.GraphicsMill.CmykChannelSplitter())
+		using (var splitter = new CmykChannelSplitter())
 		using (var writerC = new TiffWriter("../../../../_Output/Copenhagen_C.tif"))
 		using (var writerM = new TiffWriter("../../../../_Output/Copenhagen_M.tif"))
 		using (var writerY = new TiffWriter("../../../../_Output/Copenhagen_Y.tif"))
@@ -49,7 +49,7 @@ class ChannelsExample
 	private static void CombineChannels()
 	{
 		using (var writer = ImageWriter.Create("../../../../_Output/Copenhagen_CMYK_Combined.jpg"))
-		using (var combiner = new Aurigma.GraphicsMill.CmykChannelCombiner())
+		using (var combiner = new CmykChannelCombiner())
 		using (var readerC = new TiffReader("../../../../_Output/Copenhagen_C.tif"))
 		using (var readerM = new TiffReader("../../../../_Output/Copenhagen_M.tif"))
 		using (var readerY = new TiffReader("../../../../_Output/Copenhagen_Y.tif"))
@@ -89,8 +89,8 @@ class ChannelsExample
 	/// </summary>
 	private static void AddAlphaChannelMemoryFriendly()
 	{
-		//reader --------------->  setAlpha  --->  writer
-		//alpha  --->  drawer  ---/
+		// reader --------------->  setAlpha  --->  writer
+		// alpha  --->  drawer  ---/
 		using (var reader = ImageReader.Create("../../../../_Input/Chicago.jpg"))
 		using (var alpha = new ImageGenerator(reader.Width, reader.Height, PixelFormat.Format8bppGrayscale, new GrayscaleColor(0)))
 		using (var drawer = new Aurigma.GraphicsMill.Drawing.AdvancedGraphicsDrawer())
@@ -145,9 +145,9 @@ class ChannelsExample
 	{
 		using (var bitmap = new Bitmap("../../../../_Input/Chicago.jpg"))
 		{
-			//http://www.graphicsmill.com/docs/gm/accessing-pixel-data.htm
-			//Format24bppRgb - [Blue] = 0|[Green] = 1|[Red] = 2
-			//Swap blue (0) and green (1) channels
+			// http://www.graphicsmill.com/docs/gm/accessing-pixel-data.htm
+			// Format24bppRgb - [Blue] = 0|[Green] = 1|[Red] = 2
+			// Swap blue (0) and green (1) channels
 			bitmap.Channels.SwapChannels(new int[] { 1, 0, 2 });
 
 			bitmap.Save("../../../../_Output/SwapChannels.jpg");
@@ -160,11 +160,11 @@ class ChannelsExample
 	/// </summary>
 	private static void SwapChannelsMemoryFriendly()
 	{
-		//                        /-- (R) ------- (R)--\
-		//                       /                      \
-		//reader --->  splitter  ---- (G) --\ /-- (B)----  combiner  ---> writer
-		//                       \           X          /
-		//                        \-- (B) --/ \-- (G)--/ 
+		//                         /-- (R) ------- (R)--\
+		//                        /                      \
+		// reader --->  splitter  ---- (G) --\ /-- (B)----  combiner  ---> writer
+		//                        \           X          /
+		//                         \-- (B) --/ \-- (G)--/ 
 		using (var reader = ImageReader.Create("../../../../_Input/Chicago.jpg"))
 		using (var splitter = new RgbChannelSplitter())
 		using (var combiner = new RgbChannelCombiner())
