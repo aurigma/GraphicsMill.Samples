@@ -10,6 +10,7 @@ class ColorProfileExample
 	{
 		ShowColorProfileInfo(ColorProfile.FromSrgb());
 		ShowColorProfileInfo(new ColorProfile("../../../../_Input/ColorProfiles/ISOcoated_v2_eci.icc"));
+		ShowColorProfileInfo(new ColorProfile("../../../../_Input/ColorProfiles/ISOnewspaper26v4_gr.icc"));
 
 		GetEmbeddedProfile();
 		GetEmbeddedProfileMemoryFriendly();

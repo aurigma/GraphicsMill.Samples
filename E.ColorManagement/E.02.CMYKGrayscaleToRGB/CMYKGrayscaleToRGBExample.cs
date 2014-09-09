@@ -195,31 +195,38 @@ class CMYKGrayscaleToRGBExample
 	/// </summary>
 	private static void ConvertTo24bppRgb(string inputPath, string outputPath)
 	{
-        // BUGBUG:
-        /*
-         * Сампл немного странноватый, ColorManagment нужно использовать ВСЕГДА, когда у картинки есть профиль. 
-         * Это не фича для повышения качества, это единственно возможный способ ПРАВИЛЬНОЙ интерпретации цветовых данных.
-         * 
-         * Первые два "No need to use color management" просто херят профиль исходного изображения. 
-         * Вообще случаи, когда "не надо" есть внутри и необходимости в подобных финтах нет.
-         * */
         using (var bitmap = new Bitmap(inputPath))
 		{
-			// No need to use color management
 			if (bitmap.PixelFormat.IsRgb && bitmap.PixelFormat != PixelFormat.Format24bppRgb)
 			{ 
 				bitmap.ColorManagement.BackgroundColor = RgbColor.White;
+
+				// Assign some default color profile
+				if (bitmap.ColorProfile == null)
+				{
+					bitmap.ColorProfile = ColorProfile.FromSrgb();
+				}
+
+				bitmap.ColorManagement.DestinationProfile = ColorProfile.FromSrgb();
+
 				bitmap.ColorManagement.Convert(PixelFormat.Format24bppRgb);
 			}
 
-			// No need to use color management
 			if (bitmap.PixelFormat.IsGrayscale)
 			{ 
 				bitmap.ColorManagement.BackgroundColor = new GrayscaleColor(255);
+
+				// Assign some default color profile
+				if (bitmap.ColorProfile == null)
+				{
+					bitmap.ColorProfile = new ColorProfile("../../../../_Input/ColorProfiles/ISOnewspaper26v4_gr.icc");
+				}
+
+				bitmap.ColorManagement.DestinationProfile = ColorProfile.FromSrgb();
+
 				bitmap.ColorManagement.Convert(PixelFormat.Format24bppRgb);
 			}
 
-			// Use color management
 			if (bitmap.PixelFormat.IsCmyk)
 			{
 				bitmap.ColorManagement.BackgroundColor = new CmykColor(0, 0, 0, 0, 255);
@@ -231,7 +238,6 @@ class CMYKGrayscaleToRGBExample
 				}
 
 				bitmap.ColorManagement.DestinationProfile = ColorProfile.FromSrgb();
-
 
 				bitmap.ColorManagement.Convert(PixelFormat.Format24bppRgb);
 			}
@@ -247,39 +253,43 @@ class CMYKGrayscaleToRGBExample
 	/// </summary>
 	private static void ConvertTo24bppRgbMemoryFriendly(string inputPath, string outputPath)
 	{
-        // BUGBUG этот предлагаю убрать вместе с предыдущим
 		using (var reader = ImageReader.Create(inputPath))
 		using (var converter = new ColorConverter(PixelFormat.Format24bppRgb))
 		using (var writer = ImageWriter.Create(outputPath))
 		{
-			// No need to use color management
 			if (reader.PixelFormat.IsRgb && reader.PixelFormat != PixelFormat.Format24bppRgb)
 			{
 				converter.BackgroundColor = RgbColor.White;
 
+				//Assign some default color profile
+				converter.DefaultSourceProfile = ColorProfile.FromSrgb();
+				converter.DestinationProfile = ColorProfile.FromSrgb();
+
 				Pipeline.Run(reader + converter + writer);
 
 				return;
 			}
 
-			// No need to use color management
 			if (reader.PixelFormat.IsGrayscale)
 			{
 				converter.BackgroundColor = new GrayscaleColor(255);
 
+				//Assign some default color profile
+				converter.DefaultSourceProfile = new ColorProfile("../../../../_Input/ColorProfiles/ISOnewspaper26v4_gr.icc");
+				converter.DestinationProfile = ColorProfile.FromSrgb();
+
 				Pipeline.Run(reader + converter + writer);
 
 				return;
 			}
 
-			//Use color management
 			if (reader.PixelFormat.IsCmyk)
 			{
 				converter.BackgroundColor = new CmykColor(0, 0, 0, 0, 255);
+
 				//Assign some default color profile
 				converter.DefaultSourceProfile = new ColorProfile("../../../../_Input/ColorProfiles/ISOcoated_v2_eci.icc");
 				converter.DestinationProfile = ColorProfile.FromSrgb();
-
 
 				Pipeline.Run(reader + converter + writer);
 
