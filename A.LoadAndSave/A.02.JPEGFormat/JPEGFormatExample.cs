@@ -8,18 +8,21 @@ class JPEGFormatExample
 {
 	static void Main(string[] args)
 	{
-		ReadWriteJpeg();
-		ReadWriteJpegMemoryFriendly();
+		ReadAndWriteJpeg();
+		ReadAndWriteJpegMemoryFriendly();
 
-		RemoveAlphaAndWriteJpeg();
-		RemoveAlphaAndWriteJpegMemoryFriendly();
+		ResizeWhileReadingJpeg();
+		ResizeWhileReadingJpegMemoryFriendly();
+
+		ConvertAndWriteJpeg();
+		ConvertAndWriteJpegMemoryFriendly();
 	}
 
     
 	/// <summary>
 	/// Reads and writes image in JPEG format
 	/// </summary>
-	private static void ReadWriteJpeg()
+	private static void ReadAndWriteJpeg()
 	{
 		using (var bitmap = new Bitmap("../../../../_Input/Chicago.jpg"))
 		{
@@ -34,14 +37,13 @@ class JPEGFormatExample
 
 			bitmap.Save("../../../../_Output/ReadWriteJpeg.jpg", jpegSettings);
 		}
-
 	}
 
 
 	/// <summary>
 	/// Reads and writes image in JPEG format using memory-friendly Pipeline API
 	/// </summary>
-	private static void ReadWriteJpegMemoryFriendly()
+	private static void ReadAndWriteJpegMemoryFriendly()
 	{
 		using (var reader = new JpegReader("../../../../_Input/Chicago.jpg"))
 		using (var flip = new Flip(FlipType.Vertical))
@@ -57,39 +59,77 @@ class JPEGFormatExample
 
 
 	/// <summary>
-	/// Removes alpha channel and saves to JPEG format
+	/// Resizes while reading of JPEG image
 	/// </summary>
-	private static void RemoveAlphaAndWriteJpeg()
+	private static void ResizeWhileReadingJpeg()
 	{
-		using (var bitmap = new Bitmap("../../../../_Input/Stamp.png"))
+		using (var reader = new JpegReader("../../../../_Input/Chicago.jpg"))
 		{
-			if (bitmap.HasAlpha)
-			{
-				bitmap.Channels.RemoveAlpha(RgbColor.White);
-			}
+			reader.Scale = JpegScale.x2;
 
-			bitmap.Save("../../../../_Output/RemoveAlphaAndWriteJpeg.jpg");
+			using (var bitmap = reader.Frames[0].GetBitmap())
+			{
+				bitmap.Save("../../../../_Output/ResizeWhileReadingJpeg.jpg");
+			}
 		}
 	}
 
 
 	/// <summary>
-	/// Removes alpha channel and saves to JPEG format using memory-friendly Pipeline API
+	/// Resizes while reading of JPEG image using memory-friendly Pipeline API
 	/// </summary>
-	private static void RemoveAlphaAndWriteJpegMemoryFriendly()
+	private static void ResizeWhileReadingJpegMemoryFriendly()
 	{
-		using (var reader = new PngReader(@"Images\watermark.png"))
-		using (var removeAlpha = new RemoveAlpha(Aurigma.GraphicsMill.RgbColor.White))
-		using (var writer = new JpegWriter("../../../../_Output/RemoveAlphaAndWriteJpegMemoryFriendly.jpg"))
+		using (var reader = new JpegReader("../../../../_Input/Chicago.jpg"))
+		using (var writer = new JpegWriter("../../../../_Output/ResizeWhileReadingJpegMemoryFriendly.jpg"))
 		{
-			Pipeline.Run(reader + removeAlpha + writer);
+			reader.Scale = JpegScale.x2;
+
+			Pipeline.Run(reader + writer);
 		}
 	}
 
-    // BUGBUG
-    /*
-     * Remove alpha самплы тут немного не в тему, да и не запускаются к тому же
-     * Предлагаю добавить JpegScale
-     */
+
+	/// <summary>
+	/// Converts to PixelFormat.Format24bppRgb to and saves to JPEG format
+	/// </summary>
+	private static void ConvertAndWriteJpeg()
+	{
+		using (var bitmap = new Bitmap("../../../../_Input/Stamp.png"))
+		{
+			//JPEG format supports PixelFormat.Format32bppCmyk and PixelFormat.Format8bppGrayscale 
+			//for CMYK and grayscale images accordingly
+			if (bitmap.PixelFormat != PixelFormat.Format24bppRgb)
+			{
+				bitmap.ColorManagement.Convert(PixelFormat.Format24bppRgb);
+			}
+
+
+			bitmap.Save("../../../../_Output/ConvertAndWriteJpeg.jpg");
+		}
+	}
+
+
+	/// <summary>
+	/// Converts to PixelFormat.Format24bppRgb to and saves to JPEG format using memory-friendly Pipeline API
+	/// </summary>
+	private static void ConvertAndWriteJpegMemoryFriendly()
+	{
+		using (var reader = new PngReader("../../../../_Input/Stamp.png"))
+		using (var converter = new ColorConverter(PixelFormat.Format24bppRgb))
+		using (var writer = new JpegWriter("../../../../_Output/ConvertAndWriteJpegMemoryFriendly.jpg"))
+		{
+			//JPEG format supports PixelFormat.Format32bppCmyk and PixelFormat.Format8bppGrayscale 
+			//for CMYK and grayscale images accordingly
+			if (reader.PixelFormat == PixelFormat.Format24bppRgb)
+			{
+				Pipeline.Run(reader + writer);
+			}
+			else
+			{
+				Pipeline.Run(reader + converter + writer);
+			}
+		}
+	}
 }
 
