@@ -55,7 +55,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C.01. Line, Rectangle, Elli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C.03. Graphics Path", "C.Drawing\C.03.GraphicsPath\C.03. Graphics Path.csproj", "{3A1F1FA1-1511-4AC6-B618-F773B37306A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C.05. Combine Images", "C.Drawing\C.05.CombineImages\C.05. Combine Images.csproj", "{02A00081-65D4-47D1-A590-BB8B4169031B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C.05. Draw Image", "C.Drawing\C.05.DrawImage\C.05. Draw Image.csproj", "{02A00081-65D4-47D1-A590-BB8B4169031B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "A. Load and Save", "A. Load and Save", "{42B7B242-9DFF-46CA-A770-034930379E1C}"
 EndProject
