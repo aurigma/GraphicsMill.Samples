@@ -8,61 +8,19 @@ class RGBToCMYKExample
 {
 	static void Main(string[] args)
 	{
-		RgbToCmykNoColorManagement();
-		RgbToCmykNoColorManagementMemoryFriendly();
-
-		RgbToCmykWithColorManagement();
-		RgbToCmykWithColorManagementMemoryFriendly();
+		RgbToCmyk();
+		RgbToCmykMemoryFriendly();
 
 		PreviewRgbToCmykOnScreen();
 		PreviewRgbToCmykOnScreenMemoryFriendly();
 	}
 
 
-	/// <summary>
-	/// Converts color space from RGB to CMYK without color management
-	/// </summary>
-	private static void RgbToCmykNoColorManagement()
-	{
-        // BUGBUG
-        /*
-         * Кому нужна конвертация без ColorManagement'а? Вот прям, чтобы это специально было сделано?
-         * Если есть профиль, то CC, если нет, то скорее подсунут какой-нибудь неправильный дефолтовый
-         * и получат более-менее вменяемый результат.
-         * 
-         * Исходя из того, что у нас есть сампл на это дело, можно подумать, 
-         * что это нормальный use case, хотя это не так.
-         * 
-         */
-
-		using (var bitmap = new Bitmap("../../../../_Input/Copenhagen_RGB.jpg"))
-		{
-			bitmap.ColorManagement.Convert(PixelFormat.Format32bppCmyk);
-
-			bitmap.Save("../../../../_Output/RgbToCmykNoColorManagement.jpg");
-		}
-	}
-
-	/// <summary>
-	/// Converts color space from RGB to CMYK without color management using memory-friendly Pipeline API
-	/// </summary>
-	private static void RgbToCmykNoColorManagementMemoryFriendly()
-	{
-		using (var reader = ImageReader.Create("../../../../_Input/Copenhagen_RGB.jpg"))
-		using (var converter = new ColorConverter())
-		using (var writer = ImageWriter.Create("../../../../_Output/RgbToCmykNoColorManagementMemoryFriendly.jpg"))
-		{
-			converter.DestinationPixelFormat = PixelFormat.Format32bppCmyk;
-
-			Pipeline.Run(reader + converter + writer);
-		}
-	}
-
 
 	/// <summary>
 	/// Converts color space from RGB to CMYK with color management
 	/// </summary>
-	private static void RgbToCmykWithColorManagement()
+	private static void RgbToCmyk()
 	{
 		using (var bitmap = new Bitmap("../../../../_Input/Copenhagen_RGB.jpg"))
 		{
@@ -84,7 +42,7 @@ class RGBToCMYKExample
 	/// <summary>
 	/// Converts color space from RGB to CMYK with color management using memory-friendly Pipeline API
 	/// </summary>
-	private static void RgbToCmykWithColorManagementMemoryFriendly()
+	private static void RgbToCmykMemoryFriendly()
 	{
 		using (var reader = ImageReader.Create("../../../../_Input/Copenhagen_RGB.jpg"))
 		using (var converter = new ColorConverter())
