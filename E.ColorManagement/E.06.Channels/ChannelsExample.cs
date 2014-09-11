@@ -93,7 +93,7 @@ class ChannelsExample
 		// alpha  --->  drawer  ---/
 		using (var reader = ImageReader.Create("../../../../_Input/Chicago.jpg"))
 		using (var alpha = new ImageGenerator(reader.Width, reader.Height, PixelFormat.Format8bppGrayscale, new GrayscaleColor(0)))
-		using (var drawer = new Aurigma.GraphicsMill.Drawing.AdvancedGraphicsDrawer())
+		using (var drawer = new Drawer())
 		using (var setAlpha = new SetAlpha())
 		using (var writer = ImageWriter.Create("../../../../_Output/AddAlphaChannelMemoryFriendly.png"))
 		{

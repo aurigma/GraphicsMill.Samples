@@ -18,7 +18,7 @@ class DrawingExample
 	private static void DrawUsingAdvancedGraphics()
 	{
 		using (var reader = ImageReader.Create("../../../../_Input/Venice.jpg"))
-		using (var drawer = new Aurigma.GraphicsMill.Drawing.AdvancedGraphicsDrawer())
+		using (var drawer = new Drawer())
 		using (var writer = ImageWriter.Create("../../../../_Output/DrawUsingAdvancedGraphics.jpg"))
 		{
 			drawer.Draw += (sender, e) =>
