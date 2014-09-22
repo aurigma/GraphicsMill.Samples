@@ -54,7 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aurigma.GraphicsMill">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.7.1.65\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.7.1.67\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
