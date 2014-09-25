@@ -34,7 +34,7 @@ class MergeAndResizeExample
 	{
 		using (var psdReader = new PsdReader("../../../../_Input/BusinessCard.psd"))
 		//This transform does nothing with image. We use it just to pass data to resize1 and resize2 transforms
-		using (var repeater = new ChannelTransmitter())
+		using (var repeater = new ImageTransmitter())
 		using (var resize1 = new Resize(150, 0, ResizeInterpolationMode.High))
 		using (var writer1 = ImageWriter.Create("../../../../_Output/BusinessCard_MultipleResize1.png"))
 		using (var resize2 = new Resize(400, 0, ResizeInterpolationMode.High))
