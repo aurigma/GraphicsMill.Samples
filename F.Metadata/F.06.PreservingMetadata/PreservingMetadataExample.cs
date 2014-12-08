@@ -14,7 +14,7 @@ class PreservingMetadataExample
 	private static void ResizeAndPreserveMetadata()
 	{
 		using (var jpegReader = new JpegReader("../../../../_Input/Chicago.jpg"))
-		using (var resizer = new Resize(jpegReader.Width / 2, 0))
+		using (var resize = new Resize(jpegReader.Width / 2, 0))
 		using (var jpegWriter = new JpegWriter("../../../../_Output/ResizeAndPreserveMetadata.jpg"))
 		{
 			// Read EXIF
@@ -64,7 +64,7 @@ class PreservingMetadataExample
 			jpegWriter.AdobeResources = adobeResources;
 			jpegWriter.Xmp = xmp.Save();
 
-			Pipeline.Run(jpegReader + resizer + jpegWriter);
+			Pipeline.Run(jpegReader + resize + jpegWriter);
 		}
 	}
 }

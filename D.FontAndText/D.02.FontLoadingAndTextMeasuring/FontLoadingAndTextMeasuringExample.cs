@@ -23,9 +23,10 @@ class FontLoadingAndTextMeasuringExample
             var fontSize = 30f;
             var dpi = 150f;
 
-            fontRegistry.Add(@"../../../../_Input/Fonts/Lobster.ttf");
+			//Load custom OpenType font
+			var postscriptName = fontRegistry.Add(@"../../../../_Input/Fonts/Amburegul.otf");
 
-            var font = fontRegistry.CreateFont("lobster", fontSize, dpi, dpi);
+			var font = fontRegistry.CreateFont(postscriptName, fontSize, dpi, dpi);
 
             // Font metrics
             Console.WriteLine("Font: {0} {1}", font.Family, font.Style);
@@ -51,8 +52,7 @@ class FontLoadingAndTextMeasuringExample
 		{			
 			var fontSize = 60f;
 
-			// Load custom font
-
+			// Load custom TrueType font
 			fontRegistry.Add(@"../../../../_Input/Fonts/Lobster.ttf");
 			
             graphics.FontRegistry = fontRegistry;
