@@ -97,6 +97,7 @@ class ConvertingColorValuesExample
 	}
 
 
+	/*
 	private static void LabToCmykWithoutColorManagement()
 	{
 		LabColor labColor = new LabColor(179, -20, 29, 255);
@@ -104,5 +105,6 @@ class ConvertingColorValuesExample
 
 		Console.WriteLine("With color management: {0} to {1}", labColor, cmykColor);
 	}
+	*/
 }
 
