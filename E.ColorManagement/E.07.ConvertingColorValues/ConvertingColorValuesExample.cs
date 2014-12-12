@@ -16,7 +16,7 @@ class ConvertingColorValuesExample
 		RgbToCmykWithoutColorManagement();
 		CmykToRgbWithoutColorManagement();
 		RgbToLabWithoutColorManagement();
-		LabToCmykWithoutColorManagement();
+		//LabToCmykWithoutColorManagement();
 	}
 
 
