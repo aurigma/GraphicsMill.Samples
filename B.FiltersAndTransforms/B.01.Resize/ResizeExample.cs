@@ -10,6 +10,9 @@ class ResizeExample
 	{
 		Resize();
 		ResizeMemoryFriendly();
+		ResizeToBitmapMemoryFriendly();
+
+		//See also F.Metadata --> F.02. Thumbnail from EXIF
 	}
 
 
@@ -36,6 +39,22 @@ class ResizeExample
 		using (var writer = ImageWriter.Create("../../../../_Output/ResizeMemoryFriendly.jpg"))
 		{
 			Pipeline.Run(reader + resize + writer);
+		}
+	}
+
+
+	/// <summary>
+	/// Resizes image to bitmap using memory-friendly Pipeline API
+	/// </summary>
+	private static void ResizeToBitmapMemoryFriendly()
+	{
+		using (var reader = ImageReader.Create("../../../../_Input/Chicago.jpg"))
+		using (var resize = new Resize(320, 0, ResizeInterpolationMode.High))
+		using (var bitmap = new Bitmap())
+		{
+			Pipeline.Run(reader + resize + bitmap);
+
+			bitmap.Save("../../../../_Output/ResizeToBitmapMemoryFriendly.jpg");
 		}
 	}
 }
