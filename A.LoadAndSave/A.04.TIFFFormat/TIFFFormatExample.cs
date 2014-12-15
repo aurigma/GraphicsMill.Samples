@@ -63,18 +63,19 @@ class TIFFFormatExample
 	{
 		using (var writer = new TiffWriter("../../../../_Output/WriteMultiframeTiff.tif"))
 		{
-			//You can specify the compression of each frame separately
-			writer.Compression = CompressionType.Jpeg;
-
 			using (var frame1 = new Bitmap("../../../../_Input/Chicago.jpg"))
 			{
+				//You can specify the compression of each frame separately
+				writer.Compression = CompressionType.Jpeg;
+				writer.Quality = 85;
+
 				Pipeline.Run(frame1 + writer);
 			}
 
-			writer.Compression = CompressionType.Lzw;
-
 			using (var frame2 = new Bitmap("../../../../_Input/Copenhagen_RGB.jpg"))
 			{
+				writer.Compression = CompressionType.Lzw;
+
 				Pipeline.Run(frame2 + writer);
 			}
 		}
