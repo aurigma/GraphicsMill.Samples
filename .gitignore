@@ -3,3 +3,4 @@ bin/
 *.suo
 /packages
 *.user
+_Output/
