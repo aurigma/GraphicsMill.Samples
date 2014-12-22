@@ -66,6 +66,30 @@ Loads and saves GIF images. Converts a bitmap to a palette-based image optimized
 
 Creates an animated GIF. Extracts all frames of animated GIF and resizes GIF without loosing the animation.
 
+### A.10. WebP Format
+
+*/A.LoadAndSave/A.10.WebPFormat/*
+
+Demonstrates how to convert an image to WebP format (both simple and animated).
+
+### A.11. RAW Format
+
+*/A.LoadAndSave/A.11.RAWFormat/*
+
+Reads RAW image format.
+
+### A.12. Extract TIFF Preview from EPS
+
+*/A.LoadAndSave/A.12.ExtractTIFFPreviewFromEPS/*
+
+Extracts TIFF preview from EPS file.
+
+### A.13. Writing EPS and PDF
+
+*/A.LoadAndSave/A.13.WritingEPSAndPDF/*
+
+Saves an image and graphics as PDF and EPS file (as bitmap and as vector).
+
 ## B. Filters and Transforms
 
 */B.FiltersAndTransforms/*
@@ -93,6 +117,36 @@ Demonstrates how to crop a portion of an image.
 */B.FiltersAndTransforms/B.04.BrightnessContrast/*
 
 Adjusts a brightness/contrast of an image.
+
+### B.05. Autorotate
+
+*/B.FiltersAndTransforms/B.05.Autorotate/*
+
+Automatically rotates images based on EXIF orientation field. For JPEG images it uses lossless transform to prevent quality degradation.
+
+### B.06. Tint
+
+*/B.FiltersAndTransforms/B.06.Tint/*
+
+Tints image using specified color.
+
+### B.07. Advanced Tone Correction
+
+*/B.FiltersAndTransforms/B.07.AdvancedToneCorrection/*
+
+Implements Levels and Curves (look up tables) functionality of Photoshop as well as Lab color space usage.
+
+### B.08. Color Adjustment
+
+*/B.FiltersAndTransforms/B.08.ColorAdjustment/*
+
+Adjusts the channel balance of an image in RGB, HSL and Lab color spaces.
+
+### B.09. Minimum, Maximum, Median
+
+*/B.FiltersAndTransforms/B.09.MinimumMaximumMedian/*
+
+Demonstrates how to use morphological filters on images.
 
 ## C. Drawing
 
@@ -168,6 +222,12 @@ Fills a JPEG image with a text watermark. Includes: two types of watermark (simp
 
 Generates two vector images and saves them as a PDF or EPS. Includes: drawing an image, vector and text data on a PDF/EPS, multipage PDF file support.
 
+### D.07. Formatted Text
+
+*/D.FontAndText/D.07.FormattedText/*
+
+Demonstrates how to draw a formatted text. It is possible to change font settings for each character.
+
 ## E. Color Management
 
 */E.ColorManagement/*
@@ -207,6 +267,18 @@ Demonstrates how to convert CMYK/RGB images using different color management eng
 */E.ColorManagement/E.06.Channels/*
 
 Explains how to work with image channels - split, combine or swap them. Find here how to add/remove alpha channel or make pixels of a given color transparent.
+
+### E.07. Converting Color Values
+
+*/E.ColorManagement/E.07.ConvertingColorValues/*
+
+Converts an individual color between different color spaces with color management applied.
+
+### E.08. Lab Color Space
+
+*/E.ColorManagement/E.08.LabColorSpace/*
+
+Demonstrates basics of image processing in Lab color space.
 
 ## F. Metadata
 
@@ -313,6 +385,18 @@ Demonstrates how to apply green screen matting (chroma keying) technique, i.e. r
 */I.PSDFormat/I.01.MergeAndResize/*
 
 Reads PSD images (including multilayered ones). Loads each layer, combines them together and creates a thumbnail.
+
+### I.02. Modify and Merge Layers
+
+*/I.PSDFormat/I.02.ModifyAndMergeLayers/*
+
+Demonstrates how to parse, modify and merge layers of PSD file.
+
+### I.03. Curved Text
+
+*/I.PSDFormat/I.03.CurvedText/*
+
+Demonstrates how to parse and merge layers of PSD file with curved text.
 
 ## J. Windows Forms
 
