@@ -141,7 +141,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B.07. Advanced Tone Correct
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B.08. Color Adjustment", "B.FiltersAndTransforms\B.08.ColorAdjustment\B.08. Color Adjustment.csproj", "{5D42D6B8-7594-4E46-B25C-2C46E54C3A69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D.07. FormattedText", "D.FontAndText\D.07.FormattedText\D.07. FormattedText.csproj", "{9679DAE0-0580-438A-9733-CA5BDD18CECC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D.07. Formatted Text", "D.FontAndText\D.07.FormattedText\D.07. Formatted Text.csproj", "{9679DAE0-0580-438A-9733-CA5BDD18CECC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B.09. Minimum, Maximum, Median", "B.FiltersAndTransforms\B.09.MinimumMaximumMedian\B.09. Minimum, Maximum, Median.csproj", "{14339BFA-D1F1-40C9-A7EC-3844FA16E43A}"
 EndProject
