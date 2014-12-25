@@ -36,17 +36,14 @@
     <StartupObject>AsynchronousProcessing.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aurigma.GraphicsMill, Version=7.1.76.404, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.7.1.76\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
+    <Reference Include="Aurigma.GraphicsMill">
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.7.2.20\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
     </Reference>
-    <Reference Include="Aurigma.GraphicsMill.WinControls, Version=7.1.76.404, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.WinControls.x86.7.1.76\lib\net40\Aurigma.GraphicsMill.WinControls.dll</HintPath>
+    <Reference Include="Aurigma.GraphicsMill.WinControls">
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.WinControls.x86.7.2.20\lib\net40\Aurigma.GraphicsMill.WinControls.dll</HintPath>
     </Reference>
-    <Reference Include="Aurigma.GraphicsMill.WinControls.VectorObjects, Version=7.1.76.404, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.WinControls.x86.7.1.76\lib\net40\Aurigma.GraphicsMill.WinControls.VectorObjects.dll</HintPath>
+    <Reference Include="Aurigma.GraphicsMill.WinControls.VectorObjects">
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.WinControls.x86.7.2.20\lib\net40\Aurigma.GraphicsMill.WinControls.VectorObjects.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
