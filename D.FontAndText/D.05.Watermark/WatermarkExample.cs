@@ -4,136 +4,155 @@ using Aurigma.GraphicsMill.AdvancedDrawing;
 using Aurigma.GraphicsMill.AdvancedDrawing.Art;
 using Aurigma.GraphicsMill.Codecs;
 
+using RectangleF = System.Drawing.RectangleF;
+using PointF = System.Drawing.PointF;
+using Matrix = System.Drawing.Drawing2D.Matrix;
+
 
 class WatermarkExample
 {
 	static void Main(string[] args)
 	{
-		DrawRotatedTextWatermark();
-		RenderGridAndTextWatermark();
+         DrawRotatedTextWatermark();
+         DrawMultilineWatermark();
 	}
 
-
-	/// <summary>
-	/// Simple rotated text watermark
-	/// </summary>
-	private static void DrawRotatedTextWatermark()
-	{
-		using (var bitmap = new Bitmap("../../../../_Input/Venice.jpg"))
-        using (var graphics = bitmap.GetAdvancedGraphics())
-		{
-			// Modular
-			int baseSize = 100;  //Math.Min(bitmap.Width, bitmap.Height) / 10;
-
-			var watermark = "Graphics Mill";
-
-			graphics.Transform.Translate(bitmap.Width / 2, bitmap.Height / 2);
-            graphics.Transform.Rotate(-35f);
-
-			// Render text
-			var font = graphics.CreateFont("Arial", baseSize / 5);
-
-			using (var text = new PlainText(watermark, font, new SolidBrush(new RgbColor(255, 255, 255, 45))))
-			{
-				var baseSizeX = text.GetBlackBox().Width + baseSize / 2;
-				var baseOffsetX = baseSizeX / 3;
-
-				var halfDiagonal = (float)Math.Sqrt(Math.Pow(bitmap.Width, 2) + Math.Pow(bitmap.Height, 2)) / 2 + baseSize;
-
-				float offsetX = 0;
-
-				for (var y = -halfDiagonal; y < halfDiagonal; y += baseSize)
-				{
-					for (var x = -halfDiagonal - offsetX; x <= halfDiagonal; x += baseSizeX)
-					{
-						text.Position = new System.Drawing.PointF(x, y);
-						graphics.DrawText(text);
-					}
-
-					offsetX = (offsetX + baseOffsetX) % baseSizeX;
-				}
-			}
-
-			bitmap.Save("../../../../_Output/RotatedTextWatermark.jpg");
-		}
-	}
-    
-    
     /// <summary>
-	/// Watermark with grid and horizontal text
-	/// </summary>
-	private static void RenderGridAndTextWatermark()
-	{
-		// Modular
-		int baseSize = 100; //Math.Min(bitmap.Width, bitmap.Height) / 10;
+    /// Simple rotated text watermark
+    /// </summary>
+    private static void DrawRotatedTextWatermark()
+    {
+        using (var bitmap = new Bitmap("../../../../_Input/Venice.jpg"))
+        using (var gr = bitmap.GetAdvancedGraphics())
+        using (var textPath = new Path())
+        {
+            var watermarkColor = new RgbColor(255, 255, 255, 45);
 
-		using (var bitmap = new Bitmap("../../../../_Input/Venice.jpg"))
-        using (var graphics = bitmap.GetAdvancedGraphics())
-		{
-			var mainWatermark = "Graphics Mill";
-			var subWatermark = "© 2014 Aurigma, Inc.";
-			
-			// Render grid
+            var fontSize = UnitConverter.ConvertPixelsToUnits(bitmap.DpiY, bitmap.Height, Unit.Point) / 100.0f;
 
-			var pen = new Pen(new RgbColor(255, 255, 255, 31), 5f);
+            var plainText = new PlainText("Graphics Mill", gr.CreateFont("Arial", fontSize));
 
-			int diagonal = (int)Math.Sqrt(Math.Pow(bitmap.Width, 2) + Math.Pow(bitmap.Height, 2));
+            textPath.DrawText(plainText);
 
-			for (int i = baseSize; i < diagonal; i += baseSize)
-			{
-				graphics.DrawEllipse(pen, -i, bitmap.Height - i, i * 2, i * 2);
+            var rect = new RectangleF(0, 0, bitmap.Width, bitmap.Height);
 
-				graphics.DrawEllipse(pen, bitmap.Width - i, bitmap.Height - i, i * 2, i * 2);
-			}
+            var transform = new Matrix();
+            transform.RotateAt(-35, new PointF(rect.Left + rect.Width / 2, rect.Top + rect.Height / 2));
 
-			// Render text
+            float offset = plainText.GetBlackBox().Width / 2;
 
-			var brush = new SolidBrush(new RgbColor(255, 255, 255, 45));
+            using (var tiledTextPath = TilePathText(textPath, GetInvertedRect(rect, transform), offset))
+            {
+                tiledTextPath.ApplyTransform(transform);
+                gr.FillPath(new SolidBrush(watermarkColor), tiledTextPath);
+            }
 
-			var mainFont = graphics.CreateFont("Arial", baseSize / 2);
-			var subFont = graphics.CreateFont("Arial", baseSize / 5);
+            bitmap.Save("../../../../_Output/VeniceRotatedWatermark.jpg");
+        }
+    }
 
-			using (var mainText = new PlainText(mainWatermark, mainFont, brush))
-			using (var subText = new PlainText(subWatermark, subFont, brush))
-			{
-				var mainBlackBox = mainText.GetBlackBox();
-				var subBlackBox = subText.GetBlackBox();
+    /// <summary>
+    /// Multiline text with different settings and additional grids
+    /// </summary>
+    private static void DrawMultilineWatermark()
+    {
+        using (var bitmap = new Bitmap("../../../../_Input/Venice.jpg"))
+        using (var gr = bitmap.GetAdvancedGraphics())
+        using (var textPath = new Path())
+        {
+            var watermarkColor = new RgbColor(255, 255, 255, 45);
 
-				var spacing = baseSize / 10;
+            var fontSize = UnitConverter.ConvertPixelsToUnits(bitmap.DpiY, bitmap.Height, Unit.Point) / 40.0f;
 
-				// We manually align text using text measure result
+            var watermarkText = string.Format("<span>Graphics Mill</span><br/><span style=\"font-size:{0}pt\">© {1} Aurigma, Inc.</span>", (int)(fontSize / 2), DateTime.Now.Year);
 
-				var totalHeight = mainBlackBox.Height + spacing + subBlackBox.Height;
+            var text = new PlainText(watermarkText, gr.CreateFont("Arial", fontSize));
+            text.Alignment = TextAlignment.Right;
+            text.Leading = 1;
 
-				var mainOffsetY = mainBlackBox.Height - totalHeight / 2;
-				var mainOffsetX = -mainBlackBox.Width / 2;
+            textPath.DrawText(text);
 
-				var subOffsetY = totalHeight / 2;
-				var subOffsetX = mainOffsetX + mainBlackBox.Width - subBlackBox.Width;
+            var rect = new RectangleF(0, 0, bitmap.Width, bitmap.Height);
 
-				var baseSizeX = Math.Max(baseSize * 2, mainBlackBox.Width);
-				var baseSizeY = baseSize * 2;
+            float offset = text.GetBlackBox().Width / 2;
 
-				int c = 0;
+            using (var tiledTextPath = TilePathText(textPath, rect, offset))
+            {
+                gr.FillPath(new SolidBrush(watermarkColor), tiledTextPath);
 
-				for (float y = bitmap.Height / 2 - (bitmap.Height / 2 / baseSizeY + 1) * baseSizeY; y < bitmap.Height + baseSizeY; y += baseSizeY)
-				{
-					for (float x = bitmap.Width / 2 - (bitmap.Width / 2 / baseSizeX + 1) * baseSizeX; x < bitmap.Width + baseSizeX; x += baseSizeX)
-					{
-                        // Render with chessboard style
-                        if (++c % 2 > 0)
-                            continue;
+                for (float i = offset; i < bitmap.Width; i += offset / 2)
+                {
+                    gr.DrawEllipse(new Pen(watermarkColor, 3), -i, rect.Height - i, i * 2, i * 2);
+                    gr.DrawEllipse(new Pen(watermarkColor, 3), rect.Width - i, rect.Height - i, i * 2, i * 2);
+                }
+            }
 
-						mainText.Position = new System.Drawing.PointF(x + mainOffsetX, y + mainOffsetY);
-						graphics.DrawText(mainText);
+            bitmap.Save("../../../../_Output/VeniceMultilineWatermark.jpg");
+        }
 
-						subText.Position = new System.Drawing.PointF(x + subOffsetX, y + subOffsetY);
-						graphics.DrawText(subText);
-					}
-				}
-			}
+    }
 
-			bitmap.Save("../../../../_Output/GridAndTextWatermark.jpg");
-		}
-	}
+    /// <summary>
+    /// Gets rectangle required for a visible content
+    /// </summary>
+    static private RectangleF GetInvertedRect(RectangleF rect, Matrix transform)
+    {
+        var t = (System.Drawing.Drawing2D.Matrix)transform.Clone();
+
+        t.Invert();
+
+        using (var path = new Path())
+        {
+            path.DrawRectangle(rect);
+            path.ApplyTransform(t);
+            
+            return path.GetBounds();
+        }
+    }
+
+    /// <summary>
+    /// Tiles path text inside a rectangle
+    /// </summary>
+    static private Path TilePathText(Path pathText, RectangleF rect, float offset)
+    {        
+        var textBounds = pathText.GetBounds();
+        pathText.ApplyTransform(CreateTranslateMatrix(rect.X - textBounds.Left, rect.Y - textBounds.Top));
+
+        var tiledText = new Path();
+
+        using (var firstLine = new Path())
+        {
+            while (rect.Contains(pathText.GetBounds()))
+            {
+                firstLine.DrawPath(pathText);
+                pathText.ApplyTransform(CreateTranslateMatrix(textBounds.Width + offset, 0));
+            }
+
+            float lineOffset = textBounds.Width / 2;
+
+            if (firstLine.Points.Count == 0)
+                return tiledText;
+
+            while (rect.Bottom > firstLine.GetBounds().Bottom)
+            {
+                tiledText.DrawPath(firstLine);
+                firstLine.ApplyTransform(CreateTranslateMatrix(lineOffset, textBounds.Height + offset));
+                lineOffset *= -1;
+            }
+
+            return tiledText;
+        }
+    }
+
+    /// <summary>
+    /// Creates translate matrix
+    /// </summary>
+    static private Matrix CreateTranslateMatrix(float dx, float dy)
+    {
+        var translate = new Matrix();
+
+        translate.Translate(dx, dy);
+
+        return translate;
+    }
 }
