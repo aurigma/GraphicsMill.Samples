@@ -62,8 +62,6 @@
                 canvas.deleteSelectedVObjects(true);
             });
         });
-
-        
 	</script>
 </head>
 <body>
