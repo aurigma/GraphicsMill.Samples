@@ -24,6 +24,8 @@
                 if (files.length > 0)
                     data.append('template', files[0]);
 
+                data.append('canvas', canvas.get_data());
+
                 $.ajax({
                     type: 'post',
                     url: '/api/template/upload',
@@ -32,7 +34,6 @@
                     data: data
                 }).done(function (data) {
                     canvas.set_data(data);
-                    canvas.set_zoom(viewer.get_zoom());
                 }).fail(function (message) {
                     console.error(message);
                 });

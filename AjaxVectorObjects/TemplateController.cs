@@ -38,6 +38,10 @@ namespace AjaxVectorObjects
                             using (var reader = new PsdReader(path))
                             {
                                 var canvas = new Canvas();
+
+                                if (!string.IsNullOrWhiteSpace(context.Request.Form["canvas"])) 
+                                    canvas.Data = context.Request.Form["canvas"];
+                                
                                 new PsdSvgConverter().ParsePsd(reader, canvas: canvas);
 
                                 message = canvas.Data;
