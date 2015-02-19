@@ -26,9 +26,6 @@ namespace AjaxVectorObjects
                     var converter = new PsdSvgConverter();
                     converter.ParsePsd(reader, canvas: CanvasViewer1.Canvas);
                 }
-
-                Link1.Text = "";
-                Link1.NavigateUrl = "";
             }
         }
 
@@ -39,6 +36,7 @@ namespace AjaxVectorObjects
             using (var writer = ImageWriter.Create(Server.MapPath(filePath)))
                 CanvasViewer1.Canvas.RenderWorkspace(writer, 300, ColorSpace.Rgb);
 
+			Link1.Visible = true;
             Link1.Text = filePath;
             Link1.NavigateUrl = filePath;
         }
