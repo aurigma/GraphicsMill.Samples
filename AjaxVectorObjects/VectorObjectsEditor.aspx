@@ -25,28 +25,29 @@
             $('#add_rectangle').click(function () {
                 var rectangle = new avo.RectangleVObject(30, 20, 150, 100);
                 rectangle.set_fillColor('white');
-                rectangle.set_borderColor('gray');
+                rectangle.set_borderColor('#0169c9');
+                rectangle.set_borderWidth(4);
 
                 layer.get_vObjects().add(rectangle);
             });
 
             $('#add_ellipse').click(function () {
                 var ellipse = new avo.EllipseVObject(240, 20, 150, 100);
-                ellipse.set_fillColor('white');
-                ellipse.set_borderColor('gray');
+                ellipse.set_fillColor('#ccff99');
+                ellipse.set_borderColor('#015a01');
 
                 layer.get_vObjects().add(ellipse);
             });
 
             $('#add_image').click(function () {
                 var url = window.location.href.replace(window.location.href.split('/').slice(-1)[0], 'image.jpg')
-                var image = new avo.ImageVObject(url, new avo.Math.RectangleF(30, 170, 150, 100), { downloadToCache: true });
+                var image = new avo.ImageVObject(url, new avo.Math.RectangleF(240, 170, 150, 100), { downloadToCache: true });
 
                 layer.get_vObjects().add(image);
             });
 
             $('#add_text').click(function () {
-                var text = new avo.PlainTextVObject('Hello World', new avo.Math.PointF(240, 200), avo.TextAlignment.Left, 'Tahoma', 26);
+                var text = new avo.PlainTextVObject('Hello World', new avo.Math.PointF(40, 200), avo.TextAlignment.Left, 'Tahoma', 26);
 
                 layer.get_vObjects().add(text);
             });
