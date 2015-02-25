@@ -10,6 +10,7 @@ class MultipleSourcesExample
 	{
 		SplitChannels();
 		CombineChannels();
+		SplitAndCombineChannels();
 	}
 
 	/// <summary>
@@ -56,5 +57,30 @@ class MultipleSourcesExample
 			combiner.B = readerB;
 			Pipeline.Run(combiner + writer);
 		}
+	}
+
+
+	/// <summary>
+	/// Splits and combines images channels
+	/// </summary>
+	private static void SplitAndCombineChannels()
+	{
+		using (var reader = ImageReader.Create("../../../../_Input/Chicago.jpg"))
+		using (var channelSplitter = new RgbChannelSplitter())
+		using (var brightnessR = new Brightness(0.1f))
+		using (var brightnessG = new Brightness(-0.05f))
+		using (var brightnessB = new Brightness(0.2f))
+		using (var channelCombiner = new RgbChannelCombiner())
+		using (var writer = ImageWriter.Create("../../../../_Output/SplitAndCombineChannels.png"))
+		{
+			reader.Receivers.Add(channelSplitter);
+
+			channelCombiner.R = channelSplitter.R + brightnessR;
+			channelCombiner.G = channelSplitter.G + brightnessG;
+			channelCombiner.B = channelSplitter.B + brightnessB;
+
+			Pipeline.Run(channelCombiner + writer);
+		}
+
 	}
 }
