@@ -13,10 +13,10 @@ using System.Web.Http;
 
 namespace AjaxVectorObjects
 {
-    public class TemplateController : ApiController
+    public class SampleController : ApiController
     {
         [HttpPost]
-        public HttpResponseMessage Upload()
+        public HttpResponseMessage UploadTemplate()
         {
             var context = HttpContext.Current;
 
@@ -56,6 +56,42 @@ namespace AjaxVectorObjects
                     catch (Exception e)
                     {
                        message = e.Message;
+                    }
+                }
+            }
+
+            var response = new HttpResponseMessage(success ? HttpStatusCode.OK : HttpStatusCode.BadRequest);
+            response.Content = new StringContent(message);
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("text/html");
+            return response;
+        }
+
+        [HttpPost]
+        public HttpResponseMessage UploadImage()
+        {
+            var context = HttpContext.Current;
+
+            var message = "Request is empty";
+            var success = false;
+
+            if (context.Request.Files.Count > 0)
+            {
+                var file = context.Request.Files["image"];
+                if (file != null)
+                {
+                    try
+                    {
+                        var storage = Aurigma.GraphicsMill.AjaxControls.VectorObjects.Configuration.FileStorage;
+                        var imageStream = file.InputStream;
+                        var extension = Common.GetImageExtension(imageStream).Substring(1);
+                        var fileStorageId = storage.AddFile(extension, imageStream);
+
+                        message = fileStorageId;
+                        success = true;
+                    }
+                    catch (Exception e)
+                    {
+                        message = e.Message;
                     }
                 }
             }

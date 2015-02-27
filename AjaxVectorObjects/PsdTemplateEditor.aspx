@@ -22,7 +22,7 @@
     <script type="text/javascript">
         $(window).load(function () {
             var avo = Aurigma.GraphicsMill.AjaxControls.VectorObjects
-            var canvas = $find('<%= CanvasViewer1.ClientID %>').get_canvas();
+            var canvas =  $find('<%= CanvasViewer1.ClientID %>').get_canvas();
 
             var textarea = $('#textarea');
 
@@ -35,19 +35,12 @@
                     var bounds = vObject.get_bounds();
                     var x = bounds.Left;
                     var y = bounds.Top + bounds.Height;
+                    var point = canvas.workspaceToControl(new avo.Math.PointF(x, y));
 
-                    //Important: workspaceToControl does not work in the current release version. Remove this code when workspaceToControl will be fixed
-                    var pt = new avo.Math.PointF(x, y);
-                    var scale = canvas.get_screenXDpi() / 72 * canvas.get_zoom();
-                    pt.scale(scale, scale);
-                    pt.X = Math.round(pt.X);
-                    pt.Y = Math.round(pt.Y);
-                    var point = pt;
-
-                    //var point = canvas.workspaceToControl(new avo.Math.PointF(x, y));
+                    var offset = $(canvas.get_bottomCanvas()).offset();
 
                     textarea.show();
-                    textarea.offset({ left: point.X, top: point.Y + 10 });
+                    textarea.offset({ left: offset.left + point.X, top: offset.top + point.Y + 5 });
                 }
                 else {
                     textarea.hide();
