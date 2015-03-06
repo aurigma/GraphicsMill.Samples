@@ -46,7 +46,7 @@
 
                     $.ajax({
                         type: 'post',
-                        url: '/api/sample/uploadimage',
+                        url: 'api/sample/uploadimage',
                         contentType: false,
                         processData: false,
                         data: data
