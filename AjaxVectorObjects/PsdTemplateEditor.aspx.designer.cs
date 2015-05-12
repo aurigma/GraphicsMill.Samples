@@ -24,5 +24,7 @@ namespace AjaxVectorObjects
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         protected global::Aurigma.GraphicsMill.AjaxControls.CanvasViewer CanvasViewer1;
+
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
     }
 }

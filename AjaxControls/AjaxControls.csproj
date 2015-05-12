@@ -38,7 +38,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aurigma.GraphicsMill">
+      <HintPath>..\packages\Aurigma.GraphicsMill.Core.x64.7.2.63\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
+    </Reference>
+    <Reference Include="Aurigma.GraphicsMill.AjaxControls">
+      <HintPath>..\packages\Aurigma.GraphicsMill.Web.x64.7.2.50\lib\net40\Aurigma.GraphicsMill.AjaxControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Aurigma.GraphicsMill.AjaxControls.VectorObjects">
+      <HintPath>..\packages\Aurigma.GraphicsMill.Web.x64.7.2.50\lib\net40\Aurigma.GraphicsMill.AjaxControls.VectorObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="Aurigma.Svg">
+      <HintPath>..\packages\Aurigma.GraphicsMill.Web.x64.7.2.50\lib\net40\Aurigma.Svg.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Svg">
+      <HintPath>..\packages\Aurigma.GraphicsMill.Web.x64.7.2.50\lib\net40\Svg.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -57,6 +76,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BitmapViewerDemo.aspx" />
+    <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -65,9 +86,24 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="PhotoCropDemo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BitmapViewerDemo.aspx.cs">
+      <DependentUpon>BitmapViewerDemo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BitmapViewerDemo.aspx.designer.cs">
+      <DependentUpon>BitmapViewerDemo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PhotoCropDemo.aspx.cs">
+      <DependentUpon>PhotoCropDemo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PhotoCropDemo.aspx.designer.cs">
+      <DependentUpon>PhotoCropDemo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <PropertyGroup>

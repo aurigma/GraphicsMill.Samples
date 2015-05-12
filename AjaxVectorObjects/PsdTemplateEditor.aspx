@@ -21,7 +21,7 @@
 
     <script type="text/javascript">
         $(window).load(function () {
-            var avo = Aurigma.GraphicsMill.AjaxControls.VectorObjects
+            var avo = Aurigma.GraphicsMill.AjaxControls.VectorObjects;
             var canvas =  $find('<%= CanvasViewer1.ClientID %>').get_canvas();
 
             var textarea = $('#textarea');

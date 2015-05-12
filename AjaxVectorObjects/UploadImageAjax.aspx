@@ -13,7 +13,7 @@
 
     <script type="text/javascript">
         $(window).load(function () {
-            var avo = Aurigma.GraphicsMill.AjaxControls.VectorObjects
+            var avo = Aurigma.GraphicsMill.AjaxControls.VectorObjects;
             var viewer = $find('<%= CanvasViewer1.ClientID %>');
             var canvas = viewer.get_canvas();
 

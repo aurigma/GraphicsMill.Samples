@@ -13,7 +13,7 @@
 
     <script type="text/javascript">
         $(window).load(function () {
-            var avo = Aurigma.GraphicsMill.AjaxControls.VectorObjects
+            var avo = Aurigma.GraphicsMill.AjaxControls.VectorObjects;
             var canvas = $find('<%= CanvasViewer1.ClientID %>').get_canvas();
 
             canvas.set_workspaceWidth(800);
@@ -40,7 +40,7 @@
             });
 
             $('#add_image').click(function () {
-                var url = window.location.href.replace(window.location.href.split('/').slice(-1)[0], 'image.jpg')
+                var url = window.location.href.replace(window.location.href.split('/').slice(-1)[0], 'image.jpg');
                 var image = new avo.ImageVObject(url, new avo.Math.RectangleF(240, 170, 150, 100), { downloadToCache: true });
 
                 layer.get_vObjects().add(image);

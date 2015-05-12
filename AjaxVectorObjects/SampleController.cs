@@ -1,15 +1,13 @@
-﻿using Aurigma.GraphicsMill.AjaxControls.VectorObjects;
-using Aurigma.GraphicsMill.Codecs;
-using Aurigma.GraphicsMill.Codecs.Psd;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
+using Aurigma.GraphicsMill.AjaxControls.VectorObjects;
+using Aurigma.GraphicsMill.Codecs;
+using Aurigma.GraphicsMill.Codecs.Psd;
 
 namespace AjaxVectorObjects
 {
@@ -42,7 +40,7 @@ namespace AjaxVectorObjects
                                 if (!string.IsNullOrWhiteSpace(context.Request.Form["canvas"])) 
                                     canvas.Data = context.Request.Form["canvas"];
                                 
-                                new PsdSvgConverter().ParsePsd(reader, canvas: canvas);
+                                PsdSvgConverter.ParsePsd(reader, canvas: canvas);
 
                                 message = canvas.Data;
                                 success = true;
