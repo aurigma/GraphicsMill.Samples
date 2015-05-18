@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Web.UI;
 using Aurigma.GraphicsMill;
@@ -46,7 +47,7 @@ namespace AjaxControls
             }
 
             BitmapViewer1.SourceImageFilename = filePath;
-            RectangleRubberband1.Erase();
+            RectangleRubberband1.Rectangle = new Rectangle(0, 0, rect.Width, rect.Height);
         }
     }
 }
