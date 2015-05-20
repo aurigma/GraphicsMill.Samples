@@ -7,7 +7,6 @@
 <head runat="server">
     <title>Photo Crop Demo</title>
     <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
-
     <script type="text/javascript">
         $(window).load(function () {
             var bitmapViewer = $find('<%= BitmapViewer1.ClientID %>');
@@ -67,27 +66,23 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-        <select id="selectFormat">
-		    <option value="6,4" selected>4 x 6"</option>
-		    <option value="7,5">5 x 7"</option>
-		    <option value="10,8">8 x 10"</option>
-        </select>
-     </div>
-     <div>
-        <label for="portraitRadio"><input id="portraitRadio" type="radio" name="Orientation">&nbsp;Portrait</label>
-	    <br />
-		<label for="landscapeRadio"><input id="landscapeRadio" type="radio" name="Orientation" checked>&nbsp;Landscape</label>
-	</div>
-    <div>
-        <asp:Button ID="Button1" OnClick="Button1_Click" Text="Crop" runat="server"/>
-     </div>
-     <div>
-        <aur:BitmapViewer ID="BitmapViewer1" ScrollBarsStyle="Auto" ViewportAlignment="CenterCenter" ZoomMode="BestFit" Width="600" Height="400" Rubberband="RectangleRubberband1" runat="server" />
-        <aur:RectangleRubberband ID="RectangleRubberband1" ResizeMode="Proportional" GripsVisible="True" MaskVisible="True" runat="server"></aur:RectangleRubberband>
-        <asp:ScriptManager ID="ScriptManager1" runat="server" />
-     </div>
-     
+        <div style="padding-top: 10px">
+            Ratio:
+            <select id="selectFormat">
+		        <option value="6,4" selected>4 x 6"</option>
+		        <option value="7,5">5 x 7"</option>
+		        <option value="10,8">8 x 10"</option>
+            </select>
+            <label for="portraitRadio"><input id="portraitRadio" type="radio" name="Orientation">&nbsp;Portrait</label>
+            <label for="landscapeRadio"><input id="landscapeRadio" type="radio" name="Orientation" checked>&nbsp;Landscape</label>&nbsp;
+            <asp:Button ID="Button1" OnClick="Button1_Click" Text="Crop" runat="server"/>
+        </div>
+
+         <div style="padding-top: 10px">
+            <aur:BitmapViewer ID="BitmapViewer1" ScrollBarsStyle="Auto" ViewportAlignment="CenterCenter" ZoomMode="BestFit" Width="600" Height="400" Rubberband="RectangleRubberband1" runat="server" />
+            <aur:RectangleRubberband ID="RectangleRubberband1" ResizeMode="Proportional" GripsVisible="True" MaskVisible="True" runat="server"></aur:RectangleRubberband>
+            <asp:ScriptManager ID="ScriptManager1" runat="server" />
+         </div>
     </form>
 </body>
 </html>

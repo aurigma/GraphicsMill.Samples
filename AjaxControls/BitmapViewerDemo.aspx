@@ -7,7 +7,6 @@
 <head runat="server">
     <title>BitmapViewer Demo</title>
     <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
-    
     <script type="text/javascript">
         $(window).load(function () {
             var bitmapViewer = $find('<%= BitmapViewer1.ClientID %>');
@@ -35,14 +34,14 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+    <div style="padding-top: 10px">
         Zoom: 
         <select id="selectZoom">
-            <option value="bestFit" selected>Best Fit</option>
+            <option value="bestFit">Best Fit</option>
             <option value="fitToWidth">Fit To Width</option>
             <option value="fitToHeight">Fit To Height</option>
             <option value="10">10%</option>
-            <option value="25">25%</option>
+            <option value="25" selected>25%</option>
             <option value="50">50%</option>
             <option value="75">75%</option>
             <option value="100">100%</option>
@@ -52,8 +51,8 @@
             <option value="400">400%</option>
         </select>
      </div>
-     <div>
-        <aur:BitmapViewer ID="BitmapViewer1" ScrollBarsStyle="Auto" ViewportAlignment="CenterCenter" ZoomMode="BestFit" Width="600" Height="400" runat="server" />
+     <div style="padding-top: 10px">
+        <aur:BitmapViewer ID="BitmapViewer1" ScrollBarsStyle="Auto" ViewportAlignment="CenterCenter" Zoom="0.25" Width="600" Height="400" runat="server" />
         <aur:PanNavigator ID="PanNavigator1" runat="server"></aur:PanNavigator>
         <asp:ScriptManager ID="ScriptManager1" runat="server" />
     </div>

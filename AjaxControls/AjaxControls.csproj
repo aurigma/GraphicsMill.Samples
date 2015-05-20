@@ -39,24 +39,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aurigma.GraphicsMill">
-      <HintPath>..\packages\Aurigma.GraphicsMill.Core.x64.7.2.63\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
+      <HintPath>..\packages\Aurigma.GraphicsMill.Core.x64.7.2.50\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
     </Reference>
     <Reference Include="Aurigma.GraphicsMill.AjaxControls">
       <HintPath>..\packages\Aurigma.GraphicsMill.Web.x64.7.2.50\lib\net40\Aurigma.GraphicsMill.AjaxControls.dll</HintPath>
     </Reference>
-    <Reference Include="Aurigma.GraphicsMill.AjaxControls.VectorObjects">
-      <HintPath>..\packages\Aurigma.GraphicsMill.Web.x64.7.2.50\lib\net40\Aurigma.GraphicsMill.AjaxControls.VectorObjects.dll</HintPath>
-    </Reference>
-    <Reference Include="Aurigma.Svg">
-      <HintPath>..\packages\Aurigma.GraphicsMill.Web.x64.7.2.50\lib\net40\Aurigma.Svg.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Svg">
-      <HintPath>..\packages\Aurigma.GraphicsMill.Web.x64.7.2.50\lib\net40\Svg.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -77,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BitmapViewerDemo.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -96,6 +88,13 @@
     </Compile>
     <Compile Include="BitmapViewerDemo.aspx.designer.cs">
       <DependentUpon>BitmapViewerDemo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="PhotoCropDemo.aspx.cs">
       <DependentUpon>PhotoCropDemo.aspx</DependentUpon>
@@ -131,7 +130,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

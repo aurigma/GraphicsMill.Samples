@@ -38,27 +38,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aurigma.GraphicsMill, Version=7.2.63.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Aurigma.GraphicsMill.Core.x64.7.2.63\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
+    <Reference Include="Aurigma.GraphicsMill">
+      <HintPath>..\packages\Aurigma.GraphicsMill.Core.x64.7.2.50\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
     </Reference>
-    <Reference Include="Aurigma.GraphicsMill.AjaxControls, Version=7.2.50.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Aurigma.GraphicsMill.AjaxControls">
       <HintPath>..\packages\Aurigma.GraphicsMill.Web.x64.7.2.50\lib\net40\Aurigma.GraphicsMill.AjaxControls.dll</HintPath>
     </Reference>
-    <Reference Include="Aurigma.GraphicsMill.AjaxControls.VectorObjects, Version=7.2.50.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Aurigma.GraphicsMill.AjaxControls.VectorObjects">
       <HintPath>..\packages\Aurigma.GraphicsMill.Web.x64.7.2.50\lib\net40\Aurigma.GraphicsMill.AjaxControls.VectorObjects.dll</HintPath>
     </Reference>
-    <Reference Include="Aurigma.Svg, Version=7.2.50.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Aurigma.Svg">
       <HintPath>..\packages\Aurigma.GraphicsMill.Web.x64.7.2.50\lib\net40\Aurigma.Svg.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1-beta1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Svg, Version=1.5.1.19261, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=MSIL">
+    <Reference Include="Svg">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Aurigma.GraphicsMill.Web.x64.7.2.50\lib\net40\Svg.dll</HintPath>
     </Reference>
@@ -93,6 +90,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="image.jpg" />
     <Content Include="packages.config">
@@ -117,6 +115,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -183,7 +188,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
