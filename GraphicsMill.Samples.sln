@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "D. Font and Text", "D. Font and Text", "{4D462F00-079A-4346-9DEA-82163A24F4BF}"
 EndProject
@@ -144,6 +144,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D.07. Formatted Text", "D.FontAndText\D.07.FormattedText\D.07. Formatted Text.csproj", "{9679DAE0-0580-438A-9733-CA5BDD18CECC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B.09. Minimum, Maximum, Median", "B.FiltersAndTransforms\B.09.MinimumMaximumMedian\B.09. Minimum, Maximum, Median.csproj", "{14339BFA-D1F1-40C9-A7EC-3844FA16E43A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "K. Web", "K. Web", "{2A519D45-8A70-450D-B4E7-96D8556EBA44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K.01.AjaxControls", "K.Web\K.01.AjaxControls\K.01.AjaxControls.csproj", "{78A676C2-3D3E-4671-BE28-DFB788010AC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K.02.AjaxVectorObjects", "K.Web\K.02.AjaxVectorObjects\K.02.AjaxVectorObjects.csproj", "{43ECB812-5483-4AF1-BDFE-E297392FFDFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -395,6 +401,14 @@ Global
 		{14339BFA-D1F1-40C9-A7EC-3844FA16E43A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14339BFA-D1F1-40C9-A7EC-3844FA16E43A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14339BFA-D1F1-40C9-A7EC-3844FA16E43A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78A676C2-3D3E-4671-BE28-DFB788010AC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78A676C2-3D3E-4671-BE28-DFB788010AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78A676C2-3D3E-4671-BE28-DFB788010AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78A676C2-3D3E-4671-BE28-DFB788010AC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43ECB812-5483-4AF1-BDFE-E297392FFDFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43ECB812-5483-4AF1-BDFE-E297392FFDFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43ECB812-5483-4AF1-BDFE-E297392FFDFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43ECB812-5483-4AF1-BDFE-E297392FFDFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -461,5 +475,7 @@ Global
 		{5D42D6B8-7594-4E46-B25C-2C46E54C3A69} = {5A203899-AC20-4D78-8BD5-A370D165B490}
 		{9679DAE0-0580-438A-9733-CA5BDD18CECC} = {4D462F00-079A-4346-9DEA-82163A24F4BF}
 		{14339BFA-D1F1-40C9-A7EC-3844FA16E43A} = {5A203899-AC20-4D78-8BD5-A370D165B490}
+		{78A676C2-3D3E-4671-BE28-DFB788010AC8} = {2A519D45-8A70-450D-B4E7-96D8556EBA44}
+		{43ECB812-5483-4AF1-BDFE-E297392FFDFD} = {2A519D45-8A70-450D-B4E7-96D8556EBA44}
 	EndGlobalSection
 EndGlobal
