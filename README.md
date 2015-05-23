@@ -1,8 +1,22 @@
 # Graphics Mill Samples
 
-Graphics Mill is an advanced image processing library. It allows loading/saving images (JPEG, PNG, GIF, TIFF, EPS, PDF, EPS, PSD and others) in various bitmap formats (RGB, CMYK, 8 and 16-bit per channel), managing metadata (EXIF, IPTC, XMP, Adobe Resources), manipulating image channels and pixels, applying operations on images (crop, resize, rotate, flip), drawing bitmap and vector elements, single and multiline text (including artistic effects and text line distortions),  converting colors with ICC profiles, adjust color/tone/brightness/contrasts and apply image filters. 
+Graphics Mill is an advanced image processing library. Here is a brief features highlight:
 
-Graphics Mill Windows Controls is a set of Windows Forms controls which helps you creating image processing user interface in desktop applications. Bitmap Viewer control displays a bitmap on the screen with zoom, scroll and crop functionality. Vector Objects module allows working with composite images consisting of multiple elements such as bitmaps, texts and vector data. Thumbnail List View control display a collection of images no matter if they are stored in a file system or memory.
+* Loads/saves JPEG, PNG, GIF, TIFF, EPS, PDF, EPS, PSD and other image formats.
+* Pixels can be RGB, CMYK, grayscale, 8 and 16-bit per channel.
+* Manipulate metadata such as EXIF, IPTC, XMP, Adobe Resources (including clipping path).
+* Popular operations on images including crop, resize, rotate and many others.
+* Other bitmap manipulation algorithms, filters, color/tone/brightness/contrasts adjustments.
+* Draw bitmap and vector elements.
+* Powerful text output features - single and multiline text, artistic effects, text line distortions.
+* Convert colors with ICC profiles.
+
+Graphics Mill Web Controls is a front end for Graphics Mill library. It includes:
+
+* Bitmap Viewer - displays, zooms, crops and applies different effects on images.
+* AJAX Vector Objects - powerful composite image editing tool built into a webpage.
+
+It allows building rich image editing web application like business card or t-shirt editor.
 
 Website: http://www.graphicsmill.com/
 
@@ -413,3 +427,68 @@ A sample image editing application based on Graphics Mill. It demonstrates how t
 */J.WinForms/J.02.AsynchronousProcessing/*
 
 Demonstrates how to apply effects and display result on a BitmapViewer in two manners - synchronously and asynchronously, using Tasks.
+
+## K. Graphics Mill Web
+
+*/K.Web/*
+
+### Graphics Mill Ajax Controls Samples
+
+*/K.Web/K.01.AjaxControls/*
+
+These samples show how to create a simple image editing tool to your page which can
+work with images of any size without loading the entire image from the server.
+
+#### Bitmap Viewer Demo
+
+*/K.Web/K.01.AjaxControls/BitmapViewerDemo.aspx*
+
+A simple viewer of a large image. A user may zoom and scroll the image and only visible part
+is downloaded from a server (very quickly!)
+
+#### Photo Crop Demo
+
+*/K.Web/K.01.AjaxControls/PhotoCropDemo.aspx*
+
+A cropping tool based on Bitmap Viewer. You may control the aspect ratios of the crop.
+
+### Graphics Mill AJAX Vector Objects Samples
+
+*/K.Web/K.02.AjaxVectorObjects/*
+
+These samples illustrate how to do the following things:
+
+* Add or edit images, text, artistic text and graphics.
+* Manipulate objects using both JavaScript and C#.
+* Automatically render result as JPEG or PDF.
+* Work with PSD templates.
+
+#### Vector Objects Editor
+
+*/K.Web/K.02.AjaxVectorObjects/VectorObjectsEditor.aspx*
+
+A simple vector image editor built into a page.
+
+#### PSD Template Editor
+
+*/K.Web/K.02.AjaxVectorObjects/PsdTemplateEditor.aspx*
+
+Loads a multi-layer Adobe Photoshop file and edits it in a browser.
+
+#### Upload Template Using AJAX
+
+*/K.Web/K.02.AjaxVectorObjects/UploadTemplateAjax.aspx*
+
+An image editor which allows uploading Adobe Photoshop based templates using AJAX.
+
+#### Upload Image Using AJAX
+
+*/K.Web/K.02.AjaxVectorObjects/UploadImageAjax.aspx*
+
+An image editor which allows uploading any image to a canvas using AJAX.
+
+#### Render Template using Postback
+
+*/K.Web/K.02.AjaxVectorObjects/RenderTemplatePostback.aspx*
+
+Loads an Adobe Photoshop file as a template and converts the result to PDF.
