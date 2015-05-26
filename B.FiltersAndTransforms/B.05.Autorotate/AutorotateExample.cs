@@ -16,7 +16,7 @@ class AutototateExample
 	/// </summary>
 	public static bool Autorotate(string pathIn, string pathOut)
 	{
-		uint orientation;
+		ushort orientation;
 
 		using (var reader = ImageReader.Create(pathIn))
 		{
@@ -27,7 +27,7 @@ class AutototateExample
 				return false;
 			}
 
-			orientation = (uint)(exif[ExifDictionary.Orientation]);
+			orientation = (ushort)(exif[ExifDictionary.Orientation]);
 
 			//  1        2       3      4         5            6           7          8
 
