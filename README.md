@@ -3,7 +3,7 @@
 Graphics Mill is an advanced image processing library. Here is a brief features highlight:
 
 * Loads/saves JPEG, PNG, GIF, TIFF, EPS, PDF, EPS, PSD and other image formats.
-* Pixels can be RGB, CMYK, grayscale, 8 and 16-bit per channel.
+* Pixels can be RGB, CMYK, Lab, grayscale, 8 and 16-bit per channel.
 * Manipulate metadata such as EXIF, IPTC, XMP, Adobe Resources (including clipping path).
 * Popular operations on images including crop, resize, rotate and many others.
 * Other bitmap manipulation algorithms, filters, color/tone/brightness/contrasts adjustments.
@@ -428,11 +428,11 @@ A sample image editing application based on Graphics Mill. It demonstrates how t
 
 Demonstrates how to apply effects and display result on a BitmapViewer in two manners - synchronously and asynchronously, using Tasks.
 
-## K. Graphics Mill Web
+## K. Web
 
 */K.Web/*
 
-### Graphics Mill Ajax Controls Samples
+### K.01. Graphics Mill AJAX Controls Samples
 
 */K.Web/K.01.AjaxControls/*
 
@@ -452,7 +452,7 @@ is downloaded from a server (very quickly!)
 
 A cropping tool based on Bitmap Viewer. You may control the aspect ratios of the crop.
 
-### Graphics Mill AJAX Vector Objects Samples
+### K.02. Graphics Mill AJAX Vector Objects Samples
 
 */K.Web/K.02.AjaxVectorObjects/*
 

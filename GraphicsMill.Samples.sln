@@ -147,9 +147,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B.09. Minimum, Maximum, Med
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "K. Web", "K. Web", "{2A519D45-8A70-450D-B4E7-96D8556EBA44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K.01.AjaxControls", "K.Web\K.01.AjaxControls\K.01.AjaxControls.csproj", "{78A676C2-3D3E-4671-BE28-DFB788010AC8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K.01.AJAX Controls", "K.Web\K.01.AjaxControls\K.01.AJAX Controls.csproj", "{78A676C2-3D3E-4671-BE28-DFB788010AC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K.02.AjaxVectorObjects", "K.Web\K.02.AjaxVectorObjects\K.02.AjaxVectorObjects.csproj", "{43ECB812-5483-4AF1-BDFE-E297392FFDFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K.02.AJAX Vector Objects", "K.Web\K.02.AjaxVectorObjects\K.02.AJAX Vector Objects.csproj", "{43ECB812-5483-4AF1-BDFE-E297392FFDFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
