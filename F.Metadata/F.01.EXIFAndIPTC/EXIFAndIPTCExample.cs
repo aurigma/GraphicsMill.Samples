@@ -11,6 +11,7 @@ class EXIFAndIPTCExample
 		ReadExifIptc();
 		WriteExifIptc();
 		WriteExifIptcMemoryFriendly();
+        ProcessComplexExifTypes();
 	}
 
 
@@ -97,5 +98,39 @@ class EXIFAndIPTCExample
 		}
 
 	}
+
+    /// <summary>
+    /// Reads and writes complex Exif tags
+    /// </summary>
+    private static void ProcessComplexExifTypes()
+    {
+        using (var jpegReader = new JpegReader("../../../../_Input/Chicago.jpg"))
+        using (var jpegWriter = new JpegWriter("../../../../_Output/ProcessComplexExifTypes.jpg", 70))
+        {
+            var exif = new Aurigma.GraphicsMill.Codecs.ExifDictionary(jpegReader.Exif);
+
+            Object[] latitude = null;
+
+            if (exif.Contains(ExifDictionary.GpsLatitude))
+            {
+                latitude = exif.GetItemArray(ExifDictionary.GpsLatitude);
+                latitude[0] = new UnsignedRational(113, 12);
+            }
+            else
+            {   //Alexandria, Virginia
+                latitude = new Object[] { new UnsignedRational(38, 1), new UnsignedRational(48, 1), new UnsignedRational(17, 1) };
+            }
+             
+            exif.SetItemArray(ExifDictionary.GpsLatitude, latitude);
+
+            var gpsVer = new Object[] { (byte)2, (byte)0, (byte)0, (byte)1 };
+            exif.SetItemArray(ExifDictionary.GpsVersionId, gpsVer);
+
+            exif[Aurigma.GraphicsMill.Codecs.ExifDictionary.Software] = "Aurigma Graphics Mill";
+            jpegWriter.Exif = exif;
+
+            Aurigma.GraphicsMill.Pipeline.Run(jpegReader + jpegWriter);
+        }
+    }
 }
 
