@@ -57,13 +57,6 @@ class CurvedTextExample
 
 	private static void MergeLayers(PsdReader psdReader, Graphics graphics, Func<PsdTextFrame, string> getLayerText)
 	{
-		//We were unable to find a way Adobe Photoshop stores association between paths and text layers in PSD
-		//files, so we had to explicitly make the association using naming convention:
-		//http://www.aurigma.com/Download/GraphicsMill/Misc/CurvedTextTemplates.pdf
-
-		var textPathNameRegex = new Regex("^(.+)<PTH_(.+)>$");
-
-
 		//Merge layers
 		for (int i = 0; i < psdReader.Frames.Count; i++)
 		{
@@ -75,59 +68,37 @@ class CurvedTextExample
 
 				var layerText = getLayerText(textFrame);
 
-				//Handle text on path
-				var textPathName = textPathNameRegex.Matches(frame.Name);
-
 				Text text;
 
-				if (textPathName.Count > 0)
+				var font = graphics.CreateFont(textFrame.FontName, textFrame.FontSize);
+
+                if (textFrame.Path != null)
+                {
+                    text = new PathText(textFrame.Text, font)
+                    {
+                        Path = textFrame.Path
+                    };
+                }
+				else if (textFrame.TextBox.Width == 0 || textFrame.TextBox.Height == 0)
 				{
-					var pathName = textPathName[0].Groups[2].Value;
-
-					var path = Path.Create(psdReader.ClippingPaths.First(x => x.Name == pathName)
-						.CreateGraphicsPath(graphics.Width, graphics.Height));
-
-					//Reduce font size if necessary
-					var pathLength = path.GetLength();
-					float fontSize = textFrame.FontSize;
-					Font font;
-
-					//It is better to calculate the font size without iterations, but it seems 
-					//it works pretty well and doesn't affect the perfomance
-					do
+					text = new PlainText(layerText, font)
 					{
-						font = graphics.CreateFont(textFrame.FontName, fontSize);
-						fontSize--;
-					}
-					while (font.MeasureString(layerText).Width > pathLength);
-
-					text = new PathText(layerText, font)
-					{
-						Path = path
+                        Position = new System.Drawing.PointF(textFrame.OriginalTextBox.Left, textFrame.OriginalTextBox.Top)
 					};
 				}
 				else
 				{
-					var font = graphics.CreateFont(textFrame.FontName, textFrame.FontSize);
-
-					if (textFrame.TextBox.Width == 0 || textFrame.TextBox.Height == 0)
+					text = new BoundedText(layerText, font)
 					{
-						text = new PlainText(layerText, font)
-						{
-							Position = new System.Drawing.PointF(textFrame.TextBox.Left, textFrame.TextBox.Top)
-						};
-					}
-					else
-					{
-						text = new BoundedText(layerText, font)
-						{
-							Rectangle = textFrame.TextBox
-						};
-					}
+						Rectangle = textFrame.TextBox
+					};
 				}
-
+				
 				text.Alignment = JustificationToTextAlignment(textFrame.Justification);
 				text.Brush = new SolidBrush(textFrame.Color);
+
+                text.Tracking = textFrame.Tracking;
+                text.Transform = textFrame.Transform;
 
 				graphics.DrawText(text);
 			}
