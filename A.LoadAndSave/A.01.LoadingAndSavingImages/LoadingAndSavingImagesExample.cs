@@ -20,6 +20,8 @@ class LoadingAndSavingImagesExample
 
 		SaveMultiframeImage();
 		LoadMultiframeImage();
+
+        ReadImageMetadata();
 	}
 
 
@@ -154,5 +156,24 @@ class LoadingAndSavingImagesExample
 			}
 		}
 	}
+
+    /// <summary>
+    /// Reads image metadata without loading bitmap data
+    /// </summary>
+    private static void ReadImageMetadata()
+    {
+        using (var reader = ImageReader.Create("../../../../_Input/Chicago.jpg"))
+        {
+            Console.WriteLine("Width: {0}", reader.Width);
+            Console.WriteLine("Height: {0}", reader.Height);
+            Console.WriteLine("Pixel format: {0}", reader.PixelFormat);
+
+            if (reader.Exif != null)
+                Console.WriteLine("EXIF tag count: {0}", reader.Exif.Count);
+
+            if (reader.Iptc != null)
+                Console.WriteLine("IPTC tag count: {0}", reader.Iptc.Count);
+        }
+    }
 }
 
