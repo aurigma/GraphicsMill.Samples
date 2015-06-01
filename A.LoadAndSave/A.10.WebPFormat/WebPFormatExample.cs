@@ -13,6 +13,8 @@ class WebPFormatExample
 		WriteWebPMemoryFriendly();
 
 		WriteAnimatedWebP();
+
+        WriteWebPLossyAndLossless();
 	}
 
 
@@ -65,5 +67,28 @@ class WebPFormatExample
 			}
 		}
 	}
+
+    /// <summary>
+    /// Writes image in WebP lossy and lossless format
+    /// </summary>
+    private static void WriteWebPLossyAndLossless()
+    {
+        using (var reader = new JpegReader("../../../../_Input/Chicago.jpg"))
+        using (var writerLossy = new WebPWriter("../../../../_Output/WriteWebPLossy.webp"))
+        using (var writerLossless = new WebPWriter("../../../../_Output/WriteWebPLossless.webp"))
+        {
+            writerLossy.Quality = 85f;
+            Pipeline.Run(reader + writerLossy);
+
+            writerLossy.FrameOptions.Lossless = true;
+            Pipeline.Run(reader + writerLossless);
+        }
+
+        var lossy = new System.IO.FileInfo("../../../../_Output/WriteWebPLossy.webp");
+        var lossless = new System.IO.FileInfo("../../../../_Output/WriteWebPLossless.webp");
+
+        Console.WriteLine("Lossy WebP: {0} b", lossy.Length);
+        Console.WriteLine("Lossless WebP: {0} b", lossless.Length);
+    }
 }
 
