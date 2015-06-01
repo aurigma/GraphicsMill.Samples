@@ -44,7 +44,7 @@ class ArtTextExample
                 new RoofText("Roof Text", font, brush)
                 {
                     Center = new System.Drawing.PointF(150f, 350f), 
-                    Bend = 0.2f
+                    Bend = -0.2f
                 },
                 new ValleyText("Valley Text", font)
                 {
