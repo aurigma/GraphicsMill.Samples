@@ -15,6 +15,8 @@ class WebPFormatExample
 		WriteAnimatedWebP();
 
         WriteWebPLossyAndLossless();
+        ConvertAnimatedGifImageToWebP();
+        CompareImageFormatCompressions();
 	}
 
 
@@ -89,6 +91,60 @@ class WebPFormatExample
 
         Console.WriteLine("Lossy WebP: {0} b", lossy.Length);
         Console.WriteLine("Lossless WebP: {0} b", lossless.Length);
+    }
+
+    /// <summary>
+    /// Converts animated GIF image to WebP format
+    /// </summary>
+    private static void ConvertAnimatedGifImageToWebP()
+    {
+        using (var gifReader = new GifReader("../../../../_Input/Sheep.gif"))
+        using (var writer = new WebPWriter("../../../../_Output/ConvertAnimatedGifImageToWebP.webp"))
+        {
+            for (int i = 0; i < gifReader.Frames.Count; ++i)
+            {
+                writer.FrameOptions.Delay = gifReader.Frames[i].Delay * 10;
+
+                var disposalMethod = gifReader.Frames[i].DisposalMethod;
+                if (disposalMethod == DisposalMethod.None || disposalMethod == DisposalMethod.Background)
+                    writer.FrameOptions.DisposalMethod = gifReader.Frames[i].DisposalMethod;
+
+                writer.FrameOptions.Left = gifReader.Frames[i].Left;
+                writer.FrameOptions.Top = gifReader.Frames[i].Top;
+
+                var bitmap = gifReader.Frames[i].GetBitmap();
+                bitmap.ColorManagement.Convert(PixelFormat.Format24bppRgb);
+
+                Pipeline.Run(bitmap + writer);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Compares compression of WebP, JPEG and PNG image formats
+    /// </summary>
+    private static void CompareImageFormatCompressions()
+    {
+        using (var reader = new JpegReader("../../../../_Input/Chicago.jpg"))
+        using (var writerWebP = new WebPWriter("../../../../_Output/CompareImageFormatCompressions.webp"))
+        using (var writerJpeg = new JpegWriter("../../../../_Output/CompareImageFormatCompressions.jpg"))
+        using (var writerPng = new PngWriter("../../../../_Output/CompareImageFormatCompressions.png"))
+        {
+            writerWebP.Quality = 90f;
+            writerJpeg.Quality = 90;
+
+            Pipeline.Run(reader + writerWebP);
+            Pipeline.Run(reader + writerJpeg);
+            Pipeline.Run(reader + writerPng);
+        }
+
+        var webpFile = new System.IO.FileInfo("../../../../_Output/CompareImageFormatCompressions.webp");
+        var jpegFile = new System.IO.FileInfo("../../../../_Output/CompareImageFormatCompressions.jpg");
+        var pngFile = new System.IO.FileInfo("../../../../_Output/CompareImageFormatCompressions.png");
+
+        Console.WriteLine("WebP: {0} b", webpFile.Length);
+        Console.WriteLine("JPEG: {0} b", jpegFile.Length);
+        Console.WriteLine("PNG: {0} b", pngFile.Length);
     }
 }
 
