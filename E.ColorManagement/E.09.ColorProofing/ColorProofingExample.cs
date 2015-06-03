@@ -12,7 +12,7 @@ class ColorProofingExample
     }
 
     /// <summary>
-    /// Color proofing - (CMYK to RGB using destination (screen) and target device profile)
+    /// Color proofing - CMYK to RGB using destination (screen) and target device profile
     /// </summary>
     private static void ColorProofing()
     {
