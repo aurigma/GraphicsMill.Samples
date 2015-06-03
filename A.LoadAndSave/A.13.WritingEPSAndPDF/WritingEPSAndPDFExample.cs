@@ -138,7 +138,6 @@ class WritingEPSAndPDFExample
             int width = 350;
             int height = 200;
 
-        
             using (var graphics = writer.GetGraphics())
             {
 				//Front side
@@ -147,7 +146,7 @@ class WritingEPSAndPDFExample
                 var blueBrush = new SolidBrush(RgbColor.DeepSkyBlue);
 
                 //Draw circle
-                graphics.DrawEllipse(new Pen(RgbColor.DeepSkyBlue, 2f), 15, 20, 30, 30);
+                graphics.DrawEllipse(new Pen(RgbColor.DeepSkyBlue, 2f), 15f, 20f, 30f, 30f);
 
 
                 //Draw text
@@ -157,8 +156,8 @@ class WritingEPSAndPDFExample
                 graphics.DrawText(text);
 
                 font = graphics.CreateFont("Arial", 16f);
-                text = new PlainText("<span style=\"color:DeepSkyBlue;font-size:16pt\">John Doe\n</span><span style=\"color:gray;font-size:16pt\">General Manager</span>", 
-					font, blueBrush, 335f, 100f, TextAlignment.Right);
+                text = new PlainText(@"John Doe
+<span style=""color:gray;font-size:16pt"">General Manager</span>", font, blueBrush, 335f, 100f, TextAlignment.Right);
 
                 graphics.DrawText(text);
 
