@@ -157,6 +157,7 @@ class LoadingAndSavingImagesExample
 		}
 	}
 
+
     /// <summary>
     /// Reads image metadata without loading bitmap data
     /// </summary>
