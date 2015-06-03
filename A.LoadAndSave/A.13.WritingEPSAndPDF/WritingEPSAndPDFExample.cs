@@ -127,6 +127,7 @@ class WritingEPSAndPDFExample
 
 	}
 
+
     /// <summary>
     /// Creates business card in PDF format
     /// </summary>
@@ -134,13 +135,14 @@ class WritingEPSAndPDFExample
     {
         using (var writer = new PdfWriter("../../../../_Output/CreateBusinessCard.pdf"))
         {
-            int width = 353;
+            int width = 350;
             int height = 200;
 
-            writer.AddPage(width, height, RgbColor.White);
         
             using (var graphics = writer.GetGraphics())
             {
+				//Front side
+				writer.AddPage(width, height, RgbColor.White);
 
                 var blueBrush = new SolidBrush(RgbColor.DeepSkyBlue);
 
@@ -151,34 +153,36 @@ class WritingEPSAndPDFExample
                 //Draw text
                 var font = graphics.CreateFont("Arial", 18f);
                 var text = new PlainText("Front side", font, new SolidBrush(RgbColor.Gray),
-                    90, 40f, TextAlignment.Center);
+                    95f, 41f, TextAlignment.Center);
                 graphics.DrawText(text);
 
                 font = graphics.CreateFont("Arial", 16f);
-                text = new PlainText("<span style=\"color:DeepSkyBlue;font-size:16pt\">John Doe\n</span><span style=\"color:gray;font-size:16pt\">General Manager</span>", font, blueBrush, 340, 100f, TextAlignment.Right);
+                text = new PlainText("<span style=\"color:DeepSkyBlue;font-size:16pt\">John Doe\n</span><span style=\"color:gray;font-size:16pt\">General Manager</span>", 
+					font, blueBrush, 335f, 100f, TextAlignment.Right);
 
                 graphics.DrawText(text);
 
                 graphics.FillRectangle(blueBrush, 0, height - 50, width, 50);
 
                 font = graphics.CreateFont("Arial", 12f);
-                text = new PlainText(@"123.4567.890
-info@website.com", font, new SolidBrush(RgbColor.White), 15, 170, TextAlignment.Left);
+                text = new PlainText(@"123.456.7890
+info@website.com", font, new SolidBrush(RgbColor.White), 15f, 170f, TextAlignment.Left);
 
                 graphics.DrawText(text);
 
                 text = new PlainText(@"335 Cloverfield Blvd
-Charlington, NY 10123", font, new SolidBrush(RgbColor.White), 200, 170, TextAlignment.Left);
+Charlington, NY 10123", font, new SolidBrush(RgbColor.White), 200f, 170f, TextAlignment.Left);
 
                 graphics.DrawText(text);
 
+				//Back side
                 writer.AddPage(width, height, RgbColor.DeepSkyBlue);
 
-                graphics.DrawEllipse(new Pen(RgbColor.White, 3f), 45, 72, 55, 55);
+                graphics.DrawEllipse(new Pen(RgbColor.White, 3f), 65f, 72f, 55f, 55f);
 
                 font = graphics.CreateFont("Arial", 36);
 
-                text = new PlainText("Back side", font, new SolidBrush(RgbColor.White), 120, 115f, TextAlignment.Left);
+                text = new PlainText("Back side", font, new SolidBrush(RgbColor.White), 140f, 112f, TextAlignment.Left);
                 graphics.DrawText(text);
             }
         }
