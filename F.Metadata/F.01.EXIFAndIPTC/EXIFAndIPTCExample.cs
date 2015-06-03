@@ -99,8 +99,9 @@ class EXIFAndIPTCExample
 
 	}
 
+
     /// <summary>
-    /// Reads and writes complex Exif tags
+    /// Reads and writes complex EXIF tags
     /// </summary>
     private static void ProcessComplexExifTypes()
     {
