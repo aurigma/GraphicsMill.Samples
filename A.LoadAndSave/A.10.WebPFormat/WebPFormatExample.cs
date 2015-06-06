@@ -70,6 +70,7 @@ class WebPFormatExample
 		}
 	}
 
+
     /// <summary>
     /// Writes image in WebP lossy and lossless format
     /// </summary>
@@ -92,6 +93,7 @@ class WebPFormatExample
         Console.WriteLine("Lossy WebP: {0} b", lossy.Length);
         Console.WriteLine("Lossless WebP: {0} b", lossless.Length);
     }
+
 
     /// <summary>
     /// Converts animated GIF image to WebP format
@@ -119,6 +121,7 @@ class WebPFormatExample
             }
         }
     }
+
 
     /// <summary>
     /// Compares compression of WebP, JPEG and PNG image formats
