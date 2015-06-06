@@ -56,22 +56,23 @@ class PlainAndBoundedTextExample
 		}
 	}
 
+
     /// <summary>
     /// Draws multiline plain text.
     /// </summary>
     private static void DrawMultilinePlainText()
     {
-        using (var bitmap = new Bitmap(400, 250, PixelFormat.Format24bppRgb, new RgbColor(255, 255, 255, 255)))
+        using (var bitmap = new Bitmap(600, 250, PixelFormat.Format24bppRgb, new RgbColor(255, 255, 255, 255)))
         using (var graphics = bitmap.GetAdvancedGraphics())
         {
             var brush = new SolidBrush(new RgbColor(0x41, 0x41, 0x41));
             var dummyText = @"Lorem ipsum dolor sit amet,
 consectetur adipiscing elit. Cras
 elementum quam ac nisi varius gravida.
-Mauris ornare, dolor et scelerisque
-volutpat, enim urna commodo odio,
-consequat fermentum sem arcu sit
-amet nisl. Aliquam tincidunt id neque
+Mauris ornare, dolor et scelerisque volutpat, enim
+urna commodo odio,
+consequat fermentum sem arcu sit amet nisl.
+Aliquam tincidunt id neque
 in gravida. Mauris mollis est
 vulputate suscipit facilisis.";
 
