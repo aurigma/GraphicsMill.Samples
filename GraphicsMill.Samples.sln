@@ -153,6 +153,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K.02. AJAX Vector Objects",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E.09. Color Proofing", "E.ColorManagement\E.09.ColorProofing\E.09. Color Proofing.csproj", "{9FA3B0A9-C50D-4644-9CE4-12691394B011}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C.06. Artistic Frame", "C.Drawing\C.06.ArtisticFrame\C.06. Artistic Frame.csproj", "{BA3B217B-9323-4436-8837-771877833BB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -415,6 +417,10 @@ Global
 		{9FA3B0A9-C50D-4644-9CE4-12691394B011}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FA3B0A9-C50D-4644-9CE4-12691394B011}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FA3B0A9-C50D-4644-9CE4-12691394B011}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA3B217B-9323-4436-8837-771877833BB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA3B217B-9323-4436-8837-771877833BB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA3B217B-9323-4436-8837-771877833BB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA3B217B-9323-4436-8837-771877833BB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -484,5 +490,6 @@ Global
 		{78A676C2-3D3E-4671-BE28-DFB788010AC8} = {2A519D45-8A70-450D-B4E7-96D8556EBA44}
 		{43ECB812-5483-4AF1-BDFE-E297392FFDFD} = {2A519D45-8A70-450D-B4E7-96D8556EBA44}
 		{9FA3B0A9-C50D-4644-9CE4-12691394B011} = {ACDCBCB4-33C6-429E-BE96-491A15594D81}
+		{BA3B217B-9323-4436-8837-771877833BB0} = {58D52E71-AE80-4A68-84DF-3D6E2874492D}
 	EndGlobalSection
 EndGlobal
