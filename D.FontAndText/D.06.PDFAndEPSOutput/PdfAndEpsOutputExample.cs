@@ -26,6 +26,9 @@ class PDFAndEPSOutputExample
         using (var graphics = pdfWriter.GetGraphics())
         using (var bitmap = new Bitmap("../../../../_Input/Chicago.jpg"))
 		{
+            bitmap.DpiX = dpi;
+            bitmap.DpiY = dpi;
+
 			// Front side 3.5"×2.5" size
 
 			pdfWriter.AddPage(unitFactory.Inch(3.5f), unitFactory.Inch(2.0f), dpi, dpi);
