@@ -12,6 +12,7 @@ class ArtisticFrameExample
         DrawArtisticFrame();
     }
 
+
     /// <summary>
     /// Draws artistic frame
     /// </summary>
@@ -24,8 +25,8 @@ class ArtisticFrameExample
             int width = source.Width + padding * 2;
             int height = source.Height + padding * 2;
 
-            var mattPath = "../../../../_Input/matt.png";
-            var framePath = "../../../../_Input/frame.png";
+            var mattPath = "../../../../_Input/Matt.png";
+            var framePath = "../../../../_Input/Frame.png";
 
             using (var result = new Bitmap(width, height, PixelFormat.Format24bppRgb))
             using (var graphics = result.GetAdvancedGraphics())
@@ -51,22 +52,14 @@ class ArtisticFrameExample
                         frame.DpiY = graphics.DpiY;
                         using (var frameRepeated = RepeatBitmap(frame, frame.Width, Math.Max(result.Height, result.Width)))
                         {
-                            frameRepeated.Save("../../../../_Output/frameRepeated0.png");
-                            // ### Right border ###
+							//Right border
                             graphics.DrawImage(frameRepeated, 0, 0);
 
-                            // ### Left border ###
-
+                            //Left border
                             frameRepeated.Transforms.Rotate(180f);
-
-                            frameRepeated.Save("../../../../_Output/frameRepeated.png");
                             graphics.DrawImage(frameRepeated, result.Width - frameRepeated.Width, 0);
 
-                            //Debug
-                            result.Save("../../../../_Output/Result_Step2.png");
-
-                            // ### Top border ###
-
+                            //Top border
                             frameRepeated.Transforms.Rotate(270f);
 
                             var clippingPathTop = new Path();
@@ -76,14 +69,12 @@ class ArtisticFrameExample
                             clippingPathTop.Close();
 
                             graphics.ClippingPaths.Add(clippingPathTop);
+                            
+							graphics.DrawImage(frameRepeated, 0, 0);
+                            
+							graphics.ClippingPaths.Clear();
 
-                            graphics.DrawImage(frameRepeated, 0, 0);
-
-                            graphics.ClippingPaths.Clear();
-
-
-                            // ### Bottom border ###
-
+                            //Bottom border
                             frameRepeated.Transforms.Rotate(180f);
 
                             var clippingPathBottom = new Path();
@@ -126,6 +117,7 @@ class ArtisticFrameExample
             }
         }
     }
+
 
     private static Bitmap RepeatBitmap(Bitmap bitmap, int minWidth, int minHeight)
     {
