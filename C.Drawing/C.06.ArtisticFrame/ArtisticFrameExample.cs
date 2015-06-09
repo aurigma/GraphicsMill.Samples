@@ -42,9 +42,6 @@ class ArtisticFrameExample
                         graphics.DrawImage(mattRepeated, 0, 0);
                     }
 
-                    //Debug
-                    result.Save("../../../../_Output/Result_Step1.png");
-
                     //Draw frame
                     using (var frame = new Bitmap(framePath))
                     {
@@ -89,11 +86,7 @@ class ArtisticFrameExample
 
                             graphics.ClippingPaths.Clear();
 
-                            //Debug
-                            result.Save("../../../../_Output/Result_Step3.png");
-
-
-                            // ### Draw image in the center ###
+                            //Draw image in the center
                             var rect1 = new System.Drawing.RectangleF((result.Width - source.Width) / 2,
                             (result.Height - source.Height) / 2, source.Width, source.Height);
 
