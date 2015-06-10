@@ -106,7 +106,7 @@ class ArtisticFrameExample
                     }
                 }
 
-                result.Save("../../../../_Output/Result_Final.png");
+                result.Save("../../../../_Output/DrawArtisticFrame.png");
             }
         }
     }
