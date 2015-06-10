@@ -196,6 +196,12 @@ Demonstrates drawing inside a region (also known as Clipping Path). Only those p
 
 Combines several images by drawing a bitmap over another one. It respects the transparency and alpha channels.
 
+### C.06. Artistic Frame
+
+*/C.Drawing/C.06.ArtisticFrame/*
+
+Adds an artistic frame to the image.
+
 ## D. Font and Text
 
 */D.FontAndText/*
@@ -293,6 +299,12 @@ Converts an individual color between different color spaces with color managemen
 */E.ColorManagement/E.08.LabColorSpace/*
 
 Demonstrates basics of image processing in Lab color space.
+
+### E.09. Color Proofing
+
+*/E.ColorManagement/E.09.ColorProofing/*
+
+Demonstrates color proofing.
 
 ## F. Metadata
 
