@@ -78,6 +78,10 @@ class WritingEPSAndPDFExample
 	{
 		using (var writer = new PdfWriter("../../../../_Output/WriteRasterAndVectorGraphicsToPdf.pdf"))
 		{
+			//Reduce output file size
+			writer.Compression = CompressionType.Jpeg;
+			writer.Quality = 80;
+
 			writer.AddPage(800, 650, RgbColor.White);
 
 			using (var graphics = writer.GetGraphics())
