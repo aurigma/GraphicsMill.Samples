@@ -83,7 +83,7 @@ class CurvedTextExample
 				{
 					text = new PlainText(layerText, font)
 					{
-                        Position = new System.Drawing.PointF(textFrame.OriginalTextBox.Left, textFrame.OriginalTextBox.Top)
+                        Position = new System.Drawing.PointF(textFrame.Raw.TextBox.Left, textFrame.Raw.TextBox.Top)
 					};
 				}
 				else
