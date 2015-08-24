@@ -125,18 +125,18 @@ class ModifyAndMergeLayersExample
 
 				var font = graphics.CreateFont(textFrame.FontName, textFrame.FontSize);
 
-                if (textFrame.OriginalTextBox.Width == 0 || textFrame.OriginalTextBox.Height == 0)
+                if (textFrame.Raw.TextBox.Width == 0 || textFrame.Raw.TextBox.Height == 0)
 				{
 					text = new PlainText(layerText, font)
 					{
-                        Position = new System.Drawing.PointF(textFrame.OriginalTextBox.Left, textFrame.OriginalTextBox.Top)
+                        Position = new System.Drawing.PointF(textFrame.Raw.TextBox.Left, textFrame.Raw.TextBox.Top)
 					};
 				}
 				else
 				{
 					text = new BoundedText(layerText, font)
 					{
-                        Rectangle = textFrame.OriginalTextBox
+                        Rectangle = textFrame.Raw.TextBox
 					};
 				}
 
