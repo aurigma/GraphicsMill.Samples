@@ -22,12 +22,12 @@ class ConvertingColorValuesExample
 
 	private static void RgbToCmykWithColorManagement()
 	{ 
-		RgbColor rgbColor = new RgbColor(253, 202, 12);
+		RgbColor rgbColor = new RgbColor(253, 202, 12)
+        {
+            Profile = ColorProfile.FromSrgb()
+        };
 
-		CmykColor cmykColor = rgbColor
-			.WithProfile(ColorProfile.FromSrgb())
-			.To<CmykColor>("../../../../_Input/ColorProfiles/ISOcoated_v2_eci.icc", transformationIntent: ColorTransformationIntent.Perceptual)
-			.Color;
+		CmykColor cmykColor = rgbColor.To<CmykColor>("../../../../_Input/ColorProfiles/ISOcoated_v2_eci.icc", transformationIntent: ColorTransformationIntent.Perceptual);
 
 		Console.WriteLine("With color management: {0} to {1}", rgbColor, cmykColor);
 	}
@@ -35,12 +35,12 @@ class ConvertingColorValuesExample
 
 	private static void CmykToRgbWithColorManagement()
 	{
-		CmykColor cmykColor = new CmykColor(20, 42, 211, 40);
+        CmykColor cmykColor = new CmykColor(20, 42, 211, 40)
+        {
+            Profile = new ColorProfile("../../../../_Input/ColorProfiles/ISOcoated_v2_eci.icc")
+        };
 
-		RgbColor rgbColor = cmykColor
-			.WithProfile("../../../../_Input/ColorProfiles/ISOcoated_v2_eci.icc")
-			.To<RgbColor>(ColorProfile.FromSrgb())
-			.Color;
+		RgbColor rgbColor = cmykColor.To<RgbColor>(ColorProfile.FromSrgb());
 
 		Console.WriteLine("With color management: {0} to {1}", cmykColor, rgbColor);
 	}
@@ -48,11 +48,12 @@ class ConvertingColorValuesExample
 
 	private static void RgbToLabWithColorManagement()
 	{
-		RgbColor rgbColor = new RgbColor(223, 210, 30);
-		LabColor labColor = rgbColor
-			.WithProfile(ColorProfile.FromSrgb())
-			.To<LabColor>()
-			.Color;
+        RgbColor rgbColor = new RgbColor(223, 210, 30)
+        {
+            Profile = ColorProfile.FromSrgb()
+        };
+
+		LabColor labColor = rgbColor.To<LabColor>();
 
 		Console.WriteLine("With color management: {0} to {1}", rgbColor, labColor);
 	}
@@ -62,9 +63,7 @@ class ConvertingColorValuesExample
 	{
 		LabColor labColor = new LabColor(179, -20, 29, 255);
 
-		CmykColor cmykColor = labColor
-			.To<CmykColor>("../../../../_Input/ColorProfiles/ISOcoated_v2_eci.icc")
-			.Color;
+		CmykColor cmykColor = labColor.To<CmykColor>("../../../../_Input/ColorProfiles/ISOcoated_v2_eci.icc");
 
 		Console.WriteLine("With color management: {0} to {1}", labColor, cmykColor);
 	}
