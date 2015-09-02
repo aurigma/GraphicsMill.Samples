@@ -12,7 +12,7 @@ class CurvedTextExample
 	static void Main(string[] args)
 	{
 		MergeLayersRaster();
-		MergeLayersPDF();
+		MergeLayersPdf();
 	}
 
 
@@ -37,7 +37,7 @@ class CurvedTextExample
 	}
 
 
-	private static void MergeLayersPDF()
+    private static void MergeLayersPdf()
 	{
 		using (var psdReader = new PsdReader("../../../../_Input/Seal.psd"))
 		{
@@ -76,7 +76,7 @@ class CurvedTextExample
                 {
                     text = new PathText(textFrame.Text, font)
                     {
-                        Path = textFrame.Path
+                        Path = textFrame.Raw.Path
                     };
                 }
 				else if (textFrame.TextBox.Width == 0 || textFrame.TextBox.Height == 0)
@@ -90,7 +90,7 @@ class CurvedTextExample
 				{
 					text = new BoundedText(layerText, font)
 					{
-						Rectangle = textFrame.TextBox
+						Rectangle = textFrame.Raw.TextBox
 					};
 				}
 				
