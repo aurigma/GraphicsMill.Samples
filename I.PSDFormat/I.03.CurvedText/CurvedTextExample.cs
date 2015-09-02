@@ -109,6 +109,13 @@ class CurvedTextExample
 					graphics.DrawImage(frameBitmap, frame.X, frame.Y);
 				}
 			}
+            else if(frame.Type == FrameType.Shape)
+            {
+                var shapeFrame = (PsdShapeFrame)frame;
+
+                var path = shapeFrame.VectorMask;
+                graphics.FillPath(shapeFrame.Brush, path);
+            }
 		}
 	}
 
