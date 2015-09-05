@@ -32,13 +32,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aurigma.GraphicsMill, Version=8.0.17.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=x86">
+    <Reference Include="Aurigma.GraphicsMill, Version=8.0.18.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.8.0.17\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.8.0.18\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
     </Reference>
-    <Reference Include="Aurigma.GraphicsMill.Templates, Version=8.0.17.2, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=x86">
+    <Reference Include="Aurigma.GraphicsMill.Templates, Version=8.0.18.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Templates.x86.8.0.17\lib\net45\Aurigma.GraphicsMill.Templates.dll</HintPath>
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Templates.x86.8.0.18\lib\net45\Aurigma.GraphicsMill.Templates.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
