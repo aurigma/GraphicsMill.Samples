@@ -104,6 +104,12 @@ Extracts TIFF preview from EPS file.
 
 Saves an image and graphics as PDF and EPS file (as bitmap and as vector).
 
+### A.14. TGA Format
+
+*/A.LoadAndSave/A.14.TGAFormat/*
+
+Loads and saves TARGA images.
+
 ## B. Filters and Transforms
 
 */B.FiltersAndTransforms/*
@@ -161,6 +167,12 @@ Adjusts the channel balance of an image in RGB, HSL and Lab color spaces.
 */B.FiltersAndTransforms/B.09.MinimumMaximumMedian/*
 
 Demonstrates how to use morphological filters on images.
+
+### B.10. Bezier
+
+*/B.FiltersAndTransforms/B.10.Bezier/*
+
+Demonstrates how to warp images on an arbitrary 3D surface described with a Bezier function. 
 
 ## C. Drawing
 
@@ -423,6 +435,12 @@ Demonstrates how to parse, modify and merge layers of PSD file.
 */I.PSDFormat/I.03.CurvedText/*
 
 Demonstrates how to parse and merge layers of PSD file with curved text.
+
+### I.04. Render Templates
+
+*/I.PSDFormat/I.04.RenderTemplates/*
+
+Demonstrates how to to use PsdProcessor to load a Adobe Photoshop (PSD) file, modify the content of its text and image layers and merge the result to PDF or JPEG.
 
 ## J. Windows Forms
 
