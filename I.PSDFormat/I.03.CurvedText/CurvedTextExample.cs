@@ -57,7 +57,6 @@ class CurvedTextExample
 
 	private static void MergeLayers(PsdReader psdReader, Graphics graphics, Func<PsdTextFrame, string> getLayerText)
 	{
-		//Merge layers
 		for (int i = 0; i < psdReader.Frames.Count; i++)
 		{
 			var frame = psdReader.Frames[i];
