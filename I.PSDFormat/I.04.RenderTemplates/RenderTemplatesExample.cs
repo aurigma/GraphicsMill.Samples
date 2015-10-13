@@ -92,7 +92,7 @@ class RenderTemplatesExample
 
             using (var invert = new Invert())
             {
-                return PlaceImage(frame, frame + invert, ResizeMode.ImageFill);
+                return frame.ToGraphicsContainer(frame + invert, ResizeMode.ImageFill);
             }
         };
 
@@ -116,7 +116,7 @@ class RenderTemplatesExample
             {
                 background.CloseOnDispose = false;
 
-                return PlaceImage(frame, background, ResizeMode.ImageFill);
+                return frame.ToGraphicsContainer(background, ResizeMode.ImageFill);
             }
         };
 
@@ -170,22 +170,5 @@ class RenderTemplatesExample
         };
 
         psdProcessor.Render(@"../../../../_Input/Seal.psd", @"../../../../_Output/UpdateTextAndShapeColor.pdf");
-    }
-
-
-    private static GraphicsContainer PlaceImage(PsdFrame frame, Pipeline image, ResizeMode fillMode)
-    {
-        //We don't know size of template, but we know maximum size of frame
-        var graphicsContainer = new GraphicsContainer(frame.X + frame.Width, frame.Y + frame.Height, frame.DpiX, frame.DpiY);
-
-        using (var graphics = graphicsContainer.GetGraphics())
-        using (var resize = new Resize(frame.Width, frame.Height, ResizeInterpolationMode.High, fillMode))
-        using (var changeResolution = new ResolutionModifier(frame.DpiX, frame.DpiY))
-        {
-            //Resize doesn't occurs if needless.
-            graphics.DrawImage(image + resize + changeResolution, frame.X, frame.Y);
-        }
-
-        return graphicsContainer;
     }
 }
