@@ -33,17 +33,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aurigma.GraphicsMill, Version=8.0.18.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.8.0.18\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
+    <Reference Include="Aurigma.GraphicsMill, Version=8.0.34.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=x86">
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.8.0.34\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Aurigma.GraphicsMill.Templates, Version=8.0.18.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Templates.x86.8.0.18\lib\net45\Aurigma.GraphicsMill.Templates.dll</HintPath>
+    <Reference Include="Aurigma.GraphicsMill.Templates, Version=8.0.34.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Templates.x86.8.0.34\lib\net40\Aurigma.GraphicsMill.Templates.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.6.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DotNetZip.1.9.6\lib\net20\Ionic.Zip.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
