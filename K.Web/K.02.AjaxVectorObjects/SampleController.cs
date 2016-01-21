@@ -79,12 +79,12 @@ namespace AjaxVectorObjects
                 {
                     try
                     {
-                        var storage = Aurigma.GraphicsMill.AjaxControls.VectorObjects.Configuration.FileStorage;
+                        var cache = Aurigma.GraphicsMill.AjaxControls.VectorObjects.Configuration.FileCache;
                         var imageStream = file.InputStream;
                         var extension = Common.GetImageExtension(imageStream).Substring(1);
-                        var fileStorageId = storage.AddFile(extension, imageStream);
+                        var fileId = cache.AddFile(extension, imageStream);
 
-                        message = fileStorageId;
+                        message = fileId;
                         success = true;
                     }
                     catch (Exception e)
