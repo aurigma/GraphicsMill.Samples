@@ -13,6 +13,9 @@ class PNGFormatExample
 
 		ReadConvertAndWritePng();
 		ReadConvertAndWritePngMemoryFriendly();
+
+		//See the "A.15. PNG NeuQuant" project for a sample which converts a bitmap to 
+		//8-bit PNG with alpha transparency support
 	}
 
 

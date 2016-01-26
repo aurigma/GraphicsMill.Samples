@@ -110,6 +110,12 @@ Saves an image and graphics as PDF and EPS file (as bitmap and as vector).
 
 Loads and saves TARGA images.
 
+### A.15. PNG NeuQuant
+
+*/A.LoadAndSave/A.15.PNGNeuQuant/*
+
+Demonstrates how to reduce 24-bit colors to 8-bit using NeuQuant algorithm and save the result to PNG. Comparing to classic color quantization algorithms, NeuQuant provides much better quality and preserves alpha channel, scarifying the performance.
+
 ## B. Filters and Transforms
 
 */B.FiltersAndTransforms/*
@@ -260,6 +266,18 @@ Generates two vector images and saves them as a PDF or EPS. Includes: drawing an
 
 Demonstrates how to draw a formatted text. It is possible to change font settings for each character.
 
+### D.08. Paragraphs and Lists
+
+*/D.FontAndText/D.08.ParagraphsAndLists/*
+
+Renders formatted text with paragraphs and lists (both ordered and unordered).
+
+### D.09. Text Flow Control
+
+*/D.FontAndText/D.09.TextFlowControl/*
+
+Demonstrates how to have text to flow between several blocks, as well as wrap text blocks around some objects.
+
 ## E. Color Management
 
 */E.ColorManagement/*
@@ -317,6 +335,12 @@ Demonstrates basics of image processing in Lab color space.
 */E.ColorManagement/E.09.ColorProofing/*
 
 Demonstrates color proofing.
+
+### E.10. Device Link Profile
+
+*/E.ColorManagement/E.10.DeviceLinkProfile/*
+
+Converts pixels between two CMYK color spaces using device link color profiles - simplified color management technique which does not require converting colors to a device independent color space.
 
 ## F. Metadata
 
@@ -442,6 +466,12 @@ Demonstrates how to parse and merge layers of PSD file with curved text.
 
 Demonstrates how to to use PsdProcessor to load a Adobe Photoshop (PSD) file, modify the content of its text and image layers and merge the result to PDF or JPEG.
 
+### I.05. Create 3D Preview
+
+*/I.PSDFormat/I.05.Create3DPreview/*
+
+Creates a personalized mug 3D preview. The mug model is extracted from a PSD file (image of a mug as a raster layer and bitmap mapping info as a SmartObject) and the image on a mug is provided by a user.
+
 ## J. Windows Forms
 
 */J.WinForms/*
@@ -522,3 +552,13 @@ An image editor which allows uploading any image to a canvas using AJAX.
 */K.Web/K.02.AjaxVectorObjects/RenderTemplatePostback.aspx*
 
 Loads an Adobe Photoshop file as a template and converts the result to PDF.
+
+## L. Misc
+
+*/L.Misc/*
+
+### L.01. System.Drawing Interoperability
+
+*/L.Misc/L.01.SystemDrawingInteroperability/*
+
+Demonstrates how to integrate Graphics Mill with an application where System.Drawing.Bitmap is intensively used.
