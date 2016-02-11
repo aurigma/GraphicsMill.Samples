@@ -11,6 +11,8 @@ class FontLoadingAndTextMeasuringExample
         ShowCustomFontMetrics();
 
 		LoadFontAndMeasureText();
+
+		DrawTextWithFontFallback();
 	}
 
     /// <summary>
@@ -143,5 +145,35 @@ class FontLoadingAndTextMeasuringExample
 
 		graphics.FillEllipse(new SolidBrush(RgbColor.Red), text.Center.X - 3, text.Center.Y - 3, 6, 6);
     }
+
+
+	/// <summary>
+	/// Draws multilanguage text with font fallback support
+	/// </summary>
+	private static void DrawTextWithFontFallback()
+	{
+		using (var bitmap = new Bitmap(400, 200, PixelFormat.Format24bppRgb, RgbColor.White))
+		using (var graphics = bitmap.GetAdvancedGraphics())
+		{
+			var fontRegistry = new CustomFontRegistry(InstalledFontRegistry.Installed);
+			fontRegistry.Add("../../../../_Input/Fonts/Lobster.ttf");
+
+			fontRegistry.FallbackFonts.Add("Arial Unicode MS");
+
+			graphics.FontRegistry = fontRegistry;
+
+			var dummyText = @"Lorem ipsum dolor sit amet, ex mel latine pertinax. 載自大制節規信兵著旋避漂。";
+
+			var boundedText = new BoundedText(dummyText, graphics.CreateFont("Lobster", 32f),
+				new SolidBrush(RgbColor.Black))
+			{
+				Rectangle = new System.Drawing.RectangleF(20f, 20f, 360f, 360f)
+			};
+
+			graphics.DrawText(boundedText);
+
+			bitmap.Save("../../../../_Output/DrawTextWithFontFallback.png");
+		}
+	}
 }
 
