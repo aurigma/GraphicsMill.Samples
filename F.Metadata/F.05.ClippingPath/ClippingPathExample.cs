@@ -15,12 +15,16 @@ class ClippingPathExample
 		ResizeImageAndClippingPath();
 		ResizeImageAndClippingPathMemoryFriendly();
 		ConvertClippingPathToMask();
+		ModifyClippingPathExplicitlyMemoryFriendly();
+		ModifyClippingPathExplicitly();
 
 		VisualizeClippingPath(@"../../../../_Output/CopyClippingPath.jpg", @"../../../../_Output/CopyClippingPath_Visualized.jpg");
 		VisualizeClippingPath(@"../../../../_Output/CopyClippingPathMemoryFriendly.jpg", @"../../../../_Output/CopyClippingPathMemoryFriendly_Visualized.jpg");
 		VisualizeClippingPath(@"../../../../_Output/CropImageAndPreserveClippingPath.jpg", @"../../../../_Output/CropImageAndPreserveClippingPath_Visualized.jpg");
 		VisualizeClippingPath(@"../../../../_Output/ResizeImageAndClippingPath.jpg", @"../../../../_Output/ResizeImageAndClippingPath_Visualized.jpg");
 		VisualizeClippingPath(@"../../../../_Output/ResizeImageAndClippingPathMemoryFriendly.jpg", @"../../../../_Output/ResizeImageAndClippingPathMemoryFriendly_Visualized.jpg");
+		VisualizeClippingPath(@"../../../../_Output/ModifyClippingPathExplicitlyMemoryFriendly.jpg", @"../../../../_Output/ModifyClippingPathExplicitlyMemoryFriendly_Visualized.jpg");
+		VisualizeClippingPath(@"../../../../_Output/ModifyClippingPathExplicitly.jpg", @"../../../../_Output/ModifyClippingPathExplicitly_Visualized.jpg");
 	}
 
 
@@ -53,7 +57,7 @@ class ClippingPathExample
 				var adobeResources = new AdobeResourceDictionary();
 
 				const int firstPathId = 2000;
-				const int lastPathId = 2998;
+				const int lastPathId = 2997;
 
 				for (int i = firstPathId; i <= lastPathId; i++)
 				{
@@ -143,6 +147,87 @@ class ClippingPathExample
 
 
 	/// <summary>
+	/// Modifies clipping path explicitly using memory-friendly Pipeline API
+	/// </summary>
+	private static void ModifyClippingPathExplicitlyMemoryFriendly()
+	{
+		int width = 1000;
+		int height = 1000;
+
+		using (var reader = new JpegReader(@"../../../../_Input/Apple.jpg"))
+		using (var generator = new ImageGenerator(width, height, reader.PixelFormat, RgbColor.White))
+		using (var combiner = new Combiner(CombineMode.Copy))
+		using (var writer = new JpegWriter(@"../../../../_Output/ModifyClippingPathExplicitlyMemoryFriendly.jpg"))
+		{
+			combiner.TopImage = reader;
+			combiner.X = (width - reader.Width) / 2;
+			combiner.Y = (height - reader.Height) / 2;
+
+			//The clipping path has relatives coordinates (0.0f ... 1.f0). So we need to transform it.
+			var transform = new System.Drawing.Drawing2D.Matrix();
+			transform.Scale((float)reader.Width / (float)width, (float)reader.Height / (float)height);
+			transform.Translate((float)combiner.X / (float)reader.Width, (float)combiner.Y / (float)reader.Height);
+
+			var adobeResources = reader.AdobeResources;
+
+			//2000-2997 Clipping path information 
+			//http://www.adobe.com/devnet-apps/photoshop/fileformatashtml/ 
+			const int firstPathId = 2000;
+			const int lastPathId = 2997;
+
+			//Remove clipping paths
+			foreach (long key in adobeResources.Keys)
+			{
+				if (key >= firstPathId && key <= lastPathId)
+				{
+					adobeResources.Remove(key);
+				}
+			}
+
+			//Transform and save clipping paths
+			for (var i = 0; i < reader.ClippingPaths.Count; i++)
+			{
+				var clippingPath = reader.ClippingPaths[0];
+				clippingPath.ApplyTransform(transform);
+
+				adobeResources.Add(2000 + i, new AdobeResourceBlock(clippingPath.Name, clippingPath.Data));
+			}
+
+			writer.AdobeResources = adobeResources;
+
+			Pipeline.Run(generator + combiner + writer);
+		}
+	}
+
+
+	/// <summary>
+	/// Modifies clipping path explicitly
+	/// </summary>
+	private static void ModifyClippingPathExplicitly()
+	{
+		using (var reader = new JpegReader(@"../../../../_Input/Apple.jpg"))
+		using (var bitmap = reader.Frames[0].GetBitmap())
+		{
+			var crop = new Crop(20, 20, bitmap.Width - 40, bitmap.Height - 40);
+
+			var cropped = crop.Apply(bitmap);
+
+			var clippingPath = reader.ClippingPaths[0];
+			
+			clippingPath.ApplyTransform(crop.GetPathTransformMatrix(bitmap.Width, bitmap.Height).ToGdiPlusMatrix());
+
+			var adobeResources = new AdobeResourceDictionary();
+			adobeResources.Add(2000, new AdobeResourceBlock("Apple", clippingPath.Data));
+
+			var jpegSettings = new JpegSettings();
+			jpegSettings.AdobeResources = adobeResources;
+
+			cropped.Save(@"../../../../_Output/ModifyClippingPathExplicitly.jpg", jpegSettings);
+		}
+	}
+
+
+	/// <summary>
 	/// Visualizes clipping path for demonstration purposes
 	/// </summary>
 	private static void VisualizeClippingPath(string inputPath, string outputPath)
@@ -158,6 +243,5 @@ class ClippingPathExample
 			bitmap.Save(outputPath);
 		}
 	}
-
 }
 
