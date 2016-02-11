@@ -13,7 +13,7 @@ class AnimatedGIFExample
 
 		WriteAnimatedGif();
 		ReadAnimatedGif();
-		ResizesAnimatedGif();
+		ResizeAnimatedGif();
 	}
 
 
@@ -66,49 +66,62 @@ class AnimatedGIFExample
 	/// <summary>
 	/// Resizes animated image in GIF format
 	/// </summary>
-	private static void ResizesAnimatedGif()
+	private static void ResizeAnimatedGif()
 	{
+		const int width = 200;
+		const int height = 50;
+
 		using (var reader = new GifReader("../../../../_Output/WriteAnimatedGif.gif"))
-		using (var writer = new GifWriter("../../../../_Output/ResizesAnimatedGif.gif"))
 		{
-			// Copy general properties of the source file
-			writer.BackgroundIndex = reader.BackgroundEntryIndex;
-			writer.Palette = reader.Palette;
-			writer.PlaybackCount = reader.PlaybackCount;
+			var kX = (float)width / (float)reader.Width;
+			var kY = (float)height / (float)reader.Height;
 
-			for (int i = 0; i < reader.Frames.Count; i++)
+			using (var writer = new GifWriter("../../../../_Output/ResizeAnimatedGif.gif"))
 			{
-				// Read a frame
-				using (var frame = (GifFrame)reader.Frames[i])
-				using (var bitmap = frame.GetBitmap())
+				// Copy general properties of the source file
+				writer.BackgroundIndex = reader.BackgroundEntryIndex;
+				writer.Palette = reader.Palette;
+				writer.PlaybackCount = reader.PlaybackCount;
+
+				for (int i = 0; i < reader.Frames.Count; i++)
 				{
-					// Preserve the original palette
-					ColorPalette palette = bitmap.Palette;
-					// Preserve the original pixel format
-					PixelFormat pixelFormat = bitmap.PixelFormat;
+					// Read a frame
+					using (var frame = (GifFrame)reader.Frames[i])
+					using (var bitmap = frame.GetBitmap())
+					{
+						// Preserve the original palette
+						ColorPalette palette = bitmap.Palette;
+						// Preserve the original pixel format
+						PixelFormat pixelFormat = bitmap.PixelFormat;
 
-					// Convert the bitmap to a non-indexed format
-					bitmap.ColorManagement.Convert(Aurigma.GraphicsMill.ColorSpace.Rgb, true, false);
+						// Convert the bitmap to a non-indexed format
+						bitmap.ColorManagement.Convert(Aurigma.GraphicsMill.ColorSpace.Rgb, true, false);
 
-					// Resize the bitmap in a high quality mode
-					bitmap.Transforms.Resize(frame.Width / 2, frame.Height / 2, ResizeInterpolationMode.High);
+						// Resize the bitmap in a low quality mode to prevent noise
+						var newWidth = Math.Max(1, (int)((float)bitmap.Width * kX));
+						var newHeight = Math.Max(1, (int)((float)bitmap.Height * kY));
+						bitmap.Transforms.Resize(newWidth, newHeight, ResizeInterpolationMode.Low);
 
-					// Return to the indexed format
-					bitmap.Palette = palette;
-					bitmap.ColorManagement.Convert(pixelFormat);
+						// Return to the indexed format
+						bitmap.ColorManagement.Palette = palette;
+						bitmap.ColorManagement.Convert(pixelFormat);
 
-					// Copy frame delay
-					writer.FrameOptions.Delay = frame.Delay;
+						// Copy frame settings
+						writer.FrameOptions.Left = (ushort)((float)frame.Left * kX);
+						writer.FrameOptions.Top = (ushort)((float)frame.Top * kY);
+						writer.FrameOptions.Delay = frame.Delay;
+						writer.FrameOptions.DisposalMethod = frame.DisposalMethod;
 
-					// Add the frame
-					Pipeline.Run(bitmap + writer);
+						// Add the frame
+						Pipeline.Run(bitmap + writer);
+					}
 				}
 			}
 		}
 
         // BUGBUG
         /*
-         * Может тоже в GIF Format перенести?
+         * Should we move it to the A.08 GIF Format project?
          */
 	}
 }
