@@ -7,6 +7,12 @@ using Aurigma.GraphicsMill.AdvancedDrawing;
 
 class ClippingPathExample
 {
+    //2000-2997 Clipping path information 
+    //http://www.adobe.com/devnet-apps/photoshop/fileformatashtml/ 
+    const int FirstPathId = 2000;
+    const int LastPathId = 2997;
+
+
 	static void Main(string[] args)
 	{
 		CopyClippingPath();
@@ -18,13 +24,13 @@ class ClippingPathExample
 		ModifyClippingPathExplicitlyMemoryFriendly();
 		ModifyClippingPathExplicitly();
 
-		VisualizeClippingPath(@"../../../../_Output/CopyClippingPath.jpg", @"../../../../_Output/CopyClippingPath_Visualized.jpg");
-		VisualizeClippingPath(@"../../../../_Output/CopyClippingPathMemoryFriendly.jpg", @"../../../../_Output/CopyClippingPathMemoryFriendly_Visualized.jpg");
-		VisualizeClippingPath(@"../../../../_Output/CropImageAndPreserveClippingPath.jpg", @"../../../../_Output/CropImageAndPreserveClippingPath_Visualized.jpg");
-		VisualizeClippingPath(@"../../../../_Output/ResizeImageAndClippingPath.jpg", @"../../../../_Output/ResizeImageAndClippingPath_Visualized.jpg");
-		VisualizeClippingPath(@"../../../../_Output/ResizeImageAndClippingPathMemoryFriendly.jpg", @"../../../../_Output/ResizeImageAndClippingPathMemoryFriendly_Visualized.jpg");
-		VisualizeClippingPath(@"../../../../_Output/ModifyClippingPathExplicitlyMemoryFriendly.jpg", @"../../../../_Output/ModifyClippingPathExplicitlyMemoryFriendly_Visualized.jpg");
-		VisualizeClippingPath(@"../../../../_Output/ModifyClippingPathExplicitly.jpg", @"../../../../_Output/ModifyClippingPathExplicitly_Visualized.jpg");
+		VisualizeClippingPath("../../../../_Output/CopyClippingPath.jpg", "../../../../_Output/CopyClippingPath_Visualized.jpg");
+		VisualizeClippingPath("../../../../_Output/CopyClippingPathMemoryFriendly.jpg", "../../../../_Output/CopyClippingPathMemoryFriendly_Visualized.jpg");
+		VisualizeClippingPath("../../../../_Output/CropImageAndPreserveClippingPath.jpg", "../../../../_Output/CropImageAndPreserveClippingPath_Visualized.jpg");
+		VisualizeClippingPath("../../../../_Output/ResizeImageAndClippingPath.jpg", "../../../../_Output/ResizeImageAndClippingPath_Visualized.jpg");
+		VisualizeClippingPath("../../../../_Output/ResizeImageAndClippingPathMemoryFriendly.jpg", "../../../../_Output/ResizeImageAndClippingPathMemoryFriendly_Visualized.jpg");
+		VisualizeClippingPath("../../../../_Output/ModifyClippingPathExplicitlyMemoryFriendly.jpg", "../../../../_Output/ModifyClippingPathExplicitlyMemoryFriendly_Visualized.jpg");
+		VisualizeClippingPath("../../../../_Output/ModifyClippingPathExplicitly.jpg", "../../../../_Output/ModifyClippingPathExplicitly_Visualized.jpg");
 	}
 
 
@@ -33,13 +39,13 @@ class ClippingPathExample
 	/// </summary>
 	private static void CopyClippingPath()
 	{
-		using (var reader = new JpegReader(@"../../../../_Input/Apple.jpg"))
+		using (var reader = new JpegReader("../../../../_Input/Apple.jpg"))
 		using (var bitmap = reader.Frames[0].GetBitmap())
 		{
 			var jpegSettings = new JpegSettings();
 			jpegSettings.AdobeResources = reader.AdobeResources;
 
-			bitmap.Save(@"../../../../_Output/CopyClippingPath.jpg", jpegSettings);
+			bitmap.Save("../../../../_Output/CopyClippingPath.jpg", jpegSettings);
 		}	
 	}
 
@@ -49,17 +55,14 @@ class ClippingPathExample
 	/// </summary>
 	private static void CopyClippingPathMemoryFriendly()
 	{
-		using (var reader = new JpegReader(@"../../../../_Input/Apple.jpg"))
-		using (var writer = new JpegWriter(@"../../../../_Output/CopyClippingPathMemoryFriendly.jpg"))
+		using (var reader = new JpegReader("../../../../_Input/Apple.jpg"))
+		using (var writer = new JpegWriter("../../../../_Output/CopyClippingPathMemoryFriendly.jpg"))
 		{
 			if (reader.AdobeResources != null)
 			{
 				var adobeResources = new AdobeResourceDictionary();
 
-				const int firstPathId = 2000;
-				const int lastPathId = 2997;
-
-				for (int i = firstPathId; i <= lastPathId; i++)
+				for (int i = FirstPathId; i <= LastPathId; i++)
 				{
 					if (reader.AdobeResources.Contains(i))
 					{
@@ -79,8 +82,8 @@ class ClippingPathExample
 	/// </summary>
 	private static void CropImageAndPreserveClippingPath()
 	{
-		using (var reader = new JpegReader(@"../../../../_Input/Apple.jpg"))
-		using (var writer = new JpegWriter(@"../../../../_Output/CropImageAndPreserveClippingPath.jpg"))
+		using (var reader = new JpegReader("../../../../_Input/Apple.jpg"))
+		using (var writer = new JpegWriter("../../../../_Output/CropImageAndPreserveClippingPath.jpg"))
 		using (var crop = new Crop(reader.Width / 6, 0, reader.Width / 2, reader.Height / 2))
 		{
 			writer.AdobeResources = reader.AdobeResources;
@@ -95,7 +98,7 @@ class ClippingPathExample
 	/// </summary>
 	private static void ResizeImageAndClippingPath()
 	{
-		using (var reader = new JpegReader(@"../../../../_Input/Apple.jpg"))
+		using (var reader = new JpegReader("../../../../_Input/Apple.jpg"))
 		using (var bitmap = reader.Frames[0].GetBitmap())
 		{
 			var jpegSettings = new Aurigma.GraphicsMill.Codecs.JpegSettings();
@@ -103,7 +106,7 @@ class ClippingPathExample
 
 			bitmap.Transforms.Resize(reader.Width / 2, reader.Height / 2);
 
-			bitmap.Save(@"../../../../_Output/ResizeImageAndClippingPath.jpg", jpegSettings);
+			bitmap.Save("../../../../_Output/ResizeImageAndClippingPath.jpg", jpegSettings);
 		}
 	}
 
@@ -113,8 +116,8 @@ class ClippingPathExample
 	/// </summary>
 	private static void ResizeImageAndClippingPathMemoryFriendly()
 	{
-		using (var reader = new JpegReader(@"../../../../_Input/Apple.jpg"))
-		using (var writer = new JpegWriter(@"../../../../_Output/ResizeImageAndClippingPathMemoryFriendly.jpg"))
+		using (var reader = new JpegReader("../../../../_Input/Apple.jpg"))
+		using (var writer = new JpegWriter("../../../../_Output/ResizeImageAndClippingPathMemoryFriendly.jpg"))
 		using (var resize = new Resize(reader.Width / 2, reader.Height / 2))
 		{
 			writer.AdobeResources = reader.AdobeResources;
@@ -130,7 +133,7 @@ class ClippingPathExample
 	/// </summary>
 	private static void ConvertClippingPathToMask()
 	{
-		using (var reader = new JpegReader(@"../../../../_Input/Apple.jpg"))
+		using (var reader = new JpegReader("../../../../_Input/Apple.jpg"))
 		using (var bitmap = reader.Frames[0].GetBitmap())
 		using (var maskBitmap = new Bitmap(bitmap.Width, bitmap.Height, PixelFormat.Format8bppGrayscale, new GrayscaleColor(0)))
 		using (var graphics = maskBitmap.GetAdvancedGraphics())
@@ -141,7 +144,7 @@ class ClippingPathExample
 
 			bitmap.Channels.SetAlpha(maskBitmap);
 
-			bitmap.Save(@"../../../../_Output/ConvertClippingPathToMask.png");
+			bitmap.Save("../../../../_Output/ConvertClippingPathToMask.png");
 		}
 	}
 
@@ -154,10 +157,10 @@ class ClippingPathExample
 		int width = 1000;
 		int height = 1000;
 
-		using (var reader = new JpegReader(@"../../../../_Input/Apple.jpg"))
+		using (var reader = new JpegReader("../../../../_Input/Apple.jpg"))
 		using (var generator = new ImageGenerator(width, height, reader.PixelFormat, RgbColor.White))
 		using (var combiner = new Combiner(CombineMode.Copy))
-		using (var writer = new JpegWriter(@"../../../../_Output/ModifyClippingPathExplicitlyMemoryFriendly.jpg"))
+		using (var writer = new JpegWriter("../../../../_Output/ModifyClippingPathExplicitlyMemoryFriendly.jpg"))
 		{
 			combiner.TopImage = reader;
 			combiner.X = (width - reader.Width) / 2;
@@ -170,15 +173,10 @@ class ClippingPathExample
 
 			var adobeResources = reader.AdobeResources;
 
-			//2000-2997 Clipping path information 
-			//http://www.adobe.com/devnet-apps/photoshop/fileformatashtml/ 
-			const int firstPathId = 2000;
-			const int lastPathId = 2997;
-
 			//Remove clipping paths
 			foreach (long key in adobeResources.Keys)
 			{
-				if (key >= firstPathId && key <= lastPathId)
+				if (key >= FirstPathId && key <= LastPathId)
 				{
 					adobeResources.Remove(key);
 				}
@@ -187,10 +185,10 @@ class ClippingPathExample
 			//Transform and save clipping paths
 			for (var i = 0; i < reader.ClippingPaths.Count; i++)
 			{
-				var clippingPath = reader.ClippingPaths[0];
+				var clippingPath = reader.ClippingPaths[i];
 				clippingPath.ApplyTransform(transform);
 
-				adobeResources.Add(2000 + i, new AdobeResourceBlock(clippingPath.Name, clippingPath.Data));
+                adobeResources.Add(FirstPathId + i, new AdobeResourceBlock(clippingPath.Name, clippingPath.Data));
 			}
 
 			writer.AdobeResources = adobeResources;
@@ -205,7 +203,7 @@ class ClippingPathExample
 	/// </summary>
 	private static void ModifyClippingPathExplicitly()
 	{
-		using (var reader = new JpegReader(@"../../../../_Input/Apple.jpg"))
+		using (var reader = new JpegReader("../../../../_Input/Apple.jpg"))
 		using (var bitmap = reader.Frames[0].GetBitmap())
 		{
 			var crop = new Crop(20, 20, bitmap.Width - 40, bitmap.Height - 40);
@@ -217,12 +215,12 @@ class ClippingPathExample
 			clippingPath.ApplyTransform(crop.GetPathTransformMatrix(bitmap.Width, bitmap.Height).ToGdiPlusMatrix());
 
 			var adobeResources = new AdobeResourceDictionary();
-			adobeResources.Add(2000, new AdobeResourceBlock("Apple", clippingPath.Data));
+			adobeResources.Add(FirstPathId, new AdobeResourceBlock("Apple", clippingPath.Data));
 
 			var jpegSettings = new JpegSettings();
 			jpegSettings.AdobeResources = adobeResources;
 
-			cropped.Save(@"../../../../_Output/ModifyClippingPathExplicitly.jpg", jpegSettings);
+			cropped.Save("../../../../_Output/ModifyClippingPathExplicitly.jpg", jpegSettings);
 		}
 	}
 
