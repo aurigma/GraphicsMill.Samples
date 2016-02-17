@@ -155,14 +155,15 @@ class FontLoadingAndTextMeasuringExample
 		using (var bitmap = new Bitmap(400, 200, PixelFormat.Format24bppRgb, RgbColor.White))
 		using (var graphics = bitmap.GetAdvancedGraphics())
 		{
-			var fontRegistry = new CustomFontRegistry(InstalledFontRegistry.Installed);
+			var fontRegistry = new CustomFontRegistry();
 			fontRegistry.Add("../../../../_Input/Fonts/Lobster.ttf");
+            fontRegistry.Add("../../../../_Input/Fonts/ARIALUNI.TTF");
 
 			fontRegistry.FallbackFonts.Add("Arial Unicode MS");
 
 			graphics.FontRegistry = fontRegistry;
 
-			var dummyText = @"Lorem ipsum dolor sit amet, ex mel latine pertinax. 載自大制節規信兵著旋避漂。";
+			var dummyText = "Lorem ipsum dolor sit amet, ex mel latine pertinax. 載自大制節規信兵著旋避漂。";
 
 			var boundedText = new BoundedText(dummyText, graphics.CreateFont("Lobster", 32f),
 				new SolidBrush(RgbColor.Black))
