@@ -98,17 +98,14 @@
     <BinariesPath Condition="'$(BinariesPath)'== ''">bin</BinariesPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aurigma.GraphicsMill, Version=8.1.2.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=x86">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.8.1.2\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Aurigma.GraphicsMill">
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.8.1.12\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
     </Reference>
-    <Reference Include="Aurigma.GraphicsMill.WinControls, Version=8.1.2.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=x86">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.WinControls.x86.8.1.2\lib\net40\Aurigma.GraphicsMill.WinControls.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Aurigma.GraphicsMill.WinControls">
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.WinControls.x86.8.1.12\lib\net40\Aurigma.GraphicsMill.WinControls.dll</HintPath>
     </Reference>
-    <Reference Include="Aurigma.GraphicsMill.WinControls.VectorObjects, Version=8.1.2.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=x86">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.WinControls.x86.8.1.2\lib\net40\Aurigma.GraphicsMill.WinControls.VectorObjects.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Aurigma.GraphicsMill.WinControls.VectorObjects">
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.WinControls.x86.8.1.12\lib\net40\Aurigma.GraphicsMill.WinControls.VectorObjects.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="System">

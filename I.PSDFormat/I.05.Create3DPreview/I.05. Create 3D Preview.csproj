@@ -32,13 +32,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aurigma.GraphicsMill, Version=8.1.2.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=x86">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.8.1.2\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Aurigma.GraphicsMill">
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.8.1.12\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
     </Reference>
-    <Reference Include="Aurigma.GraphicsMill.Templates, Version=8.1.2.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Templates.x86.8.1.2\lib\net40\Aurigma.GraphicsMill.Templates.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Aurigma.GraphicsMill.Templates">
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Templates.x86.8.1.12\lib\net40\Aurigma.GraphicsMill.Templates.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip, Version=1.9.8.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
       <HintPath>..\..\packages\DotNetZip.1.9.8\lib\net20\Ionic.Zip.dll</HintPath>

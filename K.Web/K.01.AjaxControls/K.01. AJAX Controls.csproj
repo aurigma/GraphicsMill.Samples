@@ -40,30 +40,25 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aurigma.GraphicsMill, Version=8.1.2.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=x86">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.8.1.2\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Aurigma.GraphicsMill">
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.8.1.12\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
     </Reference>
-    <Reference Include="Aurigma.GraphicsMill.AjaxControls, Version=8.1.2.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Web.x86.8.1.2\lib\net40\Aurigma.GraphicsMill.AjaxControls.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Aurigma.GraphicsMill.AjaxControls">
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Web.x86.8.1.12\lib\net40\Aurigma.GraphicsMill.AjaxControls.dll</HintPath>
     </Reference>
-    <Reference Include="Aurigma.GraphicsMill.AjaxControls.VectorObjects, Version=8.1.2.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Web.x86.8.1.2\lib\net40\Aurigma.GraphicsMill.AjaxControls.VectorObjects.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Aurigma.GraphicsMill.AjaxControls.VectorObjects">
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Web.x86.8.1.12\lib\net40\Aurigma.GraphicsMill.AjaxControls.VectorObjects.dll</HintPath>
     </Reference>
-    <Reference Include="Aurigma.Svg, Version=8.1.2.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Web.x86.8.1.2\lib\net40\Aurigma.Svg.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Aurigma.Svg">
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Web.x86.8.1.12\lib\net40\Aurigma.Svg.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Svg, Version=1.5.1.1, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Web.x86.8.1.2\lib\net40\Svg.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Svg">
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Web.x86.8.1.12\lib\net40\Svg.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -81,9 +76,8 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="tar-cs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Web.x86.8.1.2\lib\net40\tar-cs.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="tar-cs">
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Web.x86.8.1.12\lib\net40\tar-cs.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
