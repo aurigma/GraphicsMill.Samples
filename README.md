@@ -1,4 +1,4 @@
-# Graphics Mill Samples
+﻿# Graphics Mill Samples
 
 Graphics Mill is an advanced image processing library. Here is a brief features highlight:
 
@@ -115,6 +115,12 @@ Loads and saves TARGA images.
 */A.LoadAndSave/A.15.PNGNeuQuant/*
 
 Demonstrates how to reduce 24-bit colors to 8-bit using NeuQuant algorithm and save the result to PNG. Comparing to classic color quantization algorithms, NeuQuant provides much better quality and preserves alpha channel, scarifying the performance.
+
+### A.16. Smart Image Optimization
+
+*/A.LoadAndSave/A.16.SmartImageOptimization/*
+
+Automatically selects a JPEG quality to get a file of a specified size. If it is not enough (or if you are saving to an alternative file format), the algorithm resizes the image until the output file meets the specified size limit.
 
 ## B. Filters and Transforms
 
