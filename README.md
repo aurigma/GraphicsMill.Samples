@@ -434,6 +434,12 @@ Demonstrates how to track a progress event (e.g. to display a progress indicator
 
 Illustrates an example of a complicated pipeline which cuts a very large image into a big amount of smaller tiles at a single run.
 
+### G.08. Vignette
+
+*/G.LargeImages/G.08.Vignette/*
+
+Shows how to generate an elliptic alpha channel and use it to create a vignette in a memory-friendly manner.
+
 ## H. Green Screen Removal
 
 */H.GreenScreenRemoval/*
