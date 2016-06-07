@@ -11,8 +11,8 @@ class VignetteExample
     }
 
     /// <summary>
-	/// Creates a vignette with a specified color
-	/// </summary>
+    /// Creates a vignette with a specified color
+    /// </summary>
     private static void CreateVignette(string srcPath, Color color, string dstPath)
     {
         const float borderScale = 0.05f;
