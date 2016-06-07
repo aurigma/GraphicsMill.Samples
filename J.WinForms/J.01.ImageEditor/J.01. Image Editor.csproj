@@ -99,13 +99,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aurigma.GraphicsMill">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.8.1.30\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.8.1.40\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
     </Reference>
     <Reference Include="Aurigma.GraphicsMill.WinControls">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.WinControls.x86.8.1.30\lib\net40\Aurigma.GraphicsMill.WinControls.dll</HintPath>
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.WinControls.x86.8.1.40\lib\net40\Aurigma.GraphicsMill.WinControls.dll</HintPath>
     </Reference>
     <Reference Include="Aurigma.GraphicsMill.WinControls.VectorObjects">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.WinControls.x86.8.1.30\lib\net40\Aurigma.GraphicsMill.WinControls.VectorObjects.dll</HintPath>
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.WinControls.x86.8.1.40\lib\net40\Aurigma.GraphicsMill.WinControls.VectorObjects.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="System">
