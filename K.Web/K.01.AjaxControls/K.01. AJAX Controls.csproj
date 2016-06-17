@@ -41,23 +41,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aurigma.GraphicsMill">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.8.1.40\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.8.1.43\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
     </Reference>
     <Reference Include="Aurigma.GraphicsMill.AjaxControls">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Web.x86.8.1.40\lib\net40\Aurigma.GraphicsMill.AjaxControls.dll</HintPath>
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Web.x86.8.1.43\lib\net40\Aurigma.GraphicsMill.AjaxControls.dll</HintPath>
     </Reference>
     <Reference Include="Aurigma.GraphicsMill.AjaxControls.VectorObjects">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Web.x86.8.1.40\lib\net40\Aurigma.GraphicsMill.AjaxControls.VectorObjects.dll</HintPath>
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Web.x86.8.1.43\lib\net40\Aurigma.GraphicsMill.AjaxControls.VectorObjects.dll</HintPath>
     </Reference>
     <Reference Include="Aurigma.Svg">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Web.x86.8.1.40\lib\net40\Aurigma.Svg.dll</HintPath>
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Web.x86.8.1.43\lib\net40\Aurigma.Svg.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Svg">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Web.x86.8.1.40\lib\net40\Svg.dll</HintPath>
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Web.x86.8.1.43\lib\net40\Svg.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -76,7 +76,7 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="tar-cs">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Web.x86.8.1.40\lib\net40\tar-cs.dll</HintPath>
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Web.x86.8.1.43\lib\net40\tar-cs.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
