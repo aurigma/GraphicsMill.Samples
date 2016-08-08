@@ -1,8 +1,4 @@
 ﻿using Aurigma.GraphicsMill;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 public class UnitFactory
 {
@@ -56,4 +52,3 @@ public class UnitFactory
         return UnitConverter.ConvertUnitsToPixels(this.Dpi, twip, Unit.Twip);
     }
 }
-

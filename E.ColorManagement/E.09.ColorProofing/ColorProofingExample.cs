@@ -1,12 +1,10 @@
-﻿using System;
-using Aurigma.GraphicsMill;
+﻿using Aurigma.GraphicsMill;
 using Aurigma.GraphicsMill.Codecs;
 using Aurigma.GraphicsMill.Transforms;
 
-
-class ColorProofingExample
+internal class ColorProofingExample
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         ColorProofing();
     }
@@ -29,4 +27,3 @@ class ColorProofingExample
         }
     }
 }
-

@@ -1,40 +1,34 @@
-﻿using System;
-using Aurigma.GraphicsMill;
+﻿using Aurigma.GraphicsMill;
+using Aurigma.GraphicsMill.AdvancedDrawing;
 using Aurigma.GraphicsMill.Codecs;
 using Aurigma.GraphicsMill.Transforms;
-using Aurigma.GraphicsMill.Codecs.Psd;
-using Aurigma.GraphicsMill.AdvancedDrawing;
 
-
-class TgaFormatExample
+internal class TgaFormatExample
 {
-	static void Main(string[] args)
-	{
-  		WriteTga();
-		ReadConvertAndWriteTga();
+    private static void Main(string[] args)
+    {
+        WriteTga();
+        ReadConvertAndWriteTga();
         ConvertClippingPathToTga();
-
-	}
-
+    }
 
     /// <summary>
     /// Reads image in JPEG format and saves to TARGA 24 format
     /// </summary>
-	private static void WriteTga()
-	{
-		using (var bitmap = new Bitmap("../../../../_Input/Chicago.jpg"))
-		{
-			bitmap.Transforms.Flip(FlipType.Vertical);
-			bitmap.Save("../../../../_Output/WriteTga.tga");
-		}
-	}
-
+    private static void WriteTga()
+    {
+        using (var bitmap = new Bitmap("../../../../_Input/Chicago.jpg"))
+        {
+            bitmap.Transforms.Flip(FlipType.Vertical);
+            bitmap.Save("../../../../_Output/WriteTga.tga");
+        }
+    }
 
     /// <summary>
     /// Reads image in TARGA 24 format and saves to TARGA 16 format with RLE compression
     /// </summary>
-	private static void ReadConvertAndWriteTga()
-	{
+    private static void ReadConvertAndWriteTga()
+    {
         using (var reader = new TgaReader("../../../../_Output/WriteTga.tga"))
         using (var writer = new TgaWriter("../../../../_Output/ReadConvertAndWriteTga.tga"))
         {
@@ -43,8 +37,7 @@ class TgaFormatExample
 
             Pipeline.Run(reader + writer);
         }
-	}
-
+    }
 
     /// <summary>
     /// Reads image in JPEG format, converts clipping path to alpha channel and saves to TARGA 32 format
@@ -57,7 +50,6 @@ class TgaFormatExample
         {
             using (var graphics = alpha.GetAdvancedGraphics())
             {
-                
                 var path = reader.ClippingPaths[0];
                 using (var graphicsPath = Path.Create(path, alpha.Width, alpha.Height))
                 {
@@ -72,4 +64,3 @@ class TgaFormatExample
         }
     }
 }
-

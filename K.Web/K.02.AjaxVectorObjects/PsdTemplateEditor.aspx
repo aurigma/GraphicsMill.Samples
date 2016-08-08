@@ -22,7 +22,7 @@
     <script type="text/javascript">
         $(window).load(function () {
             var avo = Aurigma.GraphicsMill.AjaxControls.VectorObjects;
-            var canvas =  $find('<%= CanvasViewer1.ClientID %>').get_canvas();
+            var canvas = $find('<%= CanvasViewer1.ClientID %>').get_canvas();
 
             var textarea = $('#textarea');
 
@@ -64,7 +64,7 @@
                 e.stopPropagation();
             });
         });
-	</script>
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">

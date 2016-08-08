@@ -37,9 +37,9 @@ namespace AjaxVectorObjects
                             {
                                 var canvas = new Canvas();
 
-                                if (!string.IsNullOrWhiteSpace(context.Request.Form["canvas"])) 
+                                if (!string.IsNullOrWhiteSpace(context.Request.Form["canvas"]))
                                     canvas.Data = context.Request.Form["canvas"];
-                                
+
                                 PsdSvgConverter.ParsePsd(reader, canvas: canvas);
 
                                 message = canvas.Data;
@@ -53,7 +53,7 @@ namespace AjaxVectorObjects
                     }
                     catch (Exception e)
                     {
-                       message = e.Message;
+                        message = e.Message;
                     }
                 }
             }

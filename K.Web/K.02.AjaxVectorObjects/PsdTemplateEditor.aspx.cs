@@ -18,7 +18,6 @@ namespace AjaxVectorObjects
                 {
                     PsdSvgConverter.ParsePsd(reader, canvas: CanvasViewer1.Canvas);
                 }
-                
             }
         }
     }

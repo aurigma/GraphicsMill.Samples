@@ -1,32 +1,31 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
-
+using System.IO;
 using Aurigma.GraphicsMill;
 using Aurigma.GraphicsMill.Codecs;
 using Aurigma.GraphicsMill.Transforms;
 
-class SmartImageOptimizationExample
+internal class SmartImageOptimizationExample
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         const int maxAllowedSize = 1024 * 1024;   // 1 MB
 
         const string srcPath = "../../../../_Input/Venice.jpg";
 
-        CallFitDimensionsToFileSize(srcPath, new JpegSettings(85, true, true), 
+        CallFitDimensionsToFileSize(srcPath, new JpegSettings(85, true, true),
             maxAllowedSize, "../../../../_Output/Venice_optimal_size.jpg");
 
-        CallFitDimensionsToFileSize(srcPath, new TiffSettings(CompressionType.Lzw), 
+        CallFitDimensionsToFileSize(srcPath, new TiffSettings(CompressionType.Lzw),
             maxAllowedSize, "../../../../_Output/Venice_optimal_size.tif");
 
-        CallFitDimensionsToFileSize(srcPath, new PngSettings(false), 
+        CallFitDimensionsToFileSize(srcPath, new PngSettings(false),
             maxAllowedSize, "../../../../_Output/Venice_optimal_size.png");
 
-        CallFitDimensionsToFileSize(srcPath, new EpsSettings(CompressionType.Jpeg, 85), 
+        CallFitDimensionsToFileSize(srcPath, new EpsSettings(CompressionType.Jpeg, 85),
             maxAllowedSize, "../../../../_Output/Venice_optimal_size.eps");
 
-        CallFitDimensionsToFileSize(srcPath, new TgaSettings(CompressionType.Rle, true), 
+        CallFitDimensionsToFileSize(srcPath, new TgaSettings(CompressionType.Rle, true),
             maxAllowedSize, "../../../../_Output/Venice_optimal_size.tga");
 
         CallFitJpegQualityToFileSize(srcPath, maxAllowedSize, "../../../../_Output/Venice_optimal_quality.jpg");
@@ -47,10 +46,10 @@ class SmartImageOptimizationExample
 
         FitDimensionsToFileSize(srcPath, settings, maxAllowedSize, dstPath);
 
-        Console.WriteLine("Destination:\n  - Format: {0}\n  - File size: {1}", 
+        Console.WriteLine("Destination:\n  - Format: {0}\n  - File size: {1}",
             settings.Format, FormatFileSize(new FileInfo(dstPath).Length));
-        
-        var unsupportedFormats = new List<FileFormat>{ FileFormat.Eps, FileFormat.Pdf };
+
+        var unsupportedFormats = new List<FileFormat> { FileFormat.Eps, FileFormat.Pdf };
 
         if (!unsupportedFormats.Contains(settings.Format))
         {
@@ -77,7 +76,7 @@ class SmartImageOptimizationExample
 
         using (var reader = ImageReader.Create(dstPath))
             Console.WriteLine("  - Dimensions: {0} x {1}", reader.Width, reader.Height);
-        
+
         Console.WriteLine();
     }
 
@@ -92,7 +91,7 @@ class SmartImageOptimizationExample
             FitDimensionsToFileSize(srcStream, settings, maxAllowedSize, dstStream);
         }
     }
-    
+
     /// <summary>
     /// Incrementally applies a resize transform to fit encoded image into maxAllowedSize limit
     /// </summary>
@@ -107,7 +106,7 @@ class SmartImageOptimizationExample
         {
             while (ms.Length > maxAllowedSize)
             {
-                scale *= (float)(Math.Min(Math.Sqrt((float)maxAllowedSize / (float)ms.Length), minScale));
+                scale *= (float)Math.Min(Math.Sqrt((float)maxAllowedSize / (float)ms.Length), minScale);
 
                 ms.Dispose();
                 ms = ResizeImageToMemoryStream(srcStream, scale, settings);
@@ -118,7 +117,7 @@ class SmartImageOptimizationExample
         finally
         {
             ms.Dispose();
-        } 
+        }
     }
 
     /// <summary>
@@ -134,7 +133,7 @@ class SmartImageOptimizationExample
     }
 
     /// <summary>
-    /// Tries to encode an image with different JPEG qualities and calls 
+    /// Tries to encode an image with different JPEG qualities and calls
     /// FitDimensionsToFileSize if reducing the quality is not enough
     /// </summary>
     public static void FitJpegQualityToFileSize(Stream srcStream, long maxAllowedSize, Stream dstStream)

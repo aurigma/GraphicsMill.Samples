@@ -11,7 +11,7 @@ namespace AjaxVectorObjects {
     
     
     public partial class UploadImageAjax {
-
+        
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -20,7 +20,16 @@ namespace AjaxVectorObjects {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
+        
+        /// <summary>
+        /// CanvasViewer1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Aurigma.GraphicsMill.AjaxControls.CanvasViewer CanvasViewer1;
+        
         /// <summary>
         /// ScriptManager1 control.
         /// </summary>
@@ -29,7 +38,5 @@ namespace AjaxVectorObjects {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager ScriptManager1;
-
-        protected global::Aurigma.GraphicsMill.AjaxControls.CanvasViewer CanvasViewer1;
     }
 }

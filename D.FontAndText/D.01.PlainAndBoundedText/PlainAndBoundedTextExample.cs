@@ -1,28 +1,24 @@
-﻿using System;
-using Aurigma.GraphicsMill;
+﻿using Aurigma.GraphicsMill;
 using Aurigma.GraphicsMill.AdvancedDrawing;
-using Aurigma.GraphicsMill.AdvancedDrawing.Art;
 using Aurigma.GraphicsMill.AdvancedDrawing.Effects;
-using Aurigma.GraphicsMill.Codecs;
 
-
-class PlainAndBoundedTextExample
+internal class PlainAndBoundedTextExample
 {
-	static void Main(string[] args)
-	{
-		DrawPlainAndBoundedText();
+    private static void Main(string[] args)
+    {
+        DrawPlainAndBoundedText();
         DrawMultilinePlainText();
-	}
+    }
 
     /// <summary>
     /// Draws plain and bounded texts with different parameters.
     /// </summary>
-	private static void DrawPlainAndBoundedText() 
-	{
-		using (var bitmap = new Bitmap(400, 250, PixelFormat.Format24bppRgb, new RgbColor(255, 255, 255, 255)))
+    private static void DrawPlainAndBoundedText()
+    {
+        using (var bitmap = new Bitmap(400, 250, PixelFormat.Format24bppRgb, new RgbColor(255, 255, 255, 255)))
         using (var graphics = bitmap.GetAdvancedGraphics())
-		{
-			var brush = new SolidBrush(new RgbColor(0x41, 0x41, 0x41));
+        {
+            var brush = new SolidBrush(new RgbColor(0x41, 0x41, 0x41));
             var dummyText = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras elementum quam ac nisi varius gravida. Mauris ornare, dolor et scelerisque volutpat, enim urna commodo odio, consequat fermentum sem arcu sit amet nisl. Aliquam tincidunt id neque in gravida. Mauris mollis est vulputate suscipit facilisis.";
             var boundedTextRect = new System.Drawing.RectangleF(200f, 20f, 180f, 150f);
 
@@ -39,23 +35,22 @@ class PlainAndBoundedTextExample
                     Effect = new Glow(new RgbColor(0x66, 0xaf, 0xe9), 5)
                 },
                 new BoundedText(dummyText, graphics.CreateFont("Verdana", 14f), brush)
-			    {
-				    Alignment = TextAlignment.Center,
-				    Rectangle = boundedTextRect
-			    }
+                {
+                    Alignment = TextAlignment.Center,
+                    Rectangle = boundedTextRect
+                }
             };
 
-			foreach (var text in texts)
-			{
-				graphics.DrawText(text);
-			}
+            foreach (var text in texts)
+            {
+                graphics.DrawText(text);
+            }
 
-			graphics.DrawRectangle(new Pen(new RgbColor(0x4e, 0xb5, 0xe6)), boundedTextRect);
+            graphics.DrawRectangle(new Pen(new RgbColor(0x4e, 0xb5, 0xe6)), boundedTextRect);
 
-			bitmap.Save("../../../../_Output/PlainAndBoundedText.png");
-		}
-	}
-
+            bitmap.Save("../../../../_Output/PlainAndBoundedText.png");
+        }
+    }
 
     /// <summary>
     /// Draws multiline plain text.

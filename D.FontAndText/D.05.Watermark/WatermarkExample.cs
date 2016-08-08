@@ -1,21 +1,17 @@
 ﻿using System;
 using Aurigma.GraphicsMill;
 using Aurigma.GraphicsMill.AdvancedDrawing;
-using Aurigma.GraphicsMill.AdvancedDrawing.Art;
-using Aurigma.GraphicsMill.Codecs;
-
-using RectangleF = System.Drawing.RectangleF;
-using PointF = System.Drawing.PointF;
 using Matrix = System.Drawing.Drawing2D.Matrix;
+using PointF = System.Drawing.PointF;
+using RectangleF = System.Drawing.RectangleF;
 
-
-class WatermarkExample
+internal class WatermarkExample
 {
-	static void Main(string[] args)
-	{
-         DrawRotatedTextWatermark();
-         DrawMultilineWatermark();
-	}
+    private static void Main(string[] args)
+    {
+        DrawRotatedTextWatermark();
+        DrawMultilineWatermark();
+    }
 
     /// <summary>
     /// Simple rotated text watermark
@@ -89,7 +85,6 @@ class WatermarkExample
 
             bitmap.Save("../../../../_Output/VeniceMultilineWatermark.jpg");
         }
-
     }
 
     /// <summary>
@@ -105,7 +100,7 @@ class WatermarkExample
         {
             path.DrawRectangle(rect);
             path.ApplyTransform(t);
-            
+
             return path.GetBounds();
         }
     }
@@ -114,7 +109,7 @@ class WatermarkExample
     /// Tiles path text inside a rectangle
     /// </summary>
     static private Path TilePathText(Path pathText, RectangleF rect, float offset)
-    {        
+    {
         var textBounds = pathText.GetBounds();
         pathText.ApplyTransform(CreateTranslateMatrix(rect.X - textBounds.Left, rect.Y - textBounds.Top));
 

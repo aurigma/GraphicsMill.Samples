@@ -14,7 +14,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Button ID="Button1" OnClick="Button1_Click" Text="Render" runat="server"/>
+            <asp:Button ID="Button1" OnClick="Button1_Click" Text="Render" runat="server" />
             <asp:HyperLink ID="Link1" runat="server" Visible="false" EnableViewState="false" />
             <aur:CanvasViewer ID="CanvasViewer1" ScrollBarsStyle="Auto" ViewportAlignment="CenterCenter" Width="600" Height="400" runat="server" />
             <asp:ScriptManager ID="ScriptManager1" runat="server" />

@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PhotoCropDemo.aspx.cs" Inherits="AjaxControls.PhotoCropDemo" %>
+
 <%@ Register Assembly="Aurigma.GraphicsMill.AjaxControls" Namespace="Aurigma.GraphicsMill.AjaxControls" TagPrefix="aur" %>
 
 <!DOCTYPE html>
@@ -69,20 +70,22 @@
         <div style="padding-top: 10px">
             Ratio:
             <select id="selectFormat">
-		        <option value="6,4" selected>4 x 6"</option>
-		        <option value="7,5">5 x 7"</option>
-		        <option value="10,8">8 x 10"</option>
+                <option value="6,4" selected>4 x 6"</option>
+                <option value="7,5">5 x 7"</option>
+                <option value="10,8">8 x 10"</option>
             </select>
-            <label for="portraitRadio"><input id="portraitRadio" type="radio" name="Orientation">&nbsp;Portrait</label>
-            <label for="landscapeRadio"><input id="landscapeRadio" type="radio" name="Orientation" checked>&nbsp;Landscape</label>&nbsp;
-            <asp:Button ID="Button1" OnClick="Button1_Click" Text="Crop" runat="server"/>
+            <label for="portraitRadio">
+                <input id="portraitRadio" type="radio" name="Orientation">&nbsp;Portrait</label>
+            <label for="landscapeRadio">
+                <input id="landscapeRadio" type="radio" name="Orientation" checked>&nbsp;Landscape</label>&nbsp;
+            <asp:Button ID="Button1" OnClick="Button1_Click" Text="Crop" runat="server" />
         </div>
 
-         <div style="padding-top: 10px">
+        <div style="padding-top: 10px">
             <aur:BitmapViewer ID="BitmapViewer1" ScrollBarsStyle="Auto" ViewportAlignment="CenterCenter" ZoomMode="BestFit" Width="600" Height="400" Rubberband="RectangleRubberband1" runat="server" />
             <aur:RectangleRubberband ID="RectangleRubberband1" ResizeMode="Proportional" GripsVisible="True" MaskVisible="True" runat="server"></aur:RectangleRubberband>
             <asp:ScriptManager ID="ScriptManager1" runat="server" />
-         </div>
+        </div>
     </form>
 </body>
 </html>

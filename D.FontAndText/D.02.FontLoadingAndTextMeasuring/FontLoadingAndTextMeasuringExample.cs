@@ -2,18 +2,17 @@
 using Aurigma.GraphicsMill;
 using Aurigma.GraphicsMill.AdvancedDrawing;
 using Aurigma.GraphicsMill.AdvancedDrawing.Art;
-using Aurigma.GraphicsMill.Codecs;
 
-class FontLoadingAndTextMeasuringExample
+internal class FontLoadingAndTextMeasuringExample
 {
-	static void Main(string[] args)
-	{
+    private static void Main(string[] args)
+    {
         ShowCustomFontMetrics();
 
-		LoadFontAndMeasureText();
+        LoadFontAndMeasureText();
 
-		DrawTextWithFontFallback();
-	}
+        DrawTextWithFontFallback();
+    }
 
     /// <summary>
     /// Adds font to FontRegistry from file and shows its metrics
@@ -25,10 +24,10 @@ class FontLoadingAndTextMeasuringExample
             var fontSize = 30f;
             var dpi = 150f;
 
-			//Load custom OpenType font
-			var postscriptName = fontRegistry.Add(@"../../../../_Input/Fonts/Amburegul.otf");
+            // Load custom OpenType font
+            var postscriptName = fontRegistry.Add(@"../../../../_Input/Fonts/Amburegul.otf");
 
-			var font = fontRegistry.CreateFont(postscriptName, fontSize, dpi, dpi);
+            var font = fontRegistry.CreateFont(postscriptName, fontSize, dpi, dpi);
 
             // Font metrics
             Console.WriteLine("Font: {0} {1}", font.Family, font.Style);
@@ -46,47 +45,47 @@ class FontLoadingAndTextMeasuringExample
     /// <summary>
     /// Adds font to FontRegistry from file and shows its metrics
     /// </summary>
-	private static void LoadFontAndMeasureText()
-	{
-		using (var bitmap = new Bitmap(600, 250, PixelFormat.Format24bppRgb, new RgbColor(255, 255, 255, 255)))
+    private static void LoadFontAndMeasureText()
+    {
+        using (var bitmap = new Bitmap(600, 250, PixelFormat.Format24bppRgb, new RgbColor(255, 255, 255, 255)))
         using (var graphics = bitmap.GetAdvancedGraphics())
         using (var fontRegistry = new CustomFontRegistry())
-		{			
-			var fontSize = 60f;
+        {
+            var fontSize = 60f;
 
-			// Load custom TrueType font
-			fontRegistry.Add(@"../../../../_Input/Fonts/Lobster.ttf");
-			
+            // Load custom TrueType font
+            fontRegistry.Add(@"../../../../_Input/Fonts/Lobster.ttf");
+
             graphics.FontRegistry = fontRegistry;
 
-			var font = graphics.CreateFont("lobster", fontSize);
+            var font = graphics.CreateFont("lobster", fontSize);
 
-			// Plain text metrics
+            // Plain text metrics
 
             var plainText = new PlainText("plain text", font);
             plainText.Position = new System.Drawing.PointF(5, plainText.GetBlackBox().Height + 10);
-			
+
             ShowTextPosition(plainText.String, plainText.Position, plainText.GetBlackBox());
 
-            DrawPlainTextWithMarkup(plainText, graphics);				
+            DrawPlainTextWithMarkup(plainText, graphics);
 
-			// Round text metrics
+            // Round text metrics
 
             var roundText = new RoundText("Art round text", font, new System.Drawing.PointF(50, 50))
             {
                 Bend = 0.9f
             };
 
-			roundText.Center = new System.Drawing.PointF(graphics.Width - roundText.GetBlackBox().Width / 2 - 15,
-				graphics.Height - roundText.GetBlackBox().Height / 2 - 10);
+            roundText.Center = new System.Drawing.PointF(graphics.Width - roundText.GetBlackBox().Width / 2 - 15,
+                graphics.Height - roundText.GetBlackBox().Height / 2 - 10);
 
             ShowTextPosition(roundText.String, roundText.Center, roundText.GetBlackBox());
 
             DrawArtTextWithMarkup(roundText, graphics);
 
             bitmap.Save("../../../../_Output/FontLoadingAndTextMeasuring.png");
-		}
-	}
+        }
+    }
 
     /// <summary>
     /// Writes to console information about text placement
@@ -117,19 +116,19 @@ class FontLoadingAndTextMeasuringExample
         graphics.DrawRectangle(new Pen(RgbColor.Gray, 1f), text.GetBlackBox());
 
         var stringMeasure = text.Font.MeasureString("plain text");
-        
+
         // GetBlackBox is cached inside, so there is almost no penalty
 
         graphics.DrawLine(new Pen(RgbColor.Blue, 1f), text.GetBlackBox().X, text.Position.Y - stringMeasure.Ascender,
             text.GetBlackBox().X + text.GetBlackBox().Width, text.Position.Y - stringMeasure.Ascender);
-        
+
         graphics.DrawLine(new Pen(RgbColor.Green, 1f), text.GetBlackBox().X, text.Position.Y - stringMeasure.Descender,
             text.GetBlackBox().X + text.GetBlackBox().Width, text.Position.Y - stringMeasure.Descender);
-        
+
         graphics.DrawLine(new Pen(RgbColor.IndianRed, 1f), text.GetBlackBox().X, text.Position.Y,
             text.GetBlackBox().X + text.GetBlackBox().Width, text.Position.Y);
-        
-        graphics.FillEllipse(new SolidBrush(RgbColor.Red), text.Position.X - 3, text.Position.Y - 3, 6, 6);        
+
+        graphics.FillEllipse(new SolidBrush(RgbColor.Red), text.Position.X - 3, text.Position.Y - 3, 6, 6);
     }
 
     /// <summary>
@@ -139,42 +138,40 @@ class FontLoadingAndTextMeasuringExample
     {
         // Draw round text, its black box and center point
 
-		graphics.DrawText(text);
+        graphics.DrawText(text);
 
         graphics.DrawRectangle(new Pen(RgbColor.Gray, 1f), text.GetBlackBox());
 
-		graphics.FillEllipse(new SolidBrush(RgbColor.Red), text.Center.X - 3, text.Center.Y - 3, 6, 6);
+        graphics.FillEllipse(new SolidBrush(RgbColor.Red), text.Center.X - 3, text.Center.Y - 3, 6, 6);
     }
 
-
-	/// <summary>
-	/// Draws multilanguage text with font fallback support
-	/// </summary>
-	private static void DrawTextWithFontFallback()
-	{
-		using (var bitmap = new Bitmap(400, 200, PixelFormat.Format24bppRgb, RgbColor.White))
-		using (var graphics = bitmap.GetAdvancedGraphics())
-		{
-			var fontRegistry = new CustomFontRegistry();
-			fontRegistry.Add("../../../../_Input/Fonts/Lobster.ttf");
+    /// <summary>
+    /// Draws multilanguage text with font fallback support
+    /// </summary>
+    private static void DrawTextWithFontFallback()
+    {
+        using (var bitmap = new Bitmap(400, 200, PixelFormat.Format24bppRgb, RgbColor.White))
+        using (var graphics = bitmap.GetAdvancedGraphics())
+        {
+            var fontRegistry = new CustomFontRegistry();
+            fontRegistry.Add("../../../../_Input/Fonts/Lobster.ttf");
             fontRegistry.Add("../../../../_Input/Fonts/ARIALUNI.TTF");
 
-			fontRegistry.FallbackFonts.Add("Arial Unicode MS");
+            fontRegistry.FallbackFonts.Add("Arial Unicode MS");
 
-			graphics.FontRegistry = fontRegistry;
+            graphics.FontRegistry = fontRegistry;
 
-			var dummyText = "Lorem ipsum dolor sit amet, ex mel latine pertinax. 載自大制節規信兵著旋避漂。";
+            var dummyText = "Lorem ipsum dolor sit amet, ex mel latine pertinax. 載自大制節規信兵著旋避漂。";
 
-			var boundedText = new BoundedText(dummyText, graphics.CreateFont("Lobster", 32f),
-				new SolidBrush(RgbColor.Black))
-			{
-				Rectangle = new System.Drawing.RectangleF(20f, 20f, 360f, 360f)
-			};
+            var boundedText = new BoundedText(dummyText, graphics.CreateFont("Lobster", 32f),
+                new SolidBrush(RgbColor.Black))
+            {
+                Rectangle = new System.Drawing.RectangleF(20f, 20f, 360f, 360f)
+            };
 
-			graphics.DrawText(boundedText);
+            graphics.DrawText(boundedText);
 
-			bitmap.Save("../../../../_Output/DrawTextWithFontFallback.png");
-		}
-	}
+            bitmap.Save("../../../../_Output/DrawTextWithFontFallback.png");
+        }
+    }
 }
-

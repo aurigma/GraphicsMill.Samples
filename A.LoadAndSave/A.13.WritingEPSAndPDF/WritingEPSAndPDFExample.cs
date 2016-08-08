@@ -1,13 +1,10 @@
-﻿using System;
-using Aurigma.GraphicsMill;
-using Aurigma.GraphicsMill.Codecs;
-using Aurigma.GraphicsMill.Transforms;
+﻿using Aurigma.GraphicsMill;
 using Aurigma.GraphicsMill.AdvancedDrawing;
+using Aurigma.GraphicsMill.Codecs;
 
-
-class WritingEPSAndPDFExample
+internal class WritingEPSAndPDFExample
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         WriteBitmapToPdf();
         WriteBitmapToPdfMemoryFriendly();
@@ -20,117 +17,109 @@ class WritingEPSAndPDFExample
         CreateBusinessCard();
     }
 
+    /// <summary>
+    /// Saves bitmap to PDF format
+    /// </summary>
+    private static void WriteBitmapToPdf()
+    {
+        using (var bitmap = new Bitmap("../../../../_Input/Chicago.jpg"))
+        {
+            bitmap.Save("../../../../_Output/WritePdf.pdf");
+        }
+    }
 
-	/// <summary>
-	/// Saves bitmap to PDF format
-	/// </summary>
-	private static void WriteBitmapToPdf()
-	{
-		using (var bitmap = new Bitmap("../../../../_Input/Chicago.jpg"))
-		{
-			bitmap.Save("../../../../_Output/WritePdf.pdf");
-		}
-	}
+    /// <summary>
+    /// Saved bitmap to PDF format using memory-friendly Pipeline API
+    /// </summary>
+    private static void WriteBitmapToPdfMemoryFriendly()
+    {
+        using (var reader = new JpegReader("../../../../_Input/Chicago.jpg"))
+        using (var writer = new PdfWriter("../../../../_Output/WritePdfMemoryFriendly.pdf"))
+        {
+            Pipeline.Run(reader + writer);
+        }
+    }
 
+    /// <summary>
+    /// Saves bitmap to EPS format
+    /// </summary>
+    private static void WriteBitmapToEps()
+    {
+        using (var bitmap = new Bitmap("../../../../_Input/Chicago.jpg"))
+        {
+            bitmap.Save("../../../../_Output/WriteEps.eps");
+        }
+    }
 
-	/// <summary>
-	/// Saved bitmap to PDF format using memory-friendly Pipeline API
-	/// </summary>
-	private static void WriteBitmapToPdfMemoryFriendly()
-	{
-		using (var reader = new JpegReader("../../../../_Input/Chicago.jpg"))
-		using (var writer = new PdfWriter("../../../../_Output/WritePdfMemoryFriendly.pdf"))
-		{
-			Pipeline.Run(reader + writer);
-		}
-	}
+    /// <summary>
+    /// Saved bitmap to EPS format using memory-friendly Pipeline API
+    /// </summary>
+    private static void WriteBitmapToEpsMemoryFriendly()
+    {
+        using (var reader = new JpegReader("../../../../_Input/Chicago.jpg"))
+        using (var writer = new EpsWriter("../../../../_Output/WriteEpsMemoryFriendly.eps"))
+        {
+            Pipeline.Run(reader + writer);
+        }
+    }
 
+    /// <summary>
+    /// Saves raster and vector graphics to PDF format
+    /// </summary>
+    private static void WriteRasterAndVectorGraphicsToPdf()
+    {
+        using (var writer = new PdfWriter("../../../../_Output/WriteRasterAndVectorGraphicsToPdf.pdf"))
+        {
+            // Reduce output file size
+            writer.Compression = CompressionType.Jpeg;
+            writer.Quality = 80;
 
-	/// <summary>
-	/// Saves bitmap to EPS format
-	/// </summary>
-	private static void WriteBitmapToEps()
-	{
-		using (var bitmap = new Bitmap("../../../../_Input/Chicago.jpg"))
-		{
-			bitmap.Save("../../../../_Output/WriteEps.eps");
-		}
-	}
+            writer.AddPage(800, 650, RgbColor.White);
 
+            using (var graphics = writer.GetGraphics())
+            {
+                // Draw bitmap
+                using (var bitmap = new Bitmap("../../../../_Input/Chicago.jpg"))
+                {
+                    graphics.DrawImage(bitmap, 100f, 100f);
+                }
 
-	/// <summary>
-	/// Saved bitmap to EPS format using memory-friendly Pipeline API
-	/// </summary>
-	private static void WriteBitmapToEpsMemoryFriendly()
-	{
-		using (var reader = new JpegReader("../../../../_Input/Chicago.jpg"))
-		using (var writer = new EpsWriter("../../../../_Output/WriteEpsMemoryFriendly.eps"))
-		{
-			Pipeline.Run(reader + writer);
-		}
-	}
+                // Draw rectangle
+                graphics.DrawRectangle(new Pen(RgbColor.Gray, 4f), 50f, 50f, 700f, 550f);
 
+                // Draw text
+                var font = graphics.CreateFont("Arial", 56f);
+                var text = new PlainText("Confidential", font, new SolidBrush(RgbColor.OrangeRed),
+                    400f, 340f, TextAlignment.Center);
+                graphics.DrawText(text);
+            }
+        }
+    }
 
-	/// <summary>
-	/// Saves raster and vector graphics to PDF format
-	/// </summary>
-	private static void WriteRasterAndVectorGraphicsToPdf()
-	{
-		using (var writer = new PdfWriter("../../../../_Output/WriteRasterAndVectorGraphicsToPdf.pdf"))
-		{
-			//Reduce output file size
-			writer.Compression = CompressionType.Jpeg;
-			writer.Quality = 80;
+    /// <summary>
+    /// Saves raster and vector graphics to EPS format
+    /// </summary>
+    private static void WriteRasterAndVectorGraphicsToEps()
+    {
+        using (var writer = new EpsWriter("../../../../_Output/WriteRasterAndVectorGraphicsToPdf.eps", 800, 650))
+        using (var graphics = writer.GetGraphics())
+        {
+            // Draw bitmap
+            using (var bitmap = new Bitmap("../../../../_Input/Chicago.jpg"))
+            {
+                graphics.DrawImage(bitmap, 100f, 100f);
+            }
 
-			writer.AddPage(800, 650, RgbColor.White);
+            // Draw rectangle
+            graphics.DrawRectangle(new Pen(RgbColor.Gray, 4f), 50f, 50f, 700f, 550f);
 
-			using (var graphics = writer.GetGraphics())
-			{
-				//Draw bitmap
-				using (var bitmap = new Bitmap("../../../../_Input/Chicago.jpg"))
-				{
-					graphics.DrawImage(bitmap, 100f, 100f);
-				}
-
-				//Draw rectangle
-				graphics.DrawRectangle(new Pen(RgbColor.Gray, 4f), 50f, 50f, 700f, 550f);
-
-				//Draw text
-				var font = graphics.CreateFont("Arial", 56f);
-				var text = new PlainText("Confidential", font, new SolidBrush(RgbColor.OrangeRed),
-					400f, 340f, TextAlignment.Center);
-				graphics.DrawText(text);
-			}
-		}
-	}
-
-
-	/// <summary>
-	/// Saves raster and vector graphics to EPS format
-	/// </summary>
-	private static void WriteRasterAndVectorGraphicsToEps()
-	{
-		using (var writer = new EpsWriter("../../../../_Output/WriteRasterAndVectorGraphicsToPdf.eps", 800, 650))
-		using (var graphics = writer.GetGraphics())
-		{
-			//Draw bitmap
-			using (var bitmap = new Bitmap("../../../../_Input/Chicago.jpg"))
-			{
-				graphics.DrawImage(bitmap, 100f, 100f);
-			}
-
-			//Draw rectangle
-			graphics.DrawRectangle(new Pen(RgbColor.Gray, 4f), 50f, 50f, 700f, 550f);
-
-			//Draw text
-			var font = graphics.CreateFont("Arial", 56f);
-			var text = new PlainText("Confidential", font, new SolidBrush(RgbColor.OrangeRed),
-				400f, 340f, TextAlignment.Center);
-			graphics.DrawText(text);
-		}
-
-	}
-
+            // Draw text
+            var font = graphics.CreateFont("Arial", 56f);
+            var text = new PlainText("Confidential", font, new SolidBrush(RgbColor.OrangeRed),
+                400f, 340f, TextAlignment.Center);
+            graphics.DrawText(text);
+        }
+    }
 
     /// <summary>
     /// Creates business card in PDF format
@@ -144,16 +133,15 @@ class WritingEPSAndPDFExample
 
             using (var graphics = writer.GetGraphics())
             {
-				//Front side
-				writer.AddPage(width, height, RgbColor.White);
+                // Front side
+                writer.AddPage(width, height, RgbColor.White);
 
                 var blueBrush = new SolidBrush(RgbColor.DeepSkyBlue);
 
-                //Draw circle
+                // Draw circle
                 graphics.DrawEllipse(new Pen(RgbColor.DeepSkyBlue, 2f), 15f, 20f, 30f, 30f);
 
-
-                //Draw text
+                // Draw text
                 var font = graphics.CreateFont("Arial", 18f);
                 var text = new PlainText("Front side", font, new SolidBrush(RgbColor.Gray),
                     95f, 41f, TextAlignment.Center);
@@ -178,7 +166,7 @@ Charlington, NY 10123", font, new SolidBrush(RgbColor.White), 200f, 170f, TextAl
 
                 graphics.DrawText(text);
 
-				//Back side
+                // Back side
                 writer.AddPage(width, height, RgbColor.DeepSkyBlue);
 
                 graphics.DrawEllipse(new Pen(RgbColor.White, 3f), 65f, 72f, 55f, 55f);
@@ -191,4 +179,3 @@ Charlington, NY 10123", font, new SolidBrush(RgbColor.White), 200f, 170f, TextAl
         }
     }
 }
-

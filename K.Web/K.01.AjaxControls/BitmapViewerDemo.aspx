@@ -34,8 +34,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div style="padding-top: 10px">
-        Zoom: 
+        <div style="padding-top: 10px">
+            Zoom:
         <select id="selectZoom">
             <option value="bestFit">Best Fit</option>
             <option value="fitToWidth">Fit To Width</option>
@@ -50,12 +50,12 @@
             <option value="300">300%</option>
             <option value="400">400%</option>
         </select>
-     </div>
-     <div style="padding-top: 10px">
-        <aur:BitmapViewer ID="BitmapViewer1" ScrollBarsStyle="Auto" ViewportAlignment="CenterCenter" Zoom="0.25" Width="600" Height="400" runat="server" />
-        <aur:PanNavigator ID="PanNavigator1" runat="server"></aur:PanNavigator>
-        <asp:ScriptManager ID="ScriptManager1" runat="server" />
-    </div>
+        </div>
+        <div style="padding-top: 10px">
+            <aur:BitmapViewer ID="BitmapViewer1" ScrollBarsStyle="Auto" ViewportAlignment="CenterCenter" Zoom="0.25" Width="600" Height="400" runat="server" />
+            <aur:PanNavigator ID="PanNavigator1" runat="server"></aur:PanNavigator>
+            <asp:ScriptManager ID="ScriptManager1" runat="server" />
+        </div>
     </form>
 </body>
 </html>

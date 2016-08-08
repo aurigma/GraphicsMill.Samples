@@ -1,19 +1,16 @@
-﻿using System;
-using Aurigma.GraphicsMill;
+﻿using Aurigma.GraphicsMill;
 using Aurigma.GraphicsMill.Codecs;
 using Aurigma.GraphicsMill.Transforms;
 
-
-class BezierExample
+internal class BezierExample
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         Bezier();
         BezierMemoryFriendly();
     }
 
-
-    static System.Drawing.PointF[] ControlPoints = new []
+    private static System.Drawing.PointF[] ControlPoints = new[]
     {
         new System.Drawing.PointF(0.0f, 0.0f),
         new System.Drawing.PointF(200.0f, 164.760284f),
@@ -33,7 +30,6 @@ class BezierExample
         new System.Drawing.PointF(600.0f, 450.0f)
     };
 
-
     /// <summary>
     /// Warps image
     /// </summary>
@@ -45,7 +41,6 @@ class BezierExample
             bitmap.Save("../../../../_Output/Bezier.jpg");
         }
     }
-
 
     /// <summary>
     /// Warps image using memory-friendly Pipeline API
@@ -60,4 +55,3 @@ class BezierExample
         }
     }
 }
-

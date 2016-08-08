@@ -35,7 +35,7 @@
                 if (files.length > 0) {
                     uploadButton.val("Uploading...");
                     uploadButton.attr('disabled', 'disabled');
-                    
+
                     data.append('template', files[0]);
                     data.append('canvas', canvas.get_data());
 
@@ -66,10 +66,11 @@
 </head>
 <body>
 
-   <div class="form-group">
-       <label for="template">Select template: </label><input id="template" type="file" accept=".psd" />
-       <input id="upload" type="button" value="Upload" class="btn btn-default" disabled="disabled" />
-   </div>
+    <div class="form-group">
+        <label for="template">Select template: </label>
+        <input id="template" type="file" accept=".psd" />
+        <input id="upload" type="button" value="Upload" class="btn btn-default" disabled="disabled" />
+    </div>
 
     <form id="form1" runat="server">
         <div>
@@ -77,6 +78,5 @@
             <asp:ScriptManager ID="ScriptManager1" runat="server" />
         </div>
     </form>
-
 </body>
 </html>

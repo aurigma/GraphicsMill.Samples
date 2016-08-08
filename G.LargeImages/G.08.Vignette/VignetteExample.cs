@@ -3,9 +3,9 @@ using Aurigma.GraphicsMill.AdvancedDrawing;
 using Aurigma.GraphicsMill.Codecs;
 using Aurigma.GraphicsMill.Transforms;
 
-class VignetteExample
+internal class VignetteExample
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         CreateVignette("../../../../_Input/Venice.jpg", RgbColor.White, "../../../../_Output/VeniceVignette.jpg");
     }
@@ -52,4 +52,3 @@ class VignetteExample
         }
     }
 }
-

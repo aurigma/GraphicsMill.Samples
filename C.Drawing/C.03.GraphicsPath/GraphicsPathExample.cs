@@ -1,41 +1,36 @@
-﻿using System;
-using Aurigma.GraphicsMill;
+﻿using Aurigma.GraphicsMill;
 using Aurigma.GraphicsMill.AdvancedDrawing;
-using Aurigma.GraphicsMill.Codecs;
 
-
-class GraphicsPathExample
+internal class GraphicsPathExample
 {
-	static void Main(string[] args)
-	{
-		DrawPath();
-	}
-
+    private static void Main(string[] args)
+    {
+        DrawPath();
+    }
 
     /// <summary>
     /// Draws path on Graphics
     /// </summary>
-	private static void DrawPath()
-	{
-		using (var bitmap = new Bitmap(640, 480, PixelFormat.Format24bppRgb, RgbColor.White))
+    private static void DrawPath()
+    {
+        using (var bitmap = new Bitmap(640, 480, PixelFormat.Format24bppRgb, RgbColor.White))
         using (var graphics = bitmap.GetAdvancedGraphics())
-		{
-			var path = CreatePath(graphics);
+        {
+            var path = CreatePath(graphics);
 
-			graphics.DrawPath(new Pen(RgbColor.Red, 2f), path);
+            graphics.DrawPath(new Pen(RgbColor.Red, 2f), path);
 
-			// Translate coordinates and rotate
- 			var matrix = new System.Drawing.Drawing2D.Matrix();
- 			matrix.Translate(bitmap.Width / 3, bitmap.Height / 3);
- 			matrix.Rotate(30);
- 			graphics.Transform = matrix;
- 
- 			graphics.DrawPath(new Pen(RgbColor.Green, 2f), path);	
+            // Translate coordinates and rotate
+            var matrix = new System.Drawing.Drawing2D.Matrix();
+            matrix.Translate(bitmap.Width / 3, bitmap.Height / 3);
+            matrix.Rotate(30);
+            graphics.Transform = matrix;
 
-			bitmap.Save("../../../../_Output/DrawPath.tif");
-		}
-	}
+            graphics.DrawPath(new Pen(RgbColor.Green, 2f), path);
 
+            bitmap.Save("../../../../_Output/DrawPath.tif");
+        }
+    }
 
     private static Path CreatePath(Graphics graphics)
     {
@@ -47,7 +42,7 @@ class GraphicsPathExample
         {
             Alignment = TextAlignment.Center
         };
-        
+
         var blackBox = text.GetBlackBox();
         text.Position = new System.Drawing.PointF(blackBox.Width, blackBox.Height * 2.3f);
 
@@ -57,4 +52,3 @@ class GraphicsPathExample
         return path;
     }
 }
-

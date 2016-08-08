@@ -1,17 +1,14 @@
-﻿using System;
-using System.Linq;
-using System.Text.RegularExpressions;
-using Aurigma.GraphicsMill;
-using Aurigma.GraphicsMill.Transforms;
+﻿using Aurigma.GraphicsMill;
+using Aurigma.GraphicsMill.AdvancedDrawing;
 using Aurigma.GraphicsMill.Codecs;
 using Aurigma.GraphicsMill.Codecs.Psd;
-using Aurigma.GraphicsMill.AdvancedDrawing;
 using Aurigma.GraphicsMill.Templates;
+using Aurigma.GraphicsMill.Transforms;
 
-class RenderTemplatesExample
+internal class RenderTemplatesExample
 {
-	static void Main(string[] args)
-	{
+    private static void Main(string[] args)
+    {
         MergeLayers();
         UpdateText();
         UpdateTextColor();
@@ -21,23 +18,21 @@ class RenderTemplatesExample
 
         MergeSeal();
         UpdateTextAndShapeColor();
-	}
-
+    }
 
     /// <summary>
     /// Merges PSD image to TIFF file
-    /// </summary>	
+    /// </summary>
     private static void MergeLayers()
-	{
+    {
         var psdProcessor = new PsdProcessor();
 
         psdProcessor.Render(@"../../../../_Input/BusinessCard.psd", @"../../../../_Output/MergeLayers.tif");
-	}
-
+    }
 
     /// <summary>
     /// Updates text layer of PSD image and saves to PDF file
-    /// </summary>	
+    /// </summary>
     private static void UpdateText()
     {
         var psdProcessor = new PsdProcessor();
@@ -55,10 +50,9 @@ class RenderTemplatesExample
         psdProcessor.Render(@"../../../../_Input/BusinessCard.psd", @"../../../../_Output/UpdateText.pdf");
     }
 
-
     /// <summary>
     /// Updates text color of PSD image and saves to PDF file
-    /// </summary>	
+    /// </summary>
     private static void UpdateTextColor()
     {
         var psdProcessor = new PsdProcessor();
@@ -77,10 +71,9 @@ class RenderTemplatesExample
         psdProcessor.Render(@"../../../../_Input/BusinessCard.psd", @"../../../../_Output/UpdateTextColor.pdf");
     }
 
-
     /// <summary>
     /// Inverts background layer of PSD image and saves to PDF file
-    /// </summary>	
+    /// </summary>
     private static void InvertBackground()
     {
         var psdProcessor = new PsdProcessor();
@@ -99,10 +92,9 @@ class RenderTemplatesExample
         psdProcessor.Render(@"../../../../_Input/BusinessCard.psd", @"../../../../_Output/InvertBackground.pdf");
     }
 
-
     /// <summary>
     /// Replaces background image of PSD image and saves to PDF file
-    /// </summary>	
+    /// </summary>
     private static void ReplaceBackground()
     {
         PsdProcessor psdProcessor = new PsdProcessor();
@@ -123,10 +115,9 @@ class RenderTemplatesExample
         psdProcessor.Render(@"../../../../_Input/BusinessCard.psd", @"../../../../_Output/ReplaceBackground.pdf");
     }
 
-
     /// <summary>
     ///  Merges PSD image with vector shape layers to PDF file
-    /// </summary>	
+    /// </summary>
     private static void MergeSeal()
     {
         var psdProcessor = new PsdProcessor();
@@ -134,10 +125,9 @@ class RenderTemplatesExample
         psdProcessor.Render(@"../../../../_Input/Seal.psd", @"../../../../_Output/MergeSeal.pdf");
     }
 
-
     /// <summary>
     /// Updates text and shape color of PSD image and saves to PDF file
-    /// </summary>	
+    /// </summary>
     private static void UpdateTextAndShapeColor()
     {
         var psdProcessor = new PsdProcessor();

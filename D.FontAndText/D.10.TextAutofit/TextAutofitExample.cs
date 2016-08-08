@@ -1,9 +1,9 @@
 ﻿using Aurigma.GraphicsMill;
 using Aurigma.GraphicsMill.AdvancedDrawing;
 
-class TextAutofitExample
+internal class TextAutofitExample
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         FitTextToArea();
     }
@@ -11,7 +11,7 @@ class TextAutofitExample
     /// <summary>
     /// Draws a text on a temporary path and returns its subpath count.
     /// </summary>
-    static int GetTextElementCount(Text text)
+    private static int GetTextElementCount(Text text)
     {
         using (var path = new Path())
         {
@@ -29,7 +29,7 @@ class TextAutofitExample
     /// <summary>
     /// Creates a text object.
     /// </summary>
-    static PathBoundedText CreateText(float fontSize, Graphics graphics)
+    private static PathBoundedText CreateText(float fontSize, Graphics graphics)
     {
         var str = "Since 2001, Aurigma have helped software developers add imaging functionality to their applications in a variety of industries. Our image processing Software Development Kit for .NET, Graphics Mill, is a truly powerful product we are proud to have developed.";
 
@@ -46,7 +46,7 @@ class TextAutofitExample
     /// <summary>
     /// Demonstrates how to fit the largest possible text inside PathBoundedText area.
     /// </summary>
-    static void FitTextToArea()
+    private static void FitTextToArea()
     {
         using (var bitmap = new Bitmap(400, 400, PixelFormat.Format24bppRgb, RgbColor.White))
         using (var graphics = bitmap.GetAdvancedGraphics())
@@ -69,4 +69,3 @@ class TextAutofitExample
         }
     }
 }
-

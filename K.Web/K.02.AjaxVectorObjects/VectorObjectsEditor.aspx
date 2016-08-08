@@ -63,7 +63,7 @@
                 canvas.deleteSelectedVObjects(true);
             });
         });
-	</script>
+    </script>
 </head>
 <body>
     <div class="btn-toolbar">

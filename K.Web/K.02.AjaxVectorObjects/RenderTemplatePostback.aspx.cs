@@ -30,10 +30,9 @@ namespace AjaxVectorObjects
             using (var writer = ImageWriter.Create(Server.MapPath(filePath)))
                 CanvasViewer1.Canvas.RenderWorkspace(writer, 300, ColorSpace.Rgb);
 
-			Link1.Visible = true;
+            Link1.Visible = true;
             Link1.Text = filePath;
             Link1.NavigateUrl = filePath;
         }
-
     }
 }

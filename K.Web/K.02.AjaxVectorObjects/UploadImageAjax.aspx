@@ -36,7 +36,7 @@
                 if (files.length > 0) {
                     uploadButton.val("Uploading...");
                     uploadButton.attr('disabled', 'disabled');
-                    
+
                     data.append('image', files[0]);
 
                     var onDone = function () {
@@ -77,8 +77,9 @@
 </head>
 <body>
     <div class="form-group">
-       <label for="image">Select image: </label><input id="image" type="file" accept="image/*" />
-       <input id="upload" type="button" value="Upload" class="btn btn-default" disabled="disabled" />
+        <label for="image">Select image: </label>
+        <input id="image" type="file" accept="image/*" />
+        <input id="upload" type="button" value="Upload" class="btn btn-default" disabled="disabled" />
     </div>
 
     <form id="form1" runat="server">
