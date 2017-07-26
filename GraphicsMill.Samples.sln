@@ -177,6 +177,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G.08. Vignette", "G.LargeIm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D.10. Text Autofit", "D.FontAndText\D.10.TextAutofit\D.10. Text Autofit.csproj", "{7BA17549-6635-4970-BC2B-2510583DE322}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I.06. Validate PSD", "I.PSDFormat\I.06. Validate PSD\I.06. Validate PSD.csproj", "{9C76C6CD-6D60-4282-9CBD-335AB865758B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

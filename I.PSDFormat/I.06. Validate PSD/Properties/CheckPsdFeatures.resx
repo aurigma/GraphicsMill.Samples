@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!--
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format
+		that is mostly human readable. The generation and parsing of the
+		various data types are done through the TypeConverter classes
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a
+		type or mimetype. Type corresponds to a .NET class that support
+		text/value conversion through the TypeConverter architecture.
+		Classes that don't support this are serialized and stored with the
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the
+		ResXResourceReader how to depersist the object. This is currently not
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format
+		that the ResXResourceWriter will generate, however the reader can
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1"/>
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>1.3</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+<data name="LayerTypeRaster" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Raster layer is not supported.</value>
+</data>
+  <data name="LayerTypeRaster" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Raster layer is not supported.</value>
+</data>
+<data name="LayerTypeText" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Text layer is not supported.</value>
+</data>
+<data name="LayerTypeShape" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Shape layer is not supported.</value>
+</data>
+<data name="LayerTypeGroup" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Group layer is not supported.</value>
+</data>
+<data name="LayerTypeSmartObject" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Smart layer is not supported.</value>
+</data>
+<data name="LayerTypeAdjustment" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Adjustment layer is not supported.</value>
+</data>
+<data name="TextTypePoint" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Point text is not supported.</value>
+</data>
+<data name="TextTypeParagraph" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Paragraph text is not supported.</value>
+</data>
+<data name="TextTypeCurve" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Curve text is not supported.</value>
+</data>
+<data name="TextParameterFauxBold" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Faux bold is not supported.</value>
+</data>
+<data name="TextParameterFauxItalic" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Faux italic is not supported.</value>
+</data>
+<data name="TextParameterLeading" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Leading is not supported.</value>
+</data>
+<data name="TextParameterHorizontalScale" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Horizontal scale is not supported.</value>
+</data>
+<data name="TextParameterVerticalScale" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Vertical scale is not supported.</value>
+</data>
+<data name="TextParameterTracking" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Tracking is not supported.</value>
+</data>
+<data name="TextParameterFontCaps" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Font caps is not supported.</value>
+</data>
+<data name="TextParameterStrikeout" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Strikeout is not supported.</value>
+</data>
+<data name="TextParameterUnderline" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Underline is not supported.</value>
+</data>
+<data name="ParagraphParameterFirstLineIndent" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, First line indent is not supported.</value>
+</data>
+<data name="ParagraphParameterStartIndent" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Start indent is not supported.</value>
+</data>
+<data name="ParagraphParameterEndIndent" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, End indent is not supported.</value>
+</data>
+<data name="ParagraphParameterSpaceBefore" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Space before is not supported.</value>
+</data>
+<data name="ParagraphParameterSpaceAfter" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Space after is not supported.</value>
+</data>
+<data name="ParagraphParameterRTL" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Right-to-left text is not supported.</value>
+</data>
+<data name="ParagraphParameterWordSpacing" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Word spacing is not supported.</value>
+</data>
+<data name="ClippingMask" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Clipping mask is not supported.</value>
+</data>
+<data name="LayerMask" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Layer mask is not supported.</value>
+</data>
+<data name="GradientStroke" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Gradient stroke is not supported.</value>
+</data>
+<data name="PatternStroke" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Pattern stroke is not supported.</value>
+</data>
+<data name="GradientBrush" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Gradient brush is not supported.</value>
+</data>
+<data name="PatternBrush" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Pattern brush is not supported.</value>
+</data>
+<data name="LayerEffectBevelAndEmboss" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Bevel and emboss effect is not supported.</value>
+</data>
+<data name="LayerEffectContour" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Contour effect is not supported.</value>
+</data>
+<data name="LayerEffectTexturize" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Texturize effect is not supported.</value>
+</data>
+<data name="LayerEffectStroke" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Stroke effect is not supported.</value>
+</data>
+<data name="LayerEffectInnerShadow" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Inner shadow effect is not supported.</value>
+</data>
+<data name="LayerEffectInnerGlow" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Inner glow effect is not supported.</value>
+</data>
+<data name="LayerEffectSatin" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, satin effect is not supported.</value>
+</data>
+<data name="LayerEffectColorOverlay" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Color overlay effect is not supported.</value>
+</data>
+<data name="LayerEffectGradientOverlay" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Gradient overlay effect is not supported.</value>
+</data>
+<data name="LayerEffectPatternOverlay" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Pattern overlay effect is not supported.</value>
+</data>
+<data name="LayerEffectOuterGlow" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Outer glow effect is not supported.</value>
+</data>
+<data name="LayerEffectDropShadow" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Drop shadow effect is not supported.</value>
+</data>
+<data name="SmartFilter" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Smart filter is not supported.</value>
+</data>
+<data name="SolidFill" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Solid fill is not supported.</value>
+</data>
+<data name="GradientFill" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Gradient fill is not supported.</value>
+</data>
+<data name="PatternFill" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Pattern fill is not supported.</value>
+</data>
+<data name="BlendModePass" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Pass' is not supported.</value>
+</data>
+<data name="BlendModeNormal" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Normal' is not supported.</value>
+</data>
+<data name="BlendModeDissolve" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Dissolve' is not supported.</value>
+</data>
+<data name="BlendModeDarken" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Darken' is not supported.</value>
+</data>
+<data name="BlendModeMultiply" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Multiply' is not supported.</value>
+</data>
+<data name="BlendModeColorBurn" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Color burn' is not supported.</value>
+</data>
+<data name="BlendModeLinearBurn" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Linear burn' is not supported.</value>
+</data>
+<data name="BlendModeDarkerColor" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Darker color' is not supported.</value>
+</data>
+<data name="BlendModeLighten" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Lighten' is not supported.</value>
+</data>
+<data name="BlendModeScreen" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Screen' is not supported.</value>
+</data>
+<data name="BlendModeColorDodge" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Color dodge' is not supported.</value>
+</data>
+<data name="BlendModeLinearDodge" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Linear dodge' is not supported.</value>
+</data>
+<data name="BlendModeLighterColor" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Lighter color' is not supported.</value>
+</data>
+<data name="BlendModeOverlay" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Overlay' is not supported.</value>
+</data>
+<data name="BlendModeSoftLight" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Soft light' is not supported.</value>
+</data>
+<data name="BlendModeHardLight" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Hard light' is not supported.</value>
+</data>
+<data name="BlendModeVividLight" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Vivid light' is not supported.</value>
+</data>
+<data name="BlendModeLinearLight" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Linear light' is not supported.</value>
+</data>
+<data name="BlendModePinLight" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Pin light' is not supported.</value>
+</data>
+<data name="BlendModeHardMix" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Hard mix' is not supported.</value>
+</data>
+<data name="BlendModeDifference" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Difference' is not supported.</value>
+</data>
+<data name="BlendModeExclusion" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Exclusion' is not supported.</value>
+</data>
+<data name="BlendModeSubtract" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Substract' is not supported.</value>
+</data>
+<data name="BlendModeDivide" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Divide' is not supported.</value>
+</data>
+<data name="BlendModeHue" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Hue' is not supported.</value>
+</data>
+<data name="BlendModeSaturation" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Saturation' is not supported.</value>
+</data>
+<data name="BlendModeColor" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Color' is not supported.</value>
+</data>
+<data name="BlendModeLuminosity" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Blend mode 'Luminosity' is not supported.</value>
+</data>
+<data name="ColorModeBitmap" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Color mode 'Bitmap' is not supported.</value>
+</data>
+<data name="ColorModeGrayscale" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Color mode 'Grayscale' is not supported.</value>
+</data>
+<data name="ColorModeIndexed" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Color mode 'Indexed' is not supported.</value>
+</data>
+<data name="ColorModeRgb" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Color mode 'RGB' is not supported.</value>
+</data>
+<data name="ColorModeCmyk" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Color mode 'CMYK' is not supported.</value>
+</data>
+<data name="ColorModeMultichannel" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Color mode 'Multichannel' is not supported.</value>
+</data>
+<data name="ColorModeDuotone" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Color mode 'Duotone' is not supported.</value>
+</data>
+<data name="ColorModeLab" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Color mode 'Lab' is not supported.</value>
+</data>
+<data name="ChannelSize1bit" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, 1 bit/channel  is not supported.</value>
+</data>
+<data name="ChannelSize8bit" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, 8 bit/channel is not supported.</value>
+</data>
+<data name="ChannelSize16bit" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, 16 bit/channel is not supported.</value>
+</data>
+<data name="ChannelSize32bit" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, 32 bit/channel is not supported.</value>
+</data>
+<data name="DigitTypeArabic" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Arabic digits are not supported.</value>
+</data>
+<data name="DigitTypeHindi" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Hindi digits are not supported.</value>
+</data>
+<data name="DigitTypeFarsi" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Farsi digits are not supported.</value>
+</data>
+<data name="TextAlignmentLeft" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Left alignment is not supported.</value>
+</data>
+<data name="TextAlignmentCenter" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Center alignment is not supported.</value>
+</data>
+<data name="TextAlignmentRight" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Right alignment is not supported.</value>
+</data>
+<data name="TextAlignmentLastLeft" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Last left alignment is not supported.</value>
+</data>
+<data name="TextAlignmentLastCenter" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Last center alignment is not supported.</value>
+</data>
+<data name="TextAlignmentLastRight" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, Last right alignment is supported.</value>
+</data>
+<data name="TextAlignmentAll" xml:space="preserve">
+<value>Layer no.#LayerIndex#: #LayerName#, All alignment is not supported.</value>
+</data>
+</root>
+
