@@ -34,10 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aurigma.GraphicsMill">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.9.1.20\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.9.2.6\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
     </Reference>
     <Reference Include="Aurigma.GraphicsMill.Templates">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Templates.x86.9.1.20\lib\net40\Aurigma.GraphicsMill.Templates.dll</HintPath>
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Templates.x86.9.2.6\lib\net40\Aurigma.GraphicsMill.Templates.dll</HintPath>
     </Reference>
     <Reference Include="DotNetZip">
       <HintPath>..\..\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
