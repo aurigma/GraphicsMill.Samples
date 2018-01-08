@@ -21,7 +21,7 @@ internal class ValidatePsdExample
         var filenames = new string[] 
         { 
             "Mug.psd", 
-            "UnsupportedFeature.psd"
+            "UnsupportedFeatures.psd"
         };
 
         // A list of features that can be correctly handled by a renderer
@@ -52,7 +52,7 @@ internal class ValidatePsdExample
     /// </summary>
     private static void CheckPsdFeaturesWithOutput()
     {
-        using (var psdReader = new PsdReader("../../../../_Input/UnsupportedFeature.psd"))
+        using (var psdReader = new PsdReader("../../../../_Input/UnsupportedFeatures.psd"))
         {
             var renderSupportedFeatures = new PsdFeature[] 
             { 
@@ -74,7 +74,7 @@ internal class ValidatePsdExample
     /// </summary>
     private static void CheckPsdFeaturesWithCustomOutput()
     {
-        using (var psdReader = new PsdReader("../../../../_Input/UnsupportedFeature.psd"))
+        using (var psdReader = new PsdReader("../../../../_Input/UnsupportedFeatures.psd"))
         {
             var renderSupportedFeatures = new PsdFeature[] 
             { 
