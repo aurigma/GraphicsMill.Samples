@@ -38,46 +38,24 @@ namespace GraphicsContainerSample
         {
             using (var reader = new PdfReader(inPdf))
             using (var gc = reader.Frames[0].GetContent())
-            using (var updatedContainer = new GraphicsContainer(gc.Width, gc.Height, gc.DpiX, gc.DpiY))
-            using (var gr = updatedContainer.GetGraphics())
+            using (var writer = new PdfWriter(outPdf))
+            using (var gr = writer.GetGraphics())
             {
-                updatedContainer.DrawPath += (sender, e) =>
+                writer.AddPage(gc.Width, gc.Height, gc.DpiX, gc.DpiY);
+
+                gr.BeforeDrawPath += (sender, e) =>
                 {
-                    if (e.Pen != null && e.Pen.Color.IsRed())
-                    {
-                        // This sample works fine without all these complex manipulations 
-                        // with transforms and clipping paths, but in general case, 
-                        // we need to handle it correctly. 
-
-                        var oldTransform = gr.Transform;
-
-                        foreach (var cp in e.ClippingPaths)
-                            gr.ClippingPaths.Add(cp);
-
-                        gr.Transform = e.Transform;
-                        gr.FillingRule = e.FillingRule;
-                        gr.BlendMode = e.BlendMode;
-
-                        if (e.Brush != null)
-                            gr.FillPath(e.Brush, e.Path);
-
-                        if (e.Pen != null)
-                            gr.DrawPath(new Pen(RgbColor.DarkMagenta, e.Pen.Width), e.Path);
-
-                        gr.Transform = oldTransform;
-                        gr.ClippingPaths.Clear();
-
-                        // We don't want to add this path to the container
-                        e.Cancel = true;
-                    }
+                    if (e.Pen != null)
+                        e.Pen = new Pen(RgbColor.DarkMagenta, e.Pen.Width);
                 };
 
                 gr.DrawContainer(gc, 0, 0);
-
-                updatedContainer.SaveToPdf(outPdf);
             }
         }
 
+        /// <summary>
+        /// Enumerates the elements of graphics container
+        /// </summary>
         private static void EnumContentItems(string inPdf)
         {
             using (var reader = new PdfReader(inPdf))
@@ -85,7 +63,7 @@ namespace GraphicsContainerSample
             using (var callbackContainer = new GraphicsContainer(gc.Width, gc.Height, gc.DpiX, gc.DpiY))
             using (var gr = callbackContainer.GetGraphics())
             {
-                callbackContainer.DrawPath += (sender, e) =>
+                gr.BeforeDrawPath += (sender, e) =>
                 {
                     if (e.Pen != null)
                         Console.WriteLine(string.Format("Stroke: {0}", e.Pen.Color.ToString()));
@@ -96,7 +74,7 @@ namespace GraphicsContainerSample
                     e.Cancel = true;
                 };
 
-                callbackContainer.DrawImage += (sender, e) =>
+                gr.BeforeDrawImage += (sender, e) =>
                 {
                     Console.WriteLine(string.Format("Bitmap: {0} x {1}", e.Bitmap.Width, e.Bitmap.Height));
 
@@ -110,19 +88,9 @@ namespace GraphicsContainerSample
 
     public static class Extensions
     {
-        public static void SaveToPdf(this GraphicsContainer container, string pdfPath)
-        {
-            using (var writer = new PdfWriter(pdfPath))
-            using (var gr = writer.GetGraphics())
-            {
-                writer.AddPage(container.Width, container.Height, container.DpiX, container.DpiY);
-                gr.DrawContainer(container, 0, 0);
-            }
-        }
-
         public static bool IsRed(this Color color)
         {
-            RgbColor rgbColor = (RgbColor)color.Convert(PixelFormat.Format24bppRgb);
+            var rgbColor = (RgbColor)color.Convert(PixelFormat.Format24bppRgb);
 
             return rgbColor.R > (rgbColor.G + rgbColor.B);
         }
