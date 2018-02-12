@@ -33,9 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aurigma.GraphicsMill, Version=9.2.23.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x64.9.2.23\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Aurigma.GraphicsMill, Version=9.3.11.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012, processorArchitecture=x86">
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.9.3.11\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
