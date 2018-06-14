@@ -30,7 +30,6 @@ internal class ColorProfileExample
         Console.WriteLine("Description:   {0}", colorProfile.Description);
         Console.WriteLine("Manufacturer:  {0}", colorProfile.Manufacturer);
         Console.WriteLine("Copyright:     {0}", colorProfile.Copyright);
-        Console.WriteLine("File name:     {0}", colorProfile.FileName);
         Console.WriteLine("Device class:  {0}", colorProfile.DeviceClass);
         Console.WriteLine("Color space:   {0}", colorProfile.ColorSpace);
     }
@@ -42,8 +41,8 @@ internal class ColorProfileExample
     {
         using (var bitmap = new Bitmap("../../../../_Input/Copenhagen_CMYK.jpg"))
         {
-            // Display location of the embedded profile
-            Console.WriteLine("ICC Profile is located here:" + bitmap.ColorProfile.FileName);
+            // Display the description of the embedded profile
+            Console.WriteLine("ICC Profile description:" + bitmap.ColorProfile.Description);
         }
     }
 
@@ -55,7 +54,7 @@ internal class ColorProfileExample
         using (var reader = ImageReader.Create("../../../../_Input/Copenhagen_CMYK.jpg"))
         {
             // Bitmap isn't loaded to memory
-            Console.WriteLine("ICC Profile is located here:" + reader.ColorProfile.FileName);
+            Console.WriteLine("ICC Profile description:" + reader.ColorProfile.Description);
         }
     }
 
