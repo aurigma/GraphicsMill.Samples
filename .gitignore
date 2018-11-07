@@ -4,3 +4,4 @@ bin/
 /packages
 *.user
 _Output/
+.vs/
