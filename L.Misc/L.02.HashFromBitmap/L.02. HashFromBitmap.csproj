@@ -35,8 +35,8 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aurigma.GraphicsMill, Version=9.3.37.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.9.3.37\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
+    <Reference Include="Aurigma.GraphicsMill, Version=10.0.83.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012">
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.10.0.83\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
