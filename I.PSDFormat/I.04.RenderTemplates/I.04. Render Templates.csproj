@@ -33,12 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aurigma.GraphicsMill, Version=10.6.18.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.10.6.18\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
+    <Reference Include="Aurigma.GraphicsMill, Version=10.6.25.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012">
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Core.x86.10.6.25\lib\net40\Aurigma.GraphicsMill.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Aurigma.GraphicsMill.Templates, Version=10.6.18.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012">
-      <HintPath>..\..\packages\Aurigma.GraphicsMill.Templates.x86.10.6.18\lib\net40\Aurigma.GraphicsMill.Templates.dll</HintPath>
+    <Reference Include="Aurigma.GraphicsMill.Templates, Version=10.6.25.0, Culture=neutral, PublicKeyToken=f4bbbf243f314012">
+      <HintPath>..\..\packages\Aurigma.GraphicsMill.Templates.x86.10.6.25\lib\net40\Aurigma.GraphicsMill.Templates.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="DotNetZip, Version=1.16.0.0, Culture=neutral, PublicKeyToken=6583c7c814667745">
