@@ -36,8 +36,8 @@ internal class PlainAndBoundedTextExample
                 },
                 new BoundedText(dummyText, graphics.CreateFont("Verdana", 14f), brush)
                 {
-                    Alignment = TextAlignment.Center,
-                    Rectangle = boundedTextRect
+                    ParagraphStyle = new ParagraphStyle { Alignment = TextAlignment.Center },
+                    Rectangle = boundedTextRect,
                 }
             };
 

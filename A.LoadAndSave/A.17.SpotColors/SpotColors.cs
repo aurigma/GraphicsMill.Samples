@@ -2,6 +2,8 @@
 using Aurigma.GraphicsMill.AdvancedDrawing;
 using Aurigma.GraphicsMill.Codecs;
 
+using System.Linq;
+
 internal class SpotColors
 {
     // Ink has a name as well as an alternative color
@@ -119,11 +121,7 @@ internal class SpotColors
         {
             writer.AddPage(gc.Width, gc.Height, gc.DpiX, gc.DpiY);
 
-            gr.BeforeDrawPath += (sender, e) =>
-            {
-                if (e.Brush != null && e.Brush is SolidBrush && (e.Brush as SolidBrush).Color.IsBlack())
-                    e.Brush = new SolidBrush(spotColor);
-            };
+            gc.ReplaceProcessColors(spotColor);
 
             gr.DrawContainer(gc, 0, 0);
         }
@@ -137,5 +135,19 @@ public static class Extensions
         var grayColor = (GrayscaleColor)color.Convert(PixelFormat.Format8bppGrayscale);
 
         return grayColor.L < 20;
+    }
+
+    public static void ReplaceProcessColors(this GraphicsContainer container, SpotColor spotColor)
+    {
+        foreach (var item in container.Items.OfType<ShapeItem>())
+        {
+            if (item.Brush != null && item.Brush is SolidBrush && (item.Brush as SolidBrush).Color.IsBlack())
+                item.Brush = new SolidBrush(spotColor);
+        }
+
+        foreach (var item in container.Items.OfType<ContainerItem>())
+        {
+            item.GraphicsContainer.ReplaceProcessColors(spotColor);
+        }
     }
 }

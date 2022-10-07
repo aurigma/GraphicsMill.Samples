@@ -88,10 +88,10 @@ internal class CurvedTextExample
                     };
                 }
 
-                text.Alignment = JustificationToTextAlignment(textFrame.Justification);
+                text.ParagraphStyle.Alignment = JustificationToTextAlignment(textFrame.Justification);
                 text.Brush = new SolidBrush(textFrame.Color);
 
-                text.Tracking = textFrame.Tracking;
+                text.CharStyle.Tracking = textFrame.Tracking;
                 text.Transform = textFrame.Transform;
 
                 graphics.DrawText(text);

@@ -44,7 +44,7 @@ internal class MatrixTransformExample
 
         var text = new PlainText("Graphics Mill", graphics.CreateFont("Arial", "Bold", 80f));
         text.Alignment = TextAlignment.Center;
-        text.Position = new System.Drawing.PointF(0f, text.GetBlackBox().Height / 2);
+        text.Position = new System.Drawing.PointF(0f, text.GetBlackBox(graphics.FontRegistry, graphics.DpiX, graphics.DpiY).Height / 2);
         text.Brush = new SolidBrush(new RgbColor(0xd4, 0x00, 0x00, alpha));
 
         graphics.DrawText(text);

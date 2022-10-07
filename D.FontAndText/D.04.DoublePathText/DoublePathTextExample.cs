@@ -19,7 +19,7 @@ internal class DoublePathTextExample
             var doublePathText = new DoublePathText("Double Path Text", graphics.CreateFont("Arial", 36))
             {
                 Brush = new SolidBrush(new RgbColor(0x41, 0x41, 0x41)),
-                Alignment = TextAlignment.Center
+                ParagraphStyle = new ParagraphStyle() { Alignment = TextAlignment.Center }
             };
 
             doublePathText.TopPath.MoveTo(26, 71);

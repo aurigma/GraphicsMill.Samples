@@ -193,7 +193,7 @@ internal class ParagraphsAndListsExample
                         @"<li>Fourth</li>" +
                     @"</ul>";
 
-                var boundedText = new BoundedText(dummyText, graphics.CreateFont("Verdana", 18f),
+                var boundedText = new BoundedText(dummyText, graphics.CreateFont("Arial", 18f),
                     new SolidBrush(RgbColor.Black))
                 {
                     Rectangle = new System.Drawing.RectangleF(20f, 420f, 160f, 160f)
@@ -214,7 +214,7 @@ internal class ParagraphsAndListsExample
                         @"<li>Fourth</li>" +
                     @"</ul>";
 
-                var boundedText = new BoundedText(dummyText, graphics.CreateFont("Verdana", 18f),
+                var boundedText = new BoundedText(dummyText, graphics.CreateFont("Arial", 18f),
                     new SolidBrush(RgbColor.Black))
                 {
                     Rectangle = new System.Drawing.RectangleF(220f, 420f, 160f, 160f)
@@ -241,7 +241,7 @@ internal class ParagraphsAndListsExample
                         @"<li>Third</li>" +
                     @"</ol>";
 
-                var boundedText = new BoundedText(dummyText, graphics.CreateFont("Verdana", 18f),
+                var boundedText = new BoundedText(dummyText, graphics.CreateFont("Arial", 18f),
                     new SolidBrush(RgbColor.Black))
                 {
                     Rectangle = new System.Drawing.RectangleF(420f, 420f, 160f, 160f)

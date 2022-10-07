@@ -63,9 +63,9 @@ internal class FontLoadingAndTextMeasuringExample
             // Plain text metrics
 
             var plainText = new PlainText("plain text", font);
-            plainText.Position = new System.Drawing.PointF(5, plainText.GetBlackBox().Height + 10);
+            plainText.Position = new System.Drawing.PointF(5, plainText.GetBlackBox(fontRegistry, bitmap.DpiX, bitmap.DpiY).Height + 10);
 
-            ShowTextPosition(plainText.String, plainText.Position, plainText.GetBlackBox());
+            ShowTextPosition(plainText.String, plainText.Position, plainText.GetBlackBox(fontRegistry, bitmap.DpiX, bitmap.DpiY));
 
             DrawPlainTextWithMarkup(plainText, graphics);
 
@@ -76,10 +76,10 @@ internal class FontLoadingAndTextMeasuringExample
                 Bend = 0.9f
             };
 
-            roundText.Center = new System.Drawing.PointF(graphics.Width - roundText.GetBlackBox().Width / 2 - 15,
-                graphics.Height - roundText.GetBlackBox().Height / 2 - 10);
+            roundText.Center = new System.Drawing.PointF(graphics.Width - roundText.GetBlackBox(fontRegistry, bitmap.DpiX, bitmap.DpiY).Width / 2 - 15,
+                graphics.Height - roundText.GetBlackBox(fontRegistry, bitmap.DpiX, bitmap.DpiY).Height / 2 - 10);
 
-            ShowTextPosition(roundText.String, roundText.Center, roundText.GetBlackBox());
+            ShowTextPosition(roundText.String, roundText.Center, roundText.GetBlackBox(fontRegistry, bitmap.DpiX, bitmap.DpiY));
 
             DrawArtTextWithMarkup(roundText, graphics);
 
@@ -113,20 +113,22 @@ internal class FontLoadingAndTextMeasuringExample
 
         graphics.DrawText(text);
 
-        graphics.DrawRectangle(new Pen(RgbColor.Gray, 1f), text.GetBlackBox());
+        var bbox = text.GetBlackBox(graphics.FontRegistry, graphics.DpiX, graphics.DpiY);
 
-        var stringMeasure = text.Font.MeasureString("plain text");
+        graphics.DrawRectangle(new Pen(RgbColor.Gray, 1f), bbox);
 
-        // GetBlackBox is cached inside, so there is almost no penalty
+        var font = graphics.CreateFont(text.CharStyle.PostScriptName, text.CharStyle.Size);                
 
-        graphics.DrawLine(new Pen(RgbColor.Blue, 1f), text.GetBlackBox().X, text.Position.Y - stringMeasure.Ascender,
-            text.GetBlackBox().X + text.GetBlackBox().Width, text.Position.Y - stringMeasure.Ascender);
+        var stringMeasure = font.MeasureString("plain text");
 
-        graphics.DrawLine(new Pen(RgbColor.Green, 1f), text.GetBlackBox().X, text.Position.Y - stringMeasure.Descender,
-            text.GetBlackBox().X + text.GetBlackBox().Width, text.Position.Y - stringMeasure.Descender);
+        graphics.DrawLine(new Pen(RgbColor.Blue, 1f), bbox.X, text.Position.Y - stringMeasure.Ascender,
+            bbox.X + bbox.Width, text.Position.Y - stringMeasure.Ascender);
 
-        graphics.DrawLine(new Pen(RgbColor.IndianRed, 1f), text.GetBlackBox().X, text.Position.Y,
-            text.GetBlackBox().X + text.GetBlackBox().Width, text.Position.Y);
+        graphics.DrawLine(new Pen(RgbColor.Green, 1f), bbox.X, text.Position.Y - stringMeasure.Descender,
+            bbox.X + bbox.Width, text.Position.Y - stringMeasure.Descender);
+
+        graphics.DrawLine(new Pen(RgbColor.IndianRed, 1f), bbox.X, text.Position.Y,
+            bbox.X + bbox.Width, text.Position.Y);
 
         graphics.FillEllipse(new SolidBrush(RgbColor.Red), text.Position.X - 3, text.Position.Y - 3, 6, 6);
     }
@@ -140,7 +142,7 @@ internal class FontLoadingAndTextMeasuringExample
 
         graphics.DrawText(text);
 
-        graphics.DrawRectangle(new Pen(RgbColor.Gray, 1f), text.GetBlackBox());
+        graphics.DrawRectangle(new Pen(RgbColor.Gray, 1f), text.GetBlackBox(graphics.FontRegistry, graphics.DpiX, graphics.DpiY));
 
         graphics.FillEllipse(new SolidBrush(RgbColor.Red), text.Center.X - 3, text.Center.Y - 3, 6, 6);
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 using Aurigma.GraphicsMill;
 using Aurigma.GraphicsMill.AdvancedDrawing;
@@ -32,7 +33,7 @@ namespace GraphicsContainerSample
         }
 
         /// <summary>
-        /// Demonstrates how to edit shape stroke color with DrawPath event
+        /// Demonstrates how to edit shape stroke color
         /// </summary>
         private static void RecolorRedStrokes(string inPdf, string outPdf)
         {
@@ -43,11 +44,11 @@ namespace GraphicsContainerSample
             {
                 writer.AddPage(gc.Width, gc.Height, gc.DpiX, gc.DpiY);
 
-                gr.BeforeDrawPath += (sender, e) =>
+                foreach (var shapeItem in gc.Items.OfType<ShapeItem>())
                 {
-                    if (e.Pen != null)
-                        e.Pen = new Pen(RgbColor.DarkMagenta, e.Pen.Width);
-                };
+                    if (shapeItem.Pen != null)
+                        shapeItem.Pen = new Pen(RgbColor.DarkMagenta, shapeItem.Pen.Width);
+                }
 
                 gr.DrawContainer(gc, 0, 0);
             }
@@ -60,28 +61,8 @@ namespace GraphicsContainerSample
         {
             using (var reader = new PdfReader(inPdf))
             using (var gc = reader.Frames[0].GetContent())
-            using (var callbackContainer = new GraphicsContainer(gc.Width, gc.Height, gc.DpiX, gc.DpiY))
-            using (var gr = callbackContainer.GetGraphics())
             {
-                gr.BeforeDrawPath += (sender, e) =>
-                {
-                    if (e.Pen != null)
-                        Console.WriteLine(string.Format("Stroke: {0}", e.Pen.Color.ToString()));
-
-                    if (e.Brush != null)
-                        Console.WriteLine(string.Format("Fill: {0}", e.Brush.ToString()));
-
-                    e.Cancel = true;
-                };
-
-                gr.BeforeDrawImage += (sender, e) =>
-                {
-                    Console.WriteLine(string.Format("Bitmap: {0} x {1}", e.Bitmap.Width, e.Bitmap.Height));
-
-                    e.Cancel = true;
-                };
-
-                gr.DrawContainer(gc, 0, 0);
+                gc.PrintContent();                
             }
         }
     }
@@ -93,6 +74,35 @@ namespace GraphicsContainerSample
             var rgbColor = (RgbColor)color.Convert(PixelFormat.Format24bppRgb);
 
             return rgbColor.R > (rgbColor.G + rgbColor.B);
+        }
+
+        public static void PrintContent(this GraphicsContainer container)
+        {
+            foreach (var shapeItem in container.Items.OfType<ShapeItem>())
+            {
+                Console.WriteLine("Shape:");
+
+                if (shapeItem.Brush != null)
+                    Console.WriteLine($"  {shapeItem.Brush.ToString()}");
+
+                if (shapeItem.Pen != null)
+                    Console.WriteLine($"  {shapeItem.Pen.ToString()}");
+            }
+
+            foreach (var imageItem in container.Items.OfType<ImageItem>())
+            {
+                Console.WriteLine($"Image: {imageItem.Bitmap.Width} x ${imageItem.Bitmap.Height}");
+            }
+
+            foreach (var textItem in container.Items.OfType<TextItem>())
+            {
+                Console.WriteLine($"Text: {textItem.Text.String}");
+            }
+
+            foreach (var containerItem in container.Items.OfType<ContainerItem>())
+            {
+                containerItem.GraphicsContainer.PrintContent();
+            }
         }
     }
 }

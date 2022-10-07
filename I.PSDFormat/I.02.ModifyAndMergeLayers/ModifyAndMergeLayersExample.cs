@@ -137,7 +137,7 @@ internal class ModifyAndMergeLayersExample
                     };
                 }
 
-                text.Alignment = JustificationToTextAlignment(textFrame.Justification);
+                text.ParagraphStyle.Alignment = JustificationToTextAlignment(textFrame.Justification);
                 text.Brush = new SolidBrush(textFrame.Color);
 
                 text.Transform = textFrame.Transform;

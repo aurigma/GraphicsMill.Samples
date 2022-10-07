@@ -43,11 +43,11 @@ internal class GraphicsPathExample
             Alignment = TextAlignment.Center
         };
 
-        var blackBox = text.GetBlackBox();
+        var blackBox = text.GetBlackBox(graphics.FontRegistry, graphics.DpiX, graphics.DpiY);
         text.Position = new System.Drawing.PointF(blackBox.Width, blackBox.Height * 2.3f);
 
         path.DrawEllipse(0, 0, blackBox.Width * 2, blackBox.Height * 4);
-        path.DrawText(text);
+        path.DrawText(text, graphics.FontRegistry, graphics.DpiX, graphics.DpiY);
 
         return path;
     }

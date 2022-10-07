@@ -28,14 +28,14 @@ internal class WatermarkExample
 
             var plainText = new PlainText("Graphics Mill", gr.CreateFont("Arial", fontSize));
 
-            textPath.DrawText(plainText);
+            textPath.DrawText(plainText, gr.FontRegistry, gr.DpiX, gr.DpiY);
 
             var rect = new RectangleF(0, 0, bitmap.Width, bitmap.Height);
 
             var transform = new Matrix();
             transform.RotateAt(-35, new PointF(rect.Left + rect.Width / 2, rect.Top + rect.Height / 2));
 
-            float offset = plainText.GetBlackBox().Width / 2;
+            float offset = plainText.GetBlackBox(gr.FontRegistry, gr.DpiX, gr.DpiY).Width / 2;
 
             using (var tiledTextPath = TilePathText(textPath, GetInvertedRect(rect, transform), offset))
             {
@@ -64,13 +64,13 @@ internal class WatermarkExample
 
             var text = new PlainText(watermarkText, gr.CreateFont("Arial", fontSize));
             text.Alignment = TextAlignment.Right;
-            text.Leading = 1;
+            text.CharStyle.Leading = 1;
 
-            textPath.DrawText(text);
+            textPath.DrawText(text, gr.FontRegistry, gr.DpiX, gr.DpiY);
 
             var rect = new RectangleF(0, 0, bitmap.Width, bitmap.Height);
 
-            float offset = text.GetBlackBox().Width / 2;
+            float offset = text.GetBlackBox(gr.FontRegistry, gr.DpiX, gr.DpiY).Width / 2;
 
             using (var tiledTextPath = TilePathText(textPath, rect, offset))
             {

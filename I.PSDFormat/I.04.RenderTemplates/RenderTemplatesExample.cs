@@ -25,7 +25,7 @@ internal class RenderTemplatesExample
     /// </summary>
     private static void MergeLayers()
     {
-        var psdProcessor = new PsdProcessor();
+        var psdProcessor = CreatePsdProcessor();
 
         psdProcessor.Render(@"../../../../_Input/BusinessCard.psd", @"../../../../_Output/MergeLayers.tif");
     }
@@ -35,7 +35,7 @@ internal class RenderTemplatesExample
     /// </summary>
     private static void UpdateText()
     {
-        var psdProcessor = new PsdProcessor();
+        var psdProcessor = CreatePsdProcessor();
 
         psdProcessor.StringCallback = (processor, textFrame) =>
         {
@@ -55,7 +55,7 @@ internal class RenderTemplatesExample
     /// </summary>
     private static void UpdateTextColor()
     {
-        var psdProcessor = new PsdProcessor();
+        var psdProcessor = CreatePsdProcessor();
 
         psdProcessor.TextCallback = (processor, textFrame, textString) =>
         {
@@ -76,7 +76,7 @@ internal class RenderTemplatesExample
     /// </summary>
     private static void InvertBackground()
     {
-        var psdProcessor = new PsdProcessor();
+        var psdProcessor = CreatePsdProcessor();
 
         psdProcessor.FrameCallback = (processor, frame) =>
         {
@@ -97,7 +97,7 @@ internal class RenderTemplatesExample
     /// </summary>
     private static void ReplaceBackground()
     {
-        PsdProcessor psdProcessor = new PsdProcessor();
+        PsdProcessor psdProcessor = CreatePsdProcessor();
 
         psdProcessor.FrameCallback = (processor, frame) =>
         {
@@ -120,7 +120,7 @@ internal class RenderTemplatesExample
     /// </summary>
     private static void MergeSeal()
     {
-        var psdProcessor = new PsdProcessor();
+        var psdProcessor = CreatePsdProcessor();
 
         psdProcessor.Render(@"../../../../_Input/Seal.psd", @"../../../../_Output/MergeSeal.pdf");
     }
@@ -130,7 +130,7 @@ internal class RenderTemplatesExample
     /// </summary>
     private static void UpdateTextAndShapeColor()
     {
-        var psdProcessor = new PsdProcessor();
+        var psdProcessor = CreatePsdProcessor();
 
         psdProcessor.TextCallback = (processor, textFrame, textString) =>
         {
@@ -160,5 +160,18 @@ internal class RenderTemplatesExample
         };
 
         psdProcessor.Render(@"../../../../_Input/Seal.psd", @"../../../../_Output/UpdateTextAndShapeColor.pdf");
+    }
+
+    /// <summary>
+    /// Creates PsdProcessor with preconfigured FontResolver
+    /// </summary>
+    private static PsdProcessor CreatePsdProcessor()
+    {
+        var processor = new PsdProcessor();
+
+        var psName = processor.FontResolver.FontRegistry.Add(@"../../../../_Input/Fonts/ARIALUNI.TTF");
+        processor.FontResolver.FontRegistry.FallbackFonts.Add(psName);
+
+        return processor;
     }
 }
