@@ -26,7 +26,7 @@ internal class TextAutofitExample
             shapeTextFrame.Shape = new Path();
             shapeTextFrame.Shape.DrawEllipse(0, 0, graphics.Width, graphics.Height);
 
-            shapeTextFrame.CopyFittingMode = CopyFittingMode.Fill;
+            shapeTextFrame.CopyfittingMode = CopyfittingMode.Fill;
 
             text.Frames.Add(shapeTextFrame);
                         
