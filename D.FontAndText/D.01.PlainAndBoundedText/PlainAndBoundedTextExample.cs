@@ -9,6 +9,7 @@ internal class PlainAndBoundedTextExample
         DrawPlainAndBoundedText();
         DrawMultilinePlainText();
         PlainTextWithGradientColor();
+        PlainTextWithRoundedDoubleOutline();
     }
 
     /// <summary>
@@ -118,6 +119,43 @@ vulputate suscipit facilisis.";
             graphics.DrawText(text);
 
             bitmap.Save("../../../../_Output/PlainTextWithGradientBrush.png");
+        }
+    }
+
+    /// <summary>
+    /// Draws text with sharp corners using double outline with a round line join.
+    /// </summary>
+    private static void PlainTextWithRoundedDoubleOutline()
+    {
+        var bgColor = new RgbColor(23, 42, 88);
+        var fillColor = new RgbColor(254, 190, 16);
+
+        using (var bitmap = new Bitmap(600, 250, PixelFormat.Format24bppRgb, bgColor))
+        using (var fr = new CustomFontRegistry())
+        using (var gr = bitmap.GetAdvancedGraphics())
+        {
+            var psName = fr.Add("../../../../_Input/Fonts/Jost/Jost-Regular.ttf");
+
+            gr.FontRegistry = fr;
+
+            var text = new PlainText("WOW", gr.CreateFont(psName, 190))
+            {
+                Position = new System.Drawing.PointF(10, 220),
+            };
+
+            text.Brush = null;
+            text.Pen = new Pen(RgbColor.White, 15);
+            text.Pen.LineJoin = Aurigma.GraphicsMill.AdvancedDrawing.LineJoin.Round;
+
+            gr.DrawText(text);
+
+            text.Brush = new SolidBrush(fillColor);
+            text.Pen = new Pen(bgColor, 5);
+            text.Pen.LineJoin = Aurigma.GraphicsMill.AdvancedDrawing.LineJoin.Round;
+
+            gr.DrawText(text);
+
+            bitmap.Save("../../../../_Output/PlainTextWithRoundedOutline.png");
         }
     }
 }
