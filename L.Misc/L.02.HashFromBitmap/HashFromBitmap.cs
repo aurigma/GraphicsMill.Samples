@@ -28,7 +28,7 @@ internal class HashFromBitmapSample
                 md5.TransformFinalBlock(new byte[0], 0, 0);
             }
 
-            return String.Concat(Array.ConvertAll(md5.Hash, x => x.ToString("X2")));
+            return string.Concat(Array.ConvertAll(md5.Hash, x => x.ToString("X2")));
         }
     }
 
@@ -37,7 +37,9 @@ internal class HashFromBitmapSample
         using (var bitmap = new Bitmap("../../../../_Input/Chicago.jpg"))
         {
             if (bitmap.PixelFormat.IsIndexed)
+            {
                 bitmap.ColorManagement.Convert(PixelFormat.Format32bppArgb);
+            }
 
             Console.WriteLine("MD5: {0}", GetMD5Hash(bitmap));
         }

@@ -102,7 +102,9 @@ internal class WebPFormatExample
 
                 var disposalMethod = gifReader.Frames[i].DisposalMethod;
                 if (disposalMethod == DisposalMethod.None || disposalMethod == DisposalMethod.Background)
+                {
                     writer.FrameOptions.DisposalMethod = gifReader.Frames[i].DisposalMethod;
+                }
 
                 writer.FrameOptions.Left = gifReader.Frames[i].Left;
                 writer.FrameOptions.Top = gifReader.Frames[i].Top;

@@ -23,8 +23,12 @@ internal class ClippingPathExample
             graphics.ClippingPaths.Add(path);
             graphics.DrawImage(bitmap, 0f, 0f);
 
-            graphics.DrawLine(new Pen(new RgbColor(255, 255, 0, 127), 20),
-                0f, 0f, background.Width, background.Height);
+            graphics.DrawLine(
+                new Pen(new RgbColor(255, 255, 0, 127), 20),
+                0f,
+                0f,
+                background.Width,
+                background.Height);
 
             background.Save("../../../../_Output/RestrictDrawingRegion.png");
         }

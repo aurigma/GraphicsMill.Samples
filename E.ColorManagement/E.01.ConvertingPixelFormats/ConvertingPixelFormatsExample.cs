@@ -124,9 +124,7 @@ internal class ConvertingPixelFormatsExample
     private static void AddAlphaChannelMemoryFriendly()
     {
         using (var reader = ImageReader.Create("../../../../_Input/GreenScreen.jpg"))
-        // Use PixelFormat.Format40bppAcmyk for CMYK images
         using (var converter = new ColorConverter(PixelFormat.Format32bppArgb))
-        // Remove background just to demonstrate alpha channel
         using (var greenScreenRemoval = new GreenScreenRemoval())
         using (var writer = ImageWriter.Create("../../../../_Output/PF_AddAlphaChannelMemoryFriendly.png"))
         {

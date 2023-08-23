@@ -45,13 +45,17 @@ internal class LineRectangleEllipseExample
             graphics.DrawEllipses(greenPen, new System.Drawing.RectangleF[]
             {
                 new System.Drawing.RectangleF(20, 20, bitmap.Width - 40, bitmap.Height - 40),
-                new System.Drawing.RectangleF(80, 80, bitmap.Width - 160, bitmap.Height - 160)
+                new System.Drawing.RectangleF(80, 80, bitmap.Width - 160, bitmap.Height - 160),
             });
 
             var redPen = new Pen(new CmykColor(20, 230, 197, 32, 127), 20f);
 
-            graphics.DrawBezier(redPen, new System.Drawing.PointF(0, 0), new System.Drawing.PointF(100, 480),
-                new System.Drawing.PointF(540, 0), new System.Drawing.PointF(640, 480));
+            graphics.DrawBezier(
+                redPen,
+                new System.Drawing.PointF(0, 0),
+                new System.Drawing.PointF(100, 480),
+                new System.Drawing.PointF(540, 0),
+                new System.Drawing.PointF(640, 480));
 
             bitmap.Save("../../../../_Output/DrawOnCmykImage.tif");
         }
@@ -74,7 +78,7 @@ internal class LineRectangleEllipseExample
                 new System.Drawing.PointF(549f, 208f),
                 new System.Drawing.PointF(509f, 118f),
                 new System.Drawing.PointF(173f, 30f),
-                new System.Drawing.PointF(114f, 114f)
+                new System.Drawing.PointF(114f, 114f),
             });
 
             bitmap.Save("../../../../_Output/DrawOnGrayscaleImage.tif");
@@ -95,7 +99,7 @@ internal class LineRectangleEllipseExample
             {
                 new System.Drawing.PointF(320f, 40f),
                 new System.Drawing.PointF(40f, 460f),
-                new System.Drawing.PointF(600f, 420f)
+                new System.Drawing.PointF(600f, 420f),
             });
 
             bitmap.Save("../../../../_Output/DrawOnExtendedRgbImage.tif");

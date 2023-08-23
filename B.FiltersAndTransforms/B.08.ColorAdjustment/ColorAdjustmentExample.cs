@@ -45,7 +45,7 @@ internal class ColorAdjustmentExample
             // Pixel format specifies the order of channels
             // Example: Format24bppRgb - [Blue]|[Green]|[Red]
             // http://www.graphicsmill.com/docs/gm/accessing-pixel-data.htm#PixelsInMemory
-            Addends = new float[] { 0.0f, 0.0f, 0.3f }
+            Addends = new float[] { 0.0f, 0.0f, 0.3f },
         })
         using (var writer = ImageWriter.Create("../../../../_Output/ChannelBalanceMemoryFriendly.jpg"))
         {

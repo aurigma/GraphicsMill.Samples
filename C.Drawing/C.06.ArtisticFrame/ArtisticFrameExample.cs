@@ -18,8 +18,8 @@ internal class ArtisticFrameExample
 
         using (var source = new Bitmap("../../../../_Input/Copenhagen_Rgb.jpg"))
         {
-            int width = source.Width + padding * 2;
-            int height = source.Height + padding * 2;
+            int width = source.Width + (padding * 2);
+            int height = source.Height + (padding * 2);
 
             var mattPath = "../../../../_Input/Matt.png";
             var framePath = "../../../../_Input/Frame.png";
@@ -72,7 +72,7 @@ internal class ArtisticFrameExample
 
                             var clippingPathBottom = new Path();
                             clippingPathBottom.MoveTo(0f, result.Height);
-                            clippingPathBottom.LineTo((float)result.Width / 2f, (float)result.Height - (float)result.Width / 2f);
+                            clippingPathBottom.LineTo((float)result.Width / 2f, (float)result.Height - ((float)result.Width / 2f));
                             clippingPathBottom.LineTo(result.Width, result.Height);
                             clippingPathBottom.Close();
 
@@ -83,8 +83,11 @@ internal class ArtisticFrameExample
                             graphics.ClippingPaths.Clear();
 
                             // Draw image in the center
-                            var rect1 = new System.Drawing.RectangleF((result.Width - source.Width) / 2,
-                            (result.Height - source.Height) / 2, source.Width, source.Height);
+                            var rect1 = new System.Drawing.RectangleF(
+                                (result.Width - source.Width) / 2,
+                                (result.Height - source.Height) / 2,
+                                source.Width,
+                                source.Height);
 
                             graphics.DrawImage(source, rect1);
 
@@ -94,8 +97,11 @@ internal class ArtisticFrameExample
 
                             float offset = 8f;
 
-                            var rect2 = new System.Drawing.RectangleF(rect1.X - offset, rect1.Y - offset,
-                            rect1.Width + offset * 2, rect1.Height + offset * 2);
+                            var rect2 = new System.Drawing.RectangleF(
+                                rect1.X - offset,
+                                rect1.Y - offset,
+                                rect1.Width + (offset * 2),
+                                rect1.Height + (offset * 2));
 
                             graphics.DrawRectangle(pen, rect2);
                         }
@@ -109,8 +115,8 @@ internal class ArtisticFrameExample
 
     private static Bitmap RepeatBitmap(Bitmap bitmap, int minWidth, int minHeight)
     {
-        int tileXCount = (minWidth - 1) / bitmap.Width + 1;
-        int tileYCount = (minHeight - 1) / bitmap.Height + 1;
+        int tileXCount = ((minWidth - 1) / bitmap.Width) + 1;
+        int tileYCount = ((minHeight - 1) / bitmap.Height) + 1;
 
         var repeated = new Bitmap(tileXCount * bitmap.Width, tileYCount * bitmap.Height, PixelFormat.Format24bppRgb);
 

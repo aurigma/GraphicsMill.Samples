@@ -24,16 +24,14 @@ internal class VignetteExample
         {
             int offset = (int)(reader.Width * borderScale);
 
-            gr.FillEllipse(new SolidBrush(RgbColor.White), offset, offset, gc.Width - 2 * offset, gc.Height - 2 * offset);
+            gr.FillEllipse(new SolidBrush(RgbColor.White), offset, offset, gc.Width - (2 * offset), gc.Height - (2 * offset));
 
             // One pipeline for generating an alpha channel
-
             var alphaPipeline = new Pipeline();
             alphaPipeline.Add(new ImageGenerator(gc, PixelFormat.Format8bppGrayscale, RgbColor.Black));
             alphaPipeline.Add(new Blur(reader.Width * blurRadiusScale));
 
             // And another one for getting a final content
-
             var pipeline = new Pipeline();
             pipeline.Add(reader);
             pipeline.Add(new ScaleAlpha(alphaPipeline));

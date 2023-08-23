@@ -29,7 +29,7 @@ internal class JPEGFormatExample
             {
                 Quality = 90,
                 UseSubsampling = false,
-                IsProgressive = true
+                IsProgressive = true,
             };
 
             bitmap.Save("../../../../_Output/ReadWriteJpeg.jpg", jpegSettings);

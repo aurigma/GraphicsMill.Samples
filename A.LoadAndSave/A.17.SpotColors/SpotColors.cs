@@ -1,8 +1,8 @@
-﻿using Aurigma.GraphicsMill;
+﻿using System.Linq;
+
+using Aurigma.GraphicsMill;
 using Aurigma.GraphicsMill.AdvancedDrawing;
 using Aurigma.GraphicsMill.Codecs;
-
-using System.Linq;
 
 internal class SpotColors
 {
@@ -54,7 +54,7 @@ internal class SpotColors
                 brush.ColorStops = new ColorStop[]
                 {
                     new ColorStop() { Color = RgbColor.White, Position = 0.0f },
-                    new ColorStop() { Color = RgbColor.Black, Position = 1.0f }
+                    new ColorStop() { Color = RgbColor.Black, Position = 1.0f },
                 };
                 brush.StartPoint = new System.Drawing.PointF(gr.Width / 2, gr.Height / 2);
                 brush.EndPoint = brush.StartPoint;
@@ -91,7 +91,7 @@ internal class SpotColors
                 {
                     Position = new System.Drawing.PointF(gr.Width / 2, gr.Height / 2),
                     Alignment = TextAlignment.Center,
-                    Brush = new SolidBrush(spotColor)
+                    Brush = new SolidBrush(spotColor),
                 };
 
                 gr.DrawText(text);
@@ -102,7 +102,7 @@ internal class SpotColors
 
                 spotImage.Transforms.Resize(400, 400, Aurigma.GraphicsMill.Transforms.ResizeInterpolationMode.Linear, Aurigma.GraphicsMill.Transforms.ResizeMode.Fit);
 
-                gr.DrawImage(spotImage, gr.Width - spotImage.Width, gr.Height - spotImage.Height / 3);
+                gr.DrawImage(spotImage, gr.Width - spotImage.Width, gr.Height - (spotImage.Height / 3));
             }
 
             pdfWriter.Close();
@@ -142,7 +142,9 @@ public static class Extensions
         foreach (var item in container.Items.OfType<ShapeItem>())
         {
             if (item.Brush != null && item.Brush is SolidBrush && (item.Brush as SolidBrush).Color.IsBlack())
+            {
                 item.Brush = new SolidBrush(spotColor);
+            }
         }
 
         foreach (var item in container.Items.OfType<ContainerItem>())

@@ -52,8 +52,8 @@ internal class CropExample
                 float cropScale = 0.75f;
 
                 var cropRectangle = new System.Drawing.RectangleF(
-                    (e.ImageParams.Width - e.ImageParams.Width * cropScale) / 2,
-                    (e.ImageParams.Height - e.ImageParams.Height * cropScale) / 2,
+                    e.ImageParams.Width - ((e.ImageParams.Width * cropScale) / 2),
+                    e.ImageParams.Height - ((e.ImageParams.Height * cropScale) / 2),
                     e.ImageParams.Width * cropScale,
                     e.ImageParams.Height * cropScale);
 

@@ -7,6 +7,44 @@ using Aurigma.GraphicsMill.Codecs;
 
 namespace GraphicsContainerSample
 {
+    public static class Extensions
+    {
+        public static bool IsRed(this Color color)
+        {
+            var rgbColor = (RgbColor)color.Convert(PixelFormat.Format24bppRgb);
+
+            return rgbColor.R > (rgbColor.G + rgbColor.B);
+        }
+
+        public static void PrintContent(this GraphicsContainer container)
+        {
+            foreach (var shapeItem in container.Items.OfType<ShapeItem>())
+            {
+                Console.WriteLine("Shape:");
+
+                if (shapeItem.Brush != null)
+                    Console.WriteLine($"  {shapeItem.Brush.ToString()}");
+
+                if (shapeItem.Pen != null)
+                    Console.WriteLine($"  {shapeItem.Pen.ToString()}");
+            }
+
+            foreach (var imageItem in container.Items.OfType<ImageItem>())
+            {
+                Console.WriteLine($"Image: {imageItem.Bitmap.Width} x ${imageItem.Bitmap.Height}");
+            }
+
+            foreach (var textItem in container.Items.OfType<TextItem>())
+            {
+                Console.WriteLine($"Text: {textItem.Text.String}");
+            }
+
+            foreach (var containerItem in container.Items.OfType<ContainerItem>())
+            {
+                containerItem.GraphicsContainer.PrintContent();
+            }
+        }
+    }
     public class GraphicsContainerExamples
     {
         public static void Main(string[] args)
@@ -47,7 +85,9 @@ namespace GraphicsContainerSample
                 foreach (var shapeItem in gc.Items.OfType<ShapeItem>())
                 {
                     if (shapeItem.Pen != null)
+                    {
                         shapeItem.Pen = new Pen(RgbColor.DarkMagenta, shapeItem.Pen.Width);
+                    }
                 }
 
                 gr.DrawContainer(gc, 0, 0);
@@ -65,44 +105,5 @@ namespace GraphicsContainerSample
                 gc.PrintContent();                
             }
         }
-    }
-
-    public static class Extensions
-    {
-        public static bool IsRed(this Color color)
-        {
-            var rgbColor = (RgbColor)color.Convert(PixelFormat.Format24bppRgb);
-
-            return rgbColor.R > (rgbColor.G + rgbColor.B);
-        }
-
-        public static void PrintContent(this GraphicsContainer container)
-        {
-            foreach (var shapeItem in container.Items.OfType<ShapeItem>())
-            {
-                Console.WriteLine("Shape:");
-
-                if (shapeItem.Brush != null)
-                    Console.WriteLine($"  {shapeItem.Brush.ToString()}");
-
-                if (shapeItem.Pen != null)
-                    Console.WriteLine($"  {shapeItem.Pen.ToString()}");
-            }
-
-            foreach (var imageItem in container.Items.OfType<ImageItem>())
-            {
-                Console.WriteLine($"Image: {imageItem.Bitmap.Width} x ${imageItem.Bitmap.Height}");
-            }
-
-            foreach (var textItem in container.Items.OfType<TextItem>())
-            {
-                Console.WriteLine($"Text: {textItem.Text.String}");
-            }
-
-            foreach (var containerItem in container.Items.OfType<ContainerItem>())
-            {
-                containerItem.GraphicsContainer.PrintContent();
-            }
-        }
-    }
+    }    
 }

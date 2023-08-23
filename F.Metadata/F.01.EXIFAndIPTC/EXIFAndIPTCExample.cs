@@ -30,8 +30,7 @@ internal class EXIFAndIPTCExample
                 Console.WriteLine("---------------");
                 foreach (object key in exif.Keys)
                 {
-                    Console.WriteLine("{0}: {1}, {2}", exif.GetKeyDescription(key),
-                        exif[key], exif.GetItemString(key));
+                    Console.WriteLine("{0}: {1}, {2}", exif.GetKeyDescription(key), exif[key], exif.GetItemString(key));
                 }
             }
 
@@ -42,8 +41,7 @@ internal class EXIFAndIPTCExample
                 Console.WriteLine("---------------");
                 foreach (long key in iptc.Keys)
                 {
-                    Console.WriteLine("{0}: {1}, {2}", iptc.GetKeyDescription(key),
-                        iptc[key], iptc.GetItemString(key));
+                    Console.WriteLine("{0}: {1}, {2}", iptc.GetKeyDescription(key), iptc[key], iptc.GetItemString(key));
                 }
             }
         }
@@ -102,7 +100,7 @@ internal class EXIFAndIPTCExample
         {
             var exif = new Aurigma.GraphicsMill.Codecs.ExifDictionary(jpegReader.Exif);
 
-            Object[] latitude = null;
+            object[] latitude = null;
 
             if (exif.Contains(ExifDictionary.GpsLatitude))
             {
@@ -110,13 +108,14 @@ internal class EXIFAndIPTCExample
                 latitude[0] = new UnsignedRational(113, 12);
             }
             else
-            {   // Alexandria, Virginia
-                latitude = new Object[] { new UnsignedRational(38, 1), new UnsignedRational(48, 1), new UnsignedRational(17, 1) };
+            {
+                // Alexandria, Virginia
+                latitude = new object[] { new UnsignedRational(38, 1), new UnsignedRational(48, 1), new UnsignedRational(17, 1) };
             }
 
             exif.SetItemArray(ExifDictionary.GpsLatitude, latitude);
 
-            var gpsVer = new Object[] { (byte)2, (byte)0, (byte)0, (byte)1 };
+            var gpsVer = new object[] { (byte)2, (byte)0, (byte)0, (byte)1 };
             exif.SetItemArray(ExifDictionary.GpsVersionId, gpsVer);
 
             exif[Aurigma.GraphicsMill.Codecs.ExifDictionary.Software] = "Aurigma Graphics Mill";

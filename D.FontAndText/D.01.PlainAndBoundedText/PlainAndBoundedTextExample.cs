@@ -26,17 +26,20 @@ internal class PlainAndBoundedTextExample
             {
                 new PlainText("Horizontal", graphics.CreateFont("Times New Roman", 22f), brush)
                 {
-                    Position = new System.Drawing.PointF(50f, 38f)
+                    Position = new System.Drawing.PointF(50f, 38f),
                 },
                 new PlainText("Vertical", graphics.CreateFont("Arial", 24f), brush)
                 {
                     Vertical = true,
                     Position = new System.Drawing.PointF(20f, 10f),
-                    Effect = new Glow(new RgbColor(0x66, 0xaf, 0xe9), 5)
+                    Effect = new Glow(new RgbColor(0x66, 0xaf, 0xe9), 5),
                 },
                 new BoundedText(dummyText, graphics.CreateFont("Verdana", 14f), brush)
                 {
-                    ParagraphStyle = new ParagraphStyle { Alignment = TextAlignment.Center },
+                    ParagraphStyle = new ParagraphStyle
+                    {
+                        Alignment = TextAlignment.Center,
+                    },
                     Rectangle = boundedTextRect,
                 }
             };
@@ -73,7 +76,7 @@ vulputate suscipit facilisis.";
 
             var text = new PlainText(dummyText, graphics.CreateFont("Verdana", 20f), brush)
             {
-                Position = new System.Drawing.PointF(10f, 30f)
+                Position = new System.Drawing.PointF(10f, 30f),
             };
 
             graphics.DrawText(text);

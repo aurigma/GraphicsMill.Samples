@@ -47,7 +47,8 @@ internal class XMPExample
                 // Print the value of the xmp:CreatorTool tag if it exists
                 if (xmp.Contains(Aurigma.GraphicsMill.Codecs.XmpTagNames.XmpCreatorTool))
                 {
-                    Console.WriteLine("\n\nThis image was created using {0}",
+                    Console.WriteLine(
+                        "\n\nThis image was created using {0}",
                         xmp[Aurigma.GraphicsMill.Codecs.XmpTagNames.XmpCreatorTool]);
                 }
             }

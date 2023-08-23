@@ -70,8 +70,12 @@ internal class ChannelsExample
         using (var alpha = new Bitmap(bitmap.Width, bitmap.Height, PixelFormat.Format8bppGrayscale, new GrayscaleColor(0)))
         using (var graphics = alpha.GetAdvancedGraphics())
         {
-            graphics.FillEllipse(new SolidBrush(new GrayscaleColor(255)),
-                0, 0, bitmap.Width, bitmap.Height);
+            graphics.FillEllipse(
+                new SolidBrush(new GrayscaleColor(255)),
+                0,
+                0,
+                bitmap.Width,
+                bitmap.Height);
 
             bitmap.Channels.SetAlpha(alpha);
 
@@ -94,8 +98,12 @@ internal class ChannelsExample
         {
             drawer.Draw += (sender, e) =>
             {
-                e.Graphics.FillEllipse(new SolidBrush(new GrayscaleColor(255)),
-                    0, 0, reader.Width, reader.Height);
+                e.Graphics.FillEllipse(
+                    new SolidBrush(new GrayscaleColor(255)),
+                    0,
+                    0,
+                    reader.Width,
+                    reader.Height);
             };
 
             setAlpha.AlphaSource = alpha + drawer;

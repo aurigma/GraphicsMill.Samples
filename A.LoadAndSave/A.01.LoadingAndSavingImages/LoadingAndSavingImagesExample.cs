@@ -62,8 +62,7 @@ internal class LoadingAndSavingImagesExample
     /// </summary>
     private static void LoadSaveFileWithOptionsMemoryFriendly()
     {
-        using (var reader = new JpegReader("../../../../_Input/Chicago.jpg"))
-        // Set value of JPEG quality to 85
+        using (var reader = new JpegReader("../../../../_Input/Chicago.jpg"))            
         using (var writer = new JpegWriter("../../../../_Output/LoadSaveFileWithOptionsMemoryFriendly.jpg", 85))
         {
             Pipeline.Run(reader + writer);
@@ -76,7 +75,6 @@ internal class LoadingAndSavingImagesExample
     private static void LoadSaveFileAltSyntaxMemoryFriendly()
     {
         using (var reader = ImageReader.Create("../../../../_Input/Chicago.jpg"))
-        // Set value of JPEG quality to 85
         using (var writer = ImageWriter.Create("../../../../_Output/LoadSaveFileAltSyntaxMemoryFriendly.jpg", new JpegSettings(85)))
         {
             Pipeline.Run(reader + writer);
@@ -158,10 +156,14 @@ internal class LoadingAndSavingImagesExample
             Console.WriteLine("Pixel format: {0}", reader.PixelFormat);
 
             if (reader.Exif != null)
+            {
                 Console.WriteLine("EXIF tag count: {0}", reader.Exif.Count);
+            }
 
             if (reader.Iptc != null)
+            {
                 Console.WriteLine("IPTC tag count: {0}", reader.Iptc.Count);
+            }
         }
     }
 }

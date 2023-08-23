@@ -89,8 +89,8 @@ internal class WritingEPSAndPDFExample
 
                 // Draw text
                 var font = graphics.CreateFont("Arial", 56f);
-                var text = new PlainText("Confidential", font, new SolidBrush(RgbColor.OrangeRed),
-                    400f, 340f, TextAlignment.Center);
+                var text = new PlainText("Confidential", font, new SolidBrush(RgbColor.OrangeRed), 400f, 340f, TextAlignment.Center);
+
                 graphics.DrawText(text);
             }
         }
@@ -115,8 +115,8 @@ internal class WritingEPSAndPDFExample
 
             // Draw text
             var font = graphics.CreateFont("Arial", 56f);
-            var text = new PlainText("Confidential", font, new SolidBrush(RgbColor.OrangeRed),
-                400f, 340f, TextAlignment.Center);
+            var text = new PlainText("Confidential", font, new SolidBrush(RgbColor.OrangeRed), 400f, 340f, TextAlignment.Center);
+
             graphics.DrawText(text);
         }
     }
@@ -143,26 +143,22 @@ internal class WritingEPSAndPDFExample
 
                 // Draw text
                 var font = graphics.CreateFont("Arial", 18f);
-                var text = new PlainText("Front side", font, new SolidBrush(RgbColor.Gray),
-                    95f, 41f, TextAlignment.Center);
+                var text = new PlainText("Front side", font, new SolidBrush(RgbColor.Gray), 95f, 41f, TextAlignment.Center);
                 graphics.DrawText(text);
 
                 font = graphics.CreateFont("Arial", 16f);
-                text = new PlainText(@"John Doe
-<span style=""color:gray;font-size:16pt"">General Manager</span>", font, blueBrush, 335f, 100f, TextAlignment.Right);
+                text = new PlainText(@"John Doe\n<span style=""color:gray;font-size:16pt"">General Manager</span>", font, blueBrush, 335f, 100f, TextAlignment.Right);
 
                 graphics.DrawText(text);
 
                 graphics.FillRectangle(blueBrush, 0, height - 50, width, 50);
 
                 font = graphics.CreateFont("Arial", 12f);
-                text = new PlainText(@"123.456.7890
-info@website.com", font, new SolidBrush(RgbColor.White), 15f, 170f, TextAlignment.Left);
+                text = new PlainText(@"123.456.7890\ninfo@website.com", font, new SolidBrush(RgbColor.White), 15f, 170f, TextAlignment.Left);
 
                 graphics.DrawText(text);
 
-                text = new PlainText(@"335 Cloverfield Blvd
-Charlington, NY 10123", font, new SolidBrush(RgbColor.White), 200f, 170f, TextAlignment.Left);
+                text = new PlainText(@"335 Cloverfield Blvd\nCharlington, NY 10123", font, new SolidBrush(RgbColor.White), 200f, 170f, TextAlignment.Left);
 
                 graphics.DrawText(text);
 

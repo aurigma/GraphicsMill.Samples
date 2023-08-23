@@ -28,7 +28,7 @@ internal class TIFFFormatExample
             var tiffSettings = new TiffSettings()
             {
                 Compression = CompressionType.Jpeg,
-                Quality = 85
+                Quality = 85,
             };
 
             bitmap.Save("../../../../_Output/WriteTiff.tif", tiffSettings);

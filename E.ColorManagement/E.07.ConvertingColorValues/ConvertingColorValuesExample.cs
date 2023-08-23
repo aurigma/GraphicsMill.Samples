@@ -16,14 +16,13 @@ internal class ConvertingColorValuesExample
         RgbToCmykWithoutColorManagement();
         CmykToRgbWithoutColorManagement();
         RgbToLabWithoutColorManagement();
-        // LabToCmykWithoutColorManagement();
     }
 
     private static void RgbToCmykWithColorManagement()
     {
         RgbColor rgbColor = new RgbColor(253, 202, 12)
         {
-            Profile = ColorProfile.FromSrgb()
+            Profile = ColorProfile.FromSrgb(),
         };
 
         CmykColor cmykColor = rgbColor.To<CmykColor>("../../../../_Input/ColorProfiles/ISOcoated_v2_eci.icc", transformationIntent: ColorTransformationIntent.Perceptual);
@@ -35,7 +34,7 @@ internal class ConvertingColorValuesExample
     {
         CmykColor cmykColor = new CmykColor(20, 42, 211, 40)
         {
-            Profile = new ColorProfile("../../../../_Input/ColorProfiles/ISOcoated_v2_eci.icc")
+            Profile = new ColorProfile("../../../../_Input/ColorProfiles/ISOcoated_v2_eci.icc"),
         };
 
         RgbColor rgbColor = cmykColor.To<RgbColor>(ColorProfile.FromSrgb());
@@ -47,7 +46,7 @@ internal class ConvertingColorValuesExample
     {
         RgbColor rgbColor = new RgbColor(223, 210, 30)
         {
-            Profile = ColorProfile.FromSrgb()
+            Profile = ColorProfile.FromSrgb(),
         };
 
         LabColor labColor = rgbColor.To<LabColor>();
@@ -86,15 +85,5 @@ internal class ConvertingColorValuesExample
         LabColor labColor = new LabColor(rgbColor);
 
         Console.WriteLine("Without color management: {0} to {1}", rgbColor, labColor);
-    }
-
-    /*
-    private static void LabToCmykWithoutColorManagement()
-    {
-        LabColor labColor = new LabColor(179, -20, 29, 255);
-        CmykColor cmykColor = new CmykColor(labColor);
-
-        Console.WriteLine("With color management: {0} to {1}", labColor, cmykColor);
-    }
-    */
+    }    
 }

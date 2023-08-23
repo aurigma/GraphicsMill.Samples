@@ -86,7 +86,7 @@ internal class SplitImageIntoTilesExample
                         pipelineElements.Add(crop);
                         resize.Receivers.Add(crop);
 
-                        var outputFilePath = String.Format(outputPath + "{0}-{1}-{2}.jpg", zoom, tileX, tileY);
+                        var outputFilePath = string.Format(outputPath + "{0}-{1}-{2}.jpg", zoom, tileX, tileY);
 
                         var p = Path.GetDirectoryName(outputFilePath);
 

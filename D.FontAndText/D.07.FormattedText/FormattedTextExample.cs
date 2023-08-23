@@ -23,7 +23,7 @@ internal class FormattedTextExample
 
             var boundedText = new BoundedText(dummyText, graphics.CreateFont("Verdana", 26f), brush)
             {
-                Rectangle = new System.Drawing.RectangleF(20f, 20f, 560f, 360f)
+                Rectangle = new System.Drawing.RectangleF(20f, 20f, 560f, 360f),
             };
 
             graphics.DrawText(boundedText);

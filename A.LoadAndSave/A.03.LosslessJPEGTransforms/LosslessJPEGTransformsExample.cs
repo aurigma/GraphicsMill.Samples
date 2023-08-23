@@ -22,7 +22,8 @@ namespace LosslessJPEGTransformsExample
         {
             using (var losslessJpeg = new LosslessJpeg("../../../../_Input/Chicago.jpg"))
             {
-                losslessJpeg.WriteRotated("../../../../_Output/RotateJpegLosslessly.jpg",
+                losslessJpeg.WriteRotated(
+                    "../../../../_Output/RotateJpegLosslessly.jpg",
                     System.Drawing.RotateFlipType.Rotate90FlipNone);
             }
         }
@@ -34,7 +35,8 @@ namespace LosslessJPEGTransformsExample
         {
             using (var losslessJpeg = new LosslessJpeg("../../../../_Input/Chicago.jpg"))
             {
-                losslessJpeg.WriteRotated("../../../../_Output/FlipJpegLosslessly.jpg",
+                losslessJpeg.WriteRotated(
+                    "../../../../_Output/FlipJpegLosslessly.jpg",
                     System.Drawing.RotateFlipType.RotateNoneFlipX);
             }
         }
@@ -46,7 +48,8 @@ namespace LosslessJPEGTransformsExample
         {
             using (var losslessJpeg = new LosslessJpeg("../../../../_Input/Chicago.jpg"))
             {
-                losslessJpeg.WriteCropped("../../../../_Output/CropJpegLosslessly.jpg",
+                losslessJpeg.WriteCropped(
+                    "../../../../_Output/CropJpegLosslessly.jpg",
                     new System.Drawing.Rectangle(64, 40, 157, 117));
             }
         }

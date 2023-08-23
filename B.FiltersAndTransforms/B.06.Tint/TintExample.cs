@@ -78,10 +78,8 @@ internal class TintExample
 
             // Create a and b channels, combine with lightness channel and convert to RGB color space
             using (var combiner = new LabChannelCombiner())
-            using (var aChannel = new Bitmap(lChannel.Width, lChannel.Height, PixelFormat.Format8bppGrayscale,
-                new GrayscaleColor((byte)(a + 127))))
-            using (var bChannel = new Bitmap(lChannel.Width, lChannel.Height, PixelFormat.Format8bppGrayscale,
-                new GrayscaleColor((byte)(b + 127))))
+            using (var aChannel = new Bitmap(lChannel.Width, lChannel.Height, PixelFormat.Format8bppGrayscale, new GrayscaleColor((byte)(a + 127))))
+            using (var bChannel = new Bitmap(lChannel.Width, lChannel.Height, PixelFormat.Format8bppGrayscale, new GrayscaleColor((byte)(b + 127))))
             using (var rgbConverter = new ColorConverter(PixelFormat.Format24bppRgb))
             using (var writer = ImageWriter.Create("../../../../_Output/TintUsingLab_" + color.ToString() + ".jpg"))
             {

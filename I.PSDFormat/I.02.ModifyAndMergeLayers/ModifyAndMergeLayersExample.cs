@@ -21,7 +21,7 @@ internal class ModifyAndMergeLayersExample
             using (var bitmap = new Bitmap(psdReader.Width, psdReader.Height, psdReader.PixelFormat, RgbColor.White)
             {
                 DpiX = psdReader.DpiX,
-                DpiY = psdReader.DpiY
+                DpiY = psdReader.DpiY,
             })
             {
                 using (var graphics = bitmap.GetAdvancedGraphics())
@@ -39,7 +39,6 @@ internal class ModifyAndMergeLayersExample
         using (var psdReader = new PsdReader("../../../../_Input/BusinessCard.psd"))
         {
             // The same approach can be used for EPS
-
             using (var pdfWriter = new PdfWriter("../../../../_Output/ModifyAndMergeLayers.pdf"))
             {
                 pdfWriter.AddPage(psdReader.Width, psdReader.Height, psdReader.DpiX, psdReader.DpiY, RgbColor.White);
@@ -61,21 +60,21 @@ internal class ModifyAndMergeLayersExample
                 { "Name", "Isaac Kerr" },
                 { "Address", "4112 East Bogard Road\nMontgomery, OH 44070" },
                 { "Phone", "202-555-0179" },
-                { "Email", "isaac.kerr@email.com" }
+                { "Email", "isaac.kerr@email.com" },
             },
             new Dictionary<string, string>
             {
                 { "Name", "Frank Manning" },
                 { "Address", "1719 Dog Hill Lane\nPayson, UT 84601" },
                 { "Phone", "801-555-0118" },
-                { "Email", "frank.manning@email.com" }
+                { "Email", "frank.manning@email.com" },
             },
             new Dictionary<string, string>
             {
                 { "Name", "Leah Bell" },
                 { "Address", "3243 Jerry Dove Drive\nRidgeland, MS 29410" },
                 { "Phone", "601-555-0112" },
-                { "Email", "leah.bell@email.com" }
+                { "Email", "leah.bell@email.com" },
             }
         };
 
@@ -86,7 +85,7 @@ internal class ModifyAndMergeLayersExample
                 using (var bitmap = new Bitmap(psdReader.Width, psdReader.Height, psdReader.PixelFormat, RgbColor.White)
                 {
                     DpiX = psdReader.DpiX,
-                    DpiY = psdReader.DpiY
+                    DpiY = psdReader.DpiY,
                 })
                 {
                     using (var graphics = bitmap.GetAdvancedGraphics())
@@ -107,7 +106,6 @@ internal class ModifyAndMergeLayersExample
     private static void MergeLayers(PsdReader psdReader, Graphics graphics, Func<PsdTextFrame, string> getLayerText)
     {
         // Merge layers
-
         for (int i = 0; i < psdReader.Frames.Count; i++)
         {
             var frame = psdReader.Frames[i];
@@ -126,14 +124,14 @@ internal class ModifyAndMergeLayersExample
                 {
                     text = new PlainText(layerText, font)
                     {
-                        Position = new System.Drawing.PointF(textFrame.Raw.TextBox.Left, textFrame.Raw.TextBox.Top)
+                        Position = new System.Drawing.PointF(textFrame.Raw.TextBox.Left, textFrame.Raw.TextBox.Top),
                     };
                 }
                 else
                 {
                     text = new BoundedText(layerText, font)
                     {
-                        Rectangle = textFrame.Raw.TextBox
+                        Rectangle = textFrame.Raw.TextBox,
                     };
                 }
 
@@ -157,7 +155,6 @@ internal class ModifyAndMergeLayersExample
     private static string GetLayerText(PsdTextFrame textFrame)
     {
         // Fix line break
-
         return textFrame.Text.Replace("\r\n", "\n").Replace("\r", "\n");
     }
 

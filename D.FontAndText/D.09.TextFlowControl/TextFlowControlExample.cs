@@ -24,10 +24,9 @@ internal class TextFlowControlExample
                 "dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, " +
                 "sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
-            var boundedText = new BoundedText(dummyText, graphics.CreateFont("Verdana", 18f),
-                new SolidBrush(RgbColor.Black))
+            var boundedText = new BoundedText(dummyText, graphics.CreateFont("Verdana", 18f), new SolidBrush(RgbColor.Black))
             {
-                Rectangle = new System.Drawing.RectangleF(20f, 20f, 360f, 360f)
+                Rectangle = new System.Drawing.RectangleF(20f, 20f, 360f, 360f),
             };
 
             // Adding paths which you need to wrap with the text
@@ -62,8 +61,7 @@ internal class TextFlowControlExample
 
             var boundingPath = new Path();
 
-            var pathBoundedText = new PathBoundedText(dummyText, graphics.CreateFont("Verdana", 18f),
-                new SolidBrush(RgbColor.Black));
+            var pathBoundedText = new PathBoundedText(dummyText, graphics.CreateFont("Verdana", 18f), new SolidBrush(RgbColor.Black));
 
             // Adding text areas. When the first text area runs out of space,
             // text will automatically flow to the next one.

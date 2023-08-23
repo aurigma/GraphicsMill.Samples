@@ -35,10 +35,9 @@ internal class ParagraphsAndListsExample
                 @"mollit anim id est laborum." +
                 @"</p>";
 
-            var boundedText = new BoundedText(dummyText, graphics.CreateFont("Verdana", 18f),
-                new SolidBrush(RgbColor.Black))
+            var boundedText = new BoundedText(dummyText, graphics.CreateFont("Verdana", 18f), new SolidBrush(RgbColor.Black))
             {
-                Rectangle = new System.Drawing.RectangleF(20f, 20f, 560f, 360f)
+                Rectangle = new System.Drawing.RectangleF(20f, 20f, 560f, 360f),
             };
 
             graphics.DrawText(boundedText);
@@ -67,10 +66,9 @@ internal class ParagraphsAndListsExample
                         @"<li>Fourth</li>" +
                     @"</ol>";
 
-                var boundedText = new BoundedText(dummyText, graphics.CreateFont("Verdana", 18f),
-                    new SolidBrush(RgbColor.Black))
+                var boundedText = new BoundedText(dummyText, graphics.CreateFont("Verdana", 18f), new SolidBrush(RgbColor.Black))
                 {
-                    Rectangle = new System.Drawing.RectangleF(20f, 20f, 160f, 160f)
+                    Rectangle = new System.Drawing.RectangleF(20f, 20f, 160f, 160f),
                 };
 
                 graphics.DrawText(boundedText);
@@ -88,10 +86,9 @@ internal class ParagraphsAndListsExample
                         @"<li>Fourth</li>" +
                     @"</ol>";
 
-                var boundedText = new BoundedText(dummyText, graphics.CreateFont("Verdana", 18f),
-                    new SolidBrush(RgbColor.Black))
+                var boundedText = new BoundedText(dummyText, graphics.CreateFont("Verdana", 18f), new SolidBrush(RgbColor.Black))
                 {
-                    Rectangle = new System.Drawing.RectangleF(220f, 20f, 160f, 160f)
+                    Rectangle = new System.Drawing.RectangleF(220f, 20f, 160f, 160f),
                 };
 
                 graphics.DrawText(boundedText);
@@ -109,10 +106,9 @@ internal class ParagraphsAndListsExample
                         @"<li>Fourth</li>" +
                     @"</ol>";
 
-                var boundedText = new BoundedText(dummyText, graphics.CreateFont("Verdana", 18f),
-                    new SolidBrush(RgbColor.Black))
+                var boundedText = new BoundedText(dummyText, graphics.CreateFont("Verdana", 18f), new SolidBrush(RgbColor.Black))
                 {
-                    Rectangle = new System.Drawing.RectangleF(420f, 20f, 160f, 160f)
+                    Rectangle = new System.Drawing.RectangleF(420f, 20f, 160f, 160f),
                 };
 
                 graphics.DrawText(boundedText);
@@ -130,10 +126,9 @@ internal class ParagraphsAndListsExample
                         @"<li>Fourth</li>" +
                     @"</ol>";
 
-                var boundedText = new BoundedText(dummyText, graphics.CreateFont("Verdana", 18f),
-                    new SolidBrush(RgbColor.Black))
+                var boundedText = new BoundedText(dummyText, graphics.CreateFont("Verdana", 18f), new SolidBrush(RgbColor.Black))
                 {
-                    Rectangle = new System.Drawing.RectangleF(20f, 220f, 160f, 160f)
+                    Rectangle = new System.Drawing.RectangleF(20f, 220f, 160f, 160f),
                 };
 
                 graphics.DrawText(boundedText);
@@ -151,10 +146,9 @@ internal class ParagraphsAndListsExample
                         @"<li>Fourth</li>" +
                     @"</ol>";
 
-                var boundedText = new BoundedText(dummyText, graphics.CreateFont("Verdana", 18f),
-                    new SolidBrush(RgbColor.Black))
+                var boundedText = new BoundedText(dummyText, graphics.CreateFont("Verdana", 18f), new SolidBrush(RgbColor.Black))
                 {
-                    Rectangle = new System.Drawing.RectangleF(220f, 220f, 160f, 160f)
+                    Rectangle = new System.Drawing.RectangleF(220f, 220f, 160f, 160f),
                 };
 
                 graphics.DrawText(boundedText);
@@ -172,10 +166,9 @@ internal class ParagraphsAndListsExample
                         @"<li>Thirteenth</li>" +
                     @"</ol>";
 
-                var boundedText = new BoundedText(dummyText, graphics.CreateFont("Verdana", 18f),
-                    new SolidBrush(RgbColor.Black))
+                var boundedText = new BoundedText(dummyText, graphics.CreateFont("Verdana", 18f), new SolidBrush(RgbColor.Black))
                 {
-                    Rectangle = new System.Drawing.RectangleF(420f, 220f, 160f, 160f)
+                    Rectangle = new System.Drawing.RectangleF(420f, 220f, 160f, 160f),
                 };
 
                 graphics.DrawText(boundedText);
@@ -193,10 +186,9 @@ internal class ParagraphsAndListsExample
                         @"<li>Fourth</li>" +
                     @"</ul>";
 
-                var boundedText = new BoundedText(dummyText, graphics.CreateFont("Arial", 18f),
-                    new SolidBrush(RgbColor.Black))
+                var boundedText = new BoundedText(dummyText, graphics.CreateFont("Arial", 18f), new SolidBrush(RgbColor.Black))
                 {
-                    Rectangle = new System.Drawing.RectangleF(20f, 420f, 160f, 160f)
+                    Rectangle = new System.Drawing.RectangleF(20f, 420f, 160f, 160f),
                 };
 
                 graphics.DrawText(boundedText);
@@ -217,7 +209,7 @@ internal class ParagraphsAndListsExample
                 var boundedText = new BoundedText(dummyText, graphics.CreateFont("Arial", 18f),
                     new SolidBrush(RgbColor.Black))
                 {
-                    Rectangle = new System.Drawing.RectangleF(220f, 420f, 160f, 160f)
+                    Rectangle = new System.Drawing.RectangleF(220f, 420f, 160f, 160f),
                 };
 
                 graphics.DrawText(boundedText);
@@ -244,7 +236,7 @@ internal class ParagraphsAndListsExample
                 var boundedText = new BoundedText(dummyText, graphics.CreateFont("Arial", 18f),
                     new SolidBrush(RgbColor.Black))
                 {
-                    Rectangle = new System.Drawing.RectangleF(420f, 420f, 160f, 160f)
+                    Rectangle = new System.Drawing.RectangleF(420f, 420f, 160f, 160f),
                 };
 
                 graphics.DrawText(boundedText);

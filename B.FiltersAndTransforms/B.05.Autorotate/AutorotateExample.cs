@@ -10,7 +10,7 @@ internal class AutorotateExample
     /// <summary>
     /// Automatically rotates image based on EXIF orientation metadata
     /// </summary>
-    public static bool Autorotate(string pathIn, string pathOut)
+    private static bool Autorotate(string pathIn, string pathOut)
     {
         ushort orientation;
 

@@ -25,8 +25,10 @@ internal class AdobeImageResourceBlocksExample
 
             // Create new adobe image resource block with the required metadata
             var arBlock = new AdobeResourceBlock("Copyright", new byte[] { 1 });
+            
             // Set this block to the item with 0x040A ID (copyright flag)
             adobeResources[0x040A] = arBlock;
+            
             // Remove a block with 0x0409 (thumbnail data)
             adobeResources.Remove(0x0409);
 

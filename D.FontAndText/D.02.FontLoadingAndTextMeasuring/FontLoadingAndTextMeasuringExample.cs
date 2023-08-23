@@ -61,7 +61,6 @@ internal class FontLoadingAndTextMeasuringExample
             var font = graphics.CreateFont("lobster", fontSize);
 
             // Plain text metrics
-
             var plainText = new PlainText("plain text", font);
             plainText.Position = new System.Drawing.PointF(5, plainText.GetBlackBox(fontRegistry, bitmap.DpiX, bitmap.DpiY).Height + 10);
 
@@ -70,14 +69,14 @@ internal class FontLoadingAndTextMeasuringExample
             DrawPlainTextWithMarkup(plainText, graphics);
 
             // Round text metrics
-
             var roundText = new RoundText("Art round text", font, new System.Drawing.PointF(50, 50))
             {
-                Bend = 0.9f
+                Bend = 0.9f,
             };
 
-            roundText.Center = new System.Drawing.PointF(graphics.Width - roundText.GetBlackBox(fontRegistry, bitmap.DpiX, bitmap.DpiY).Width / 2 - 15,
-                graphics.Height - roundText.GetBlackBox(fontRegistry, bitmap.DpiX, bitmap.DpiY).Height / 2 - 10);
+            roundText.Center = new System.Drawing.PointF(
+                graphics.Width - (roundText.GetBlackBox(fontRegistry, bitmap.DpiX, bitmap.DpiY).Width / 2) - 15,
+                graphics.Height - (roundText.GetBlackBox(fontRegistry, bitmap.DpiX, bitmap.DpiY).Height / 2) - 10);
 
             ShowTextPosition(roundText.String, roundText.Center, roundText.GetBlackBox(fontRegistry, bitmap.DpiX, bitmap.DpiY));
 
@@ -110,7 +109,6 @@ internal class FontLoadingAndTextMeasuringExample
     private static void DrawPlainTextWithMarkup(PlainText text, Graphics graphics)
     {
         // Draw plain text, its black box, ascender, descender and position point
-
         graphics.DrawText(text);
 
         var bbox = text.GetBlackBox(graphics.FontRegistry, graphics.DpiX, graphics.DpiY);
@@ -121,14 +119,26 @@ internal class FontLoadingAndTextMeasuringExample
 
         var stringMeasure = font.MeasureString("plain text");
 
-        graphics.DrawLine(new Pen(RgbColor.Blue, 1f), bbox.X, text.Position.Y - stringMeasure.Ascender,
-            bbox.X + bbox.Width, text.Position.Y - stringMeasure.Ascender);
+        graphics.DrawLine(
+            new Pen(RgbColor.Blue, 1f),
+            bbox.X,
+            text.Position.Y - stringMeasure.Ascender,
+            bbox.X + bbox.Width,
+            text.Position.Y - stringMeasure.Ascender);
 
-        graphics.DrawLine(new Pen(RgbColor.Green, 1f), bbox.X, text.Position.Y - stringMeasure.Descender,
-            bbox.X + bbox.Width, text.Position.Y - stringMeasure.Descender);
+        graphics.DrawLine(
+            new Pen(RgbColor.Green, 1f),
+            bbox.X,
+            text.Position.Y - stringMeasure.Descender,
+            bbox.X + bbox.Width,
+            text.Position.Y - stringMeasure.Descender);
 
-        graphics.DrawLine(new Pen(RgbColor.IndianRed, 1f), bbox.X, text.Position.Y,
-            bbox.X + bbox.Width, text.Position.Y);
+        graphics.DrawLine(
+            new Pen(RgbColor.IndianRed, 1f),
+            bbox.X,
+            text.Position.Y,
+            bbox.X + bbox.Width,
+            text.Position.Y);
 
         graphics.FillEllipse(new SolidBrush(RgbColor.Red), text.Position.X - 3, text.Position.Y - 3, 6, 6);
     }
@@ -139,7 +149,6 @@ internal class FontLoadingAndTextMeasuringExample
     private static void DrawArtTextWithMarkup(ArtText text, Graphics graphics)
     {
         // Draw round text, its black box and center point
-
         graphics.DrawText(text);
 
         graphics.DrawRectangle(new Pen(RgbColor.Gray, 1f), text.GetBlackBox(graphics.FontRegistry, graphics.DpiX, graphics.DpiY));
@@ -165,10 +174,9 @@ internal class FontLoadingAndTextMeasuringExample
 
             var dummyText = "Lorem ipsum dolor sit amet, ex mel latine pertinax. 載自大制節規信兵著旋避漂。";
 
-            var boundedText = new BoundedText(dummyText, graphics.CreateFont("Lobster", 32f),
-                new SolidBrush(RgbColor.Black))
+            var boundedText = new BoundedText(dummyText, graphics.CreateFont("Lobster", 32f), new SolidBrush(RgbColor.Black))
             {
-                Rectangle = new System.Drawing.RectangleF(20f, 20f, 360f, 360f)
+                Rectangle = new System.Drawing.RectangleF(20f, 20f, 360f, 360f),
             };
 
             graphics.DrawText(boundedText);

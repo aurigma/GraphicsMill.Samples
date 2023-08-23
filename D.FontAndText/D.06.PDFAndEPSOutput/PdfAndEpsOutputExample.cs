@@ -14,7 +14,7 @@ internal class PDFAndEPSOutputExample
     /// <summary>
     /// Generates PDF file with two pages.
     /// </summary>
-    public static void GenerateRgbPdf()
+    private static void GenerateRgbPdf()
     {
         var dpi = 300f;
 
@@ -28,49 +28,59 @@ internal class PDFAndEPSOutputExample
             bitmap.DpiY = dpi;
 
             // Front side 3.5"×2.5" size
-
             pdfWriter.AddPage(unitFactory.Inch(3.5f), unitFactory.Inch(2.0f), dpi, dpi);
 
             {
                 // Rectangle
                 var pen = new Pen(RgbColor.Red, unitFactory.Point(1));
 
-                graphics.DrawRectangle(pen, unitFactory.Inch(0.125f), unitFactory.Inch(0.125f),
-                    unitFactory.Inch(3.5f - 0.125f * 2), unitFactory.Inch(2 - 0.125f * 2));
+                graphics.DrawRectangle(
+                    pen,
+                    unitFactory.Inch(0.125f),
+                    unitFactory.Inch(0.125f),
+                    unitFactory.Inch(3.5f - (0.125f * 2)),
+                    unitFactory.Inch(2 - (0.125f * 2)));
 
                 // Image
-                graphics.DrawImage(bitmap, new System.Drawing.RectangleF(
-                        unitFactory.Inch(0.25f), unitFactory.Inch(0.75f),
-                        unitFactory.Inch(0.25f + 0.5f * (float)bitmap.Height / (float)bitmap.Width), unitFactory.Inch(1.25f)));
+                graphics.DrawImage(
+                    bitmap,
+                    new System.Drawing.RectangleF(
+                    unitFactory.Inch(0.25f),
+                    unitFactory.Inch(0.75f),
+                    unitFactory.Inch(0.25f + (0.5f * (float)bitmap.Height / (float)bitmap.Width)),
+                    unitFactory.Inch(1.25f)));
 
                 // Text
                 var font = graphics.CreateFont("Arial", 32f);
                 var text = new PlainText("Front Side", font, new SolidBrush(RgbColor.Navy))
                 {
                     Alignment = TextAlignment.Left,
-                    Position = new System.Drawing.PointF(unitFactory.Inch(1.125f), unitFactory.Inch(1.125f))
+                    Position = new System.Drawing.PointF(unitFactory.Inch(1.125f), unitFactory.Inch(1.125f)),
                 };
 
                 graphics.DrawText(text);
             }
 
             // Back side    3.5"×2.5" size
-
             pdfWriter.AddPage(unitFactory.Inch(3.5f), unitFactory.Inch(2.0f), dpi, dpi);
 
             {
                 // Pen 0.5pt width
                 var pen = new Pen(RgbColor.Blue, unitFactory.Point(0.5f));
 
-                graphics.DrawRectangle(pen, unitFactory.Inch(0.125f), unitFactory.Inch(0.125f),
-                    unitFactory.Inch(3.5f - 0.125f * 2), unitFactory.Inch(2 - 0.125f * 2));
+                graphics.DrawRectangle(
+                    pen,
+                    unitFactory.Inch(0.125f),
+                    unitFactory.Inch(0.125f),
+                    unitFactory.Inch(3.5f - (0.125f * 2)),
+                    unitFactory.Inch(2 - (0.125f * 2)));
 
                 // Artistic (bridge) text
                 var font = graphics.CreateFont("Times New Roman", "Italic", 24f);
                 var bridgeText = new BridgeText("Back Side", font, new SolidBrush(RgbColor.Green))
                 {
                     Bend = 0.2f,
-                    Center = new System.Drawing.PointF(unitFactory.Inch(3.5f / 2), unitFactory.Inch(1f))
+                    Center = new System.Drawing.PointF(unitFactory.Inch(3.5f / 2), unitFactory.Inch(1f)),
                 };
                 graphics.DrawText(bridgeText);
             }
@@ -94,20 +104,28 @@ internal class PDFAndEPSOutputExample
             var pen = new Pen(new CmykColor(0, 255, 255, 0), unitFactory.Point(1.0f));
 
             // Rectangle
-            graphics.DrawRectangle(pen, unitFactory.Inch(0.125f), unitFactory.Inch(0.125f),
-                unitFactory.Inch(3.5f - 0.125f * 2), unitFactory.Inch(2 - 0.125f * 2));
+            graphics.DrawRectangle(
+                pen,
+                unitFactory.Inch(0.125f),
+                unitFactory.Inch(0.125f),
+                unitFactory.Inch(3.5f - (0.125f * 2)),
+                unitFactory.Inch(2 - (0.125f * 2)));
 
             // Image
-            graphics.DrawImage(bitmap, new System.Drawing.RectangleF(
-                unitFactory.Inch(0.25f), unitFactory.Inch(0.75f),
-                unitFactory.Inch(0.25f + 0.5f * (float)bitmap.Height / (float)bitmap.Width), unitFactory.Inch(1.25f)));
+            graphics.DrawImage(
+                bitmap,
+                new System.Drawing.RectangleF(
+                    unitFactory.Inch(0.25f),
+                    unitFactory.Inch(0.75f),
+                    unitFactory.Inch(0.25f + (0.5f * (float)bitmap.Height / (float)bitmap.Width)),
+                    unitFactory.Inch(1.25f)));
 
             // Text
             var font = graphics.CreateFont("Arial", 32f);
             var text = new PlainText("Front Side", font, new SolidBrush(RgbColor.Navy))
             {
                 Alignment = TextAlignment.Left,
-                Position = new System.Drawing.PointF(unitFactory.Inch(1.125f), unitFactory.Inch(1.125f))
+                Position = new System.Drawing.PointF(unitFactory.Inch(1.125f), unitFactory.Inch(1.125f)),
             };
             graphics.DrawText(text);
         }

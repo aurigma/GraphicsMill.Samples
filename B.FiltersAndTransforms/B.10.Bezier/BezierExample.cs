@@ -27,7 +27,7 @@ internal class BezierExample
         new System.Drawing.PointF(0.0f, 450.0f),
         new System.Drawing.PointF(200.0f, 614.760254f),
         new System.Drawing.PointF(400.0f, 285.239716f),
-        new System.Drawing.PointF(600.0f, 450.0f)
+        new System.Drawing.PointF(600.0f, 450.0f),
     };
 
     /// <summary>

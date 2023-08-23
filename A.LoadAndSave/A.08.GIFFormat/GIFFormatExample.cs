@@ -23,7 +23,6 @@ internal class GIFFormatExample
         {
             // Image is automatically converted to the appropriate pixel format on saving, so we can omit the next line
             // bitmap.ColorManagement.Convert(PixelFormat.Format8bppIndexed);
-
             bitmap.Save(outputPath);
         }
     }

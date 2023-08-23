@@ -30,8 +30,7 @@ namespace Aurigma.GraphicsMill
                 Type colorType = typeof(T);
                 if (colorType != typeof(LabColor) && colorType != typeof(Lab16Color))
                 {
-                    throw new ArgumentException("Destination profile should be specified for converting to non-absolute color space (LabColor or Lab16Color)",
-                        "destinationProfile");
+                    throw new ArgumentException("Destination profile should be specified for converting to non-absolute color space (LabColor or Lab16Color)", "destinationProfile");
                 }
             }
 

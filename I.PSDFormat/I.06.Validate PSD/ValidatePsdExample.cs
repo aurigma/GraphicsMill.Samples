@@ -20,19 +20,18 @@ internal class ValidatePsdExample
     {
         var filenames = new string[] 
         { 
-            "Mug.psd", 
-            "UnsupportedFeatures.psd"
+            "Mug.psd",
+            "UnsupportedFeatures.psd",
         };
 
         // A list of features that can be correctly handled by a renderer
-
         var renderSupportedFeatures = new PsdFeature[] 
         { 
-            PsdFeature.LayerTypeRaster, 
-            PsdFeature.LayerTypeSmartObject, 
-            PsdFeature.BlendModeNormal, 
-            PsdFeature.ColorModeRgb, 
-            PsdFeature.ChannelSize8bit 
+            PsdFeature.LayerTypeRaster,
+            PsdFeature.LayerTypeSmartObject,
+            PsdFeature.BlendModeNormal,
+            PsdFeature.ColorModeRgb,
+            PsdFeature.ChannelSize8bit,
         };
 
         foreach (var filename in filenames)
@@ -40,11 +39,15 @@ internal class ValidatePsdExample
             using (var psdReader = new PsdReader("../../../../_Input/" + filename))
             {
                 if (psdReader.CheckFeatures(renderSupportedFeatures))
+                {
                     Console.WriteLine("File {0} is valid", filename);
+                }
                 else
+                {
                     Console.WriteLine("File {0} is not valid", filename);
+                }
             }
-        }                
+        }
     }
 
     /// <summary>
@@ -54,14 +57,14 @@ internal class ValidatePsdExample
     {
         using (var psdReader = new PsdReader("../../../../_Input/UnsupportedFeatures.psd"))
         {
-            var renderSupportedFeatures = new PsdFeature[] 
-            { 
-                PsdFeature.LayerTypeRaster, 
-                PsdFeature.BlendModeNormal, 
-                PsdFeature.ColorModeRgb, 
-                PsdFeature.ChannelSize8bit
+            var renderSupportedFeatures = new PsdFeature[]
+            {
+                PsdFeature.LayerTypeRaster,
+                PsdFeature.BlendModeNormal,
+                PsdFeature.ColorModeRgb,
+                PsdFeature.ChannelSize8bit,
             };
-            
+
             string output = string.Empty;
             psdReader.CheckFeatures(renderSupportedFeatures, ref output);
 
@@ -76,16 +79,16 @@ internal class ValidatePsdExample
     {
         using (var psdReader = new PsdReader("../../../../_Input/UnsupportedFeatures.psd"))
         {
-            var renderSupportedFeatures = new PsdFeature[] 
-            { 
-                PsdFeature.LayerTypeRaster, 
-                PsdFeature.BlendModeNormal, 
-                PsdFeature.ColorModeRgb, 
-                PsdFeature.ChannelSize8bit
+            var renderSupportedFeatures = new PsdFeature[]
+            {
+                PsdFeature.LayerTypeRaster,
+                PsdFeature.BlendModeNormal,
+                PsdFeature.ColorModeRgb,
+                PsdFeature.ChannelSize8bit,
             };
-           
+
             string output = string.Empty;
-            var rm = new System.Resources.ResourceManager("ValidatePsd.Properties.CheckPsdFeatures", System.Reflection.Assembly.GetExecutingAssembly());            
+            var rm = new System.Resources.ResourceManager("ValidatePsd.Properties.CheckPsdFeatures", System.Reflection.Assembly.GetExecutingAssembly());
             psdReader.CheckFeatures(renderSupportedFeatures, ref output, rm);
 
             Console.WriteLine(output);

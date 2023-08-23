@@ -17,7 +17,7 @@ internal class PreservingMetadataExample
         {
             // Read EXIF
             var exif = jpegReader.Exif;
-            
+
             // Check if loaded image contains EXIF metadata
             if (exif == null)
             {
@@ -28,7 +28,7 @@ internal class PreservingMetadataExample
 
             // Read IPTC
             var iptc = jpegReader.Iptc;
-            
+
             // Check if loaded image contains IPTC metadata
             if (iptc == null)
             {
@@ -39,24 +39,27 @@ internal class PreservingMetadataExample
 
             // Read Adobe resource blocks
             var adobeResources = jpegReader.AdobeResources;
+
             // Check if loaded image contains Adobe image resource blocks
             if (adobeResources == null)
             {
                 adobeResources = new AdobeResourceDictionary();
             }
+
             // Create new adobe image resource block containing copyright metadata
             var arBlock = new AdobeResourceBlock("Copyright", new byte[] { 1 });
+
             // Set this block to the item with 0x040A ID (copyright flag)
             adobeResources[0x040A] = arBlock;
 
-            // Read XMP
             var xmp = new XmpData();
-            // Check if loaded image contains XMP metadata
 
+            // Check if loaded image contains XMP metadata
             if (jpegReader.Xmp != null)
             {
                 xmp.Load(jpegReader.Xmp);
             }
+
             // Create a node containing dc:contributor metadata
             var node = new XmpValueNode(XmpNodeType.SimpleProperty, "John Doe", XmpTagNames.DCContributor);
             xmp.AddNode(node);

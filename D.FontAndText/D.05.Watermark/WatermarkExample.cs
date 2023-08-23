@@ -33,7 +33,7 @@ internal class WatermarkExample
             var rect = new RectangleF(0, 0, bitmap.Width, bitmap.Height);
 
             var transform = new Matrix();
-            transform.RotateAt(-35, new PointF(rect.Left + rect.Width / 2, rect.Top + rect.Height / 2));
+            transform.RotateAt(-35, new PointF(rect.Left + (rect.Width / 2), rect.Top + (rect.Height / 2)));
 
             float offset = plainText.GetBlackBox(gr.FontRegistry, gr.DpiX, gr.DpiY).Width / 2;
 
@@ -126,7 +126,9 @@ internal class WatermarkExample
             float lineOffset = textBounds.Width / 2;
 
             if (firstLine.Points.Count == 0)
+            {
                 return tiledText;
+            }
 
             while (rect.Bottom > firstLine.GetBounds().Bottom)
             {

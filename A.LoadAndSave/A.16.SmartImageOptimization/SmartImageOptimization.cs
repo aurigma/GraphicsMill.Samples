@@ -13,22 +13,40 @@ internal class SmartImageOptimizationExample
 
         const string srcPath = "../../../../_Input/Venice.jpg";
 
-        CallFitDimensionsToFileSize(srcPath, new JpegSettings(85, true, true),
-            maxAllowedSize, "../../../../_Output/Venice_optimal_size.jpg");
+        CallFitDimensionsToFileSize(
+            srcPath,
+            new JpegSettings(85, true, true),
+            maxAllowedSize,
+            "../../../../_Output/Venice_optimal_size.jpg");
 
-        CallFitDimensionsToFileSize(srcPath, new TiffSettings(CompressionType.Lzw),
-            maxAllowedSize, "../../../../_Output/Venice_optimal_size.tif");
+        CallFitDimensionsToFileSize(
+            srcPath,
+            new TiffSettings(CompressionType.Lzw),
+            maxAllowedSize,
+            "../../../../_Output/Venice_optimal_size.tif");
 
-        CallFitDimensionsToFileSize(srcPath, new PngSettings(false),
-            maxAllowedSize, "../../../../_Output/Venice_optimal_size.png");
+        CallFitDimensionsToFileSize(
+            srcPath,
+            new PngSettings(false),
+            maxAllowedSize,
+            "../../../../_Output/Venice_optimal_size.png");
 
-        CallFitDimensionsToFileSize(srcPath, new EpsSettings(CompressionType.Jpeg, 85),
-            maxAllowedSize, "../../../../_Output/Venice_optimal_size.eps");
+        CallFitDimensionsToFileSize(
+            srcPath,
+            new EpsSettings(CompressionType.Jpeg, 85),
+            maxAllowedSize,
+            "../../../../_Output/Venice_optimal_size.eps");
 
-        CallFitDimensionsToFileSize(srcPath, new TgaSettings(CompressionType.Rle, true),
-            maxAllowedSize, "../../../../_Output/Venice_optimal_size.tga");
+        CallFitDimensionsToFileSize(
+            srcPath,
+            new TgaSettings(CompressionType.Rle, true),
+            maxAllowedSize,
+            "../../../../_Output/Venice_optimal_size.tga");
 
-        CallFitJpegQualityToFileSize(srcPath, maxAllowedSize, "../../../../_Output/Venice_optimal_quality.jpg");
+        CallFitJpegQualityToFileSize(
+            srcPath,
+            maxAllowedSize,
+            "../../../../_Output/Venice_optimal_quality.jpg");
     }
 
     /// <summary>
@@ -40,21 +58,28 @@ internal class SmartImageOptimizationExample
 
         using (var reader = ImageReader.Create(srcPath))
         {
-            Console.WriteLine("Source: \n  - Dimensions: {0} x {1}\n  - Format: {2}",
-                reader.Width, reader.Height, reader.FileFormat);
+            Console.WriteLine(
+                "Source: \n  - Dimensions: {0} x {1}\n  - Format: {2}",
+                reader.Width,
+                reader.Height,
+                reader.FileFormat);
         }
 
         FitDimensionsToFileSize(srcPath, settings, maxAllowedSize, dstPath);
 
-        Console.WriteLine("Destination:\n  - Format: {0}\n  - File size: {1}",
-            settings.Format, FormatFileSize(new FileInfo(dstPath).Length));
+        Console.WriteLine(
+            "Destination:\n  - Format: {0}\n  - File size: {1}",
+            settings.Format,
+            FormatFileSize(new FileInfo(dstPath).Length));
 
         var unsupportedFormats = new List<FileFormat> { FileFormat.Eps, FileFormat.Pdf };
 
         if (!unsupportedFormats.Contains(settings.Format))
         {
             using (var reader = ImageReader.Create(dstPath))
+            {
                 Console.WriteLine("  - Dimensions: {0} x {1}", reader.Width, reader.Height);
+            }
         }
 
         Console.WriteLine();
@@ -68,14 +93,18 @@ internal class SmartImageOptimizationExample
         Console.WriteLine("Fit jpeg quality to {0}", FormatFileSize(maxAllowedSize));
 
         using (var reader = ImageReader.Create(srcPath))
+        {
             Console.WriteLine("Source:\n  - Dimensions {0} x {1}\n  - Format: {2}", reader.Width, reader.Height, reader.FileFormat);
+        }
 
         FitJpegQualityToFileSize(srcPath, maxAllowedSize, dstPath);
 
         Console.WriteLine("Destination:\n  - File size: {0}", FormatFileSize(new FileInfo(dstPath).Length));
 
         using (var reader = ImageReader.Create(dstPath))
+        {
             Console.WriteLine("  - Dimensions: {0} x {1}", reader.Width, reader.Height);
+        }
 
         Console.WriteLine();
     }
@@ -83,7 +112,7 @@ internal class SmartImageOptimizationExample
     /// <summary>
     /// A wrapper for FitDimensionsToFileSize method with path arguments
     /// </summary>
-    public static void FitDimensionsToFileSize(string srcPath, WriterSettings settings, long maxAllowedSize, string dstPath)
+    private static void FitDimensionsToFileSize(string srcPath, WriterSettings settings, long maxAllowedSize, string dstPath)
     {
         using (var srcStream = new FileStream(srcPath, FileMode.Open, FileAccess.Read))
         using (var dstStream = new FileStream(dstPath, FileMode.Create, FileAccess.Write))
@@ -95,7 +124,7 @@ internal class SmartImageOptimizationExample
     /// <summary>
     /// Incrementally applies a resize transform to fit encoded image into maxAllowedSize limit
     /// </summary>
-    public static void FitDimensionsToFileSize(Stream srcStream, WriterSettings settings, long maxAllowedSize, Stream dstStream)
+    private static void FitDimensionsToFileSize(Stream srcStream, WriterSettings settings, long maxAllowedSize, Stream dstStream)
     {
         float scale = 1.0f;
         const float minScale = 0.98f;

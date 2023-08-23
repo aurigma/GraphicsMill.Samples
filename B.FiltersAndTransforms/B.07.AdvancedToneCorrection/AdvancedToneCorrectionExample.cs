@@ -42,7 +42,7 @@ internal class AdvancedToneCorrectionExample
             Shadows = 0.05f,
             Midtones = 1.5f,
             Highlights = 0.7f,
-            HistogramMode = HistogramMode.Sum
+            HistogramMode = HistogramMode.Sum,
         })
         using (var writer = ImageWriter.Create("../../../../_Output/LevelsMemoryFriendly.jpg"))
         {

@@ -21,11 +21,14 @@ internal class Create3DPreviewExample
         psdProcessor.FrameCallback = (processor, frame) =>
         {
             if (frame.Type != FrameType.SmartObject || frame.Name != "Design")
+            {
                 return processor.ProcessFrame(frame);
+            }
 
             var smartFrame = (PsdSmartFrame)frame;
 
-            return smartFrame.ToGraphicsContainer(ImageReader.Create(@"../../../../_Input/Copenhagen_RGB.jpg"),
+            return smartFrame.ToGraphicsContainer(
+                ImageReader.Create(@"../../../../_Input/Copenhagen_RGB.jpg"),
                 ResizeMode.ImageFill);
         };
 

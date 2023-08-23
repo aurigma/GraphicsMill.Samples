@@ -42,7 +42,7 @@ internal class TgaFormatExample
     /// <summary>
     /// Reads image in JPEG format, converts clipping path to alpha channel and saves to TARGA 32 format
     /// </summary>
-    public static void ConvertClippingPathToTga()
+    private static void ConvertClippingPathToTga()
     {
         using (var reader = ImageReader.Create(@"../../../../_Input/Apple.jpg"))
         using (var alpha = new Bitmap(reader.Width, reader.Height, PixelFormat.Format8bppGrayscale, RgbColor.Black))

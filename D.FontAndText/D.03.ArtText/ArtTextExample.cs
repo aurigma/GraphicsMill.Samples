@@ -26,29 +26,29 @@ internal class ArtTextExample
                 new BridgeText("Bridge Text", font, brush)
                 {
                     Center = new System.Drawing.PointF(150f, 50f),
-                    Bend = 0.2f
+                    Bend = 0.2f,
                 },
                 new BulgeText("Bulge Text", font, brush)
                 {
                     Center = new System.Drawing.PointF(150f, 150f),
-                    Bend = 0.2f
+                    Bend = 0.2f,
                 },
                 new PinchText("Pinch Text", font, brush)
                 {
                     Center = new System.Drawing.PointF(150f, 250f),
-                    Bend = 0.2f
+                    Bend = 0.2f,
                 },
                 new RoofText("Roof Text", font, brush)
                 {
                     Center = new System.Drawing.PointF(150f, 350f),
-                    Bend = -0.2f
+                    Bend = -0.2f,
                 },
                 new ValleyText("Valley Text", font)
                 {
                     Brush = new SolidBrush(RgbColor.Yellow),
                     Pen = new Pen(RgbColor.Red, 2f),
                     Center = new System.Drawing.PointF(450f, 50f),
-                    Bend = 0.2f
+                    Bend = 0.2f,
                 },
                 new WedgeText("Wedge Text", font, brush)
                 {
@@ -56,13 +56,13 @@ internal class ArtTextExample
                     LeftScale = 2.0f,
                     RightScale = 0.7f,
                     Tilt = -0.3f,
-                    Effect = new Shadow(new RgbColor(80, 80, 80), 5, 4, 4)
+                    Effect = new Shadow(new RgbColor(80, 80, 80), 5, 4, 4),
                 },
                 new RoundText("Round Text", font, brush)
                 {
                     Center = new System.Drawing.PointF(450f, 300f),
                     Bend = 1,
-                    Effect = new Glow(new RgbColor(0x66, 0xaf, 0xe9), 5)
+                    Effect = new Glow(new RgbColor(0x66, 0xaf, 0xe9), 5),
                 }
             };
 

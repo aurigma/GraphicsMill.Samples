@@ -42,7 +42,9 @@ internal class RenderTemplatesExample
             var textString = textFrame.GetFormattedText();
 
             if (textFrame.Name == "Name")
+            {
                 textString = "Type your name";
+            }
 
             return textString;
         };
@@ -63,7 +65,9 @@ internal class RenderTemplatesExample
             text.String = textString;
 
             if (textFrame.Name == "Name")
+            {
                 text.Brush = new SolidBrush(RgbColor.Red);
+            }
 
             return text;
         };
@@ -81,7 +85,9 @@ internal class RenderTemplatesExample
         psdProcessor.FrameCallback = (processor, frame) =>
         {
             if (frame.Type != FrameType.Raster)
+            {
                 return processor.ProcessFrame(frame);
+            }
 
             using (var invert = new Invert())
             {
@@ -102,7 +108,9 @@ internal class RenderTemplatesExample
         psdProcessor.FrameCallback = (processor, frame) =>
         {
             if (frame.Type != FrameType.Raster)
+            {
                 return processor.ProcessFrame(frame);
+            }
 
             using (var background = ImageReader.Create(@"../../../../_Input/Venice.jpg"))
             {
@@ -145,7 +153,9 @@ internal class RenderTemplatesExample
         psdProcessor.FrameCallback = (processor, frame) =>
         {
             if (frame.Type != FrameType.Shape)
+            {
                 return processor.ProcessFrame(frame);
+            }
 
             var shapeFrame = (PsdShapeFrame)frame;
 

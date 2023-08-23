@@ -9,7 +9,6 @@ internal class AnimatedGIFExample
     private static void Main(string[] args)
     {
         // http://www.graphicsmill.com/docs/gm/loading-and-saving-animated-gifs.htm
-
         WriteAnimatedGif();
         ReadAnimatedGif();
         ResizeAnimatedGif();
@@ -87,6 +86,7 @@ internal class AnimatedGIFExample
                     {
                         // Preserve the original palette
                         ColorPalette palette = bitmap.Palette;
+
                         // Preserve the original pixel format
                         PixelFormat pixelFormat = bitmap.PixelFormat;
 

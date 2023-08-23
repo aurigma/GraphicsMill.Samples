@@ -40,7 +40,7 @@ internal class GraphicsPathExample
 
         var text = new PlainText("GraphicsMill", font)
         {
-            Alignment = TextAlignment.Center
+            Alignment = TextAlignment.Center,
         };
 
         var blackBox = text.GetBlackBox(graphics.FontRegistry, graphics.DpiX, graphics.DpiY);

@@ -18,7 +18,7 @@ internal class TextAutofitExample
         {
             var text = new Text();
 
-            text.String = "Since 2001, Aurigma have helped software developers add imaging functionality to their applications in a variety of industries. Our image processing Software Development Kit for .NET, Graphics Mill, is a truly powerful product we are proud to have developed."; ;
+            text.String = "Since 2001, Aurigma have helped software developers add imaging functionality to their applications in a variety of industries. Our image processing Software Development Kit for .NET, Graphics Mill, is a truly powerful product we are proud to have developed.";
             text.CharStyle.PostScriptName = "Verdana";
 
             var shapeTextFrame = new ShapeTextFrame();

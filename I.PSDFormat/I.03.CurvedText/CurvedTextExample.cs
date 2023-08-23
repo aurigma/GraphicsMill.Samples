@@ -19,7 +19,7 @@ internal class CurvedTextExample
             using (var bitmap = new Bitmap(psdReader.Width, psdReader.Height, psdReader.PixelFormat, RgbColor.White)
             {
                 DpiX = psdReader.DpiX,
-                DpiY = psdReader.DpiY
+                DpiY = psdReader.DpiY,
             })
             {
                 using (var graphics = bitmap.GetAdvancedGraphics())
@@ -37,7 +37,6 @@ internal class CurvedTextExample
         using (var psdReader = new PsdReader("../../../../_Input/Seal.psd"))
         {
             // The same approach can be used for EPS
-
             using (var pdfWriter = new PdfWriter("../../../../_Output/CurvedText.pdf"))
             {
                 pdfWriter.AddPage(psdReader.Width, psdReader.Height, psdReader.DpiX, psdReader.DpiY, RgbColor.White);
@@ -70,21 +69,21 @@ internal class CurvedTextExample
                 {
                     text = new PathText(textFrame.Text, font)
                     {
-                        Path = textFrame.Raw.Path
+                        Path = textFrame.Raw.Path,
                     };
                 }
                 else if (textFrame.TextBox.Width == 0 || textFrame.TextBox.Height == 0)
                 {
                     text = new PlainText(layerText, font)
                     {
-                        Position = new System.Drawing.PointF(textFrame.Raw.TextBox.Left, textFrame.Raw.TextBox.Top)
+                        Position = new System.Drawing.PointF(textFrame.Raw.TextBox.Left, textFrame.Raw.TextBox.Top),
                     };
                 }
                 else
                 {
                     text = new BoundedText(layerText, font)
                     {
-                        Rectangle = textFrame.Raw.TextBox
+                        Rectangle = textFrame.Raw.TextBox,
                     };
                 }
 
@@ -116,7 +115,6 @@ internal class CurvedTextExample
     private static string GetLayerText(PsdTextFrame textFrame)
     {
         // Fix line break
-
         return textFrame.Text.Replace("\r\n", "\n").Replace("\r", "\n");
     }
 
