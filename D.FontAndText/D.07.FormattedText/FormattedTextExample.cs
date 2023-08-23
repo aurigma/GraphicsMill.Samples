@@ -5,10 +5,14 @@ internal class FormattedTextExample
 {
     private static void Main(string[] args)
     {
-        DrawFormattedText();
+        DrawColoredText();
+        DrawSubSupText();
     }
 
-    private static void DrawFormattedText()
+    /// <summary>
+    /// Draws multicolor text.
+    /// </summary>
+    private static void DrawColoredText()
     {
         using (var bitmap = new Bitmap(600, 400, PixelFormat.Format24bppRgb, new RgbColor(255, 255, 255, 255)))
         using (var graphics = bitmap.GetAdvancedGraphics())
@@ -28,7 +32,26 @@ internal class FormattedTextExample
 
             graphics.DrawText(boundedText);
 
-            bitmap.Save("../../../../_Output/DrawFormattedText.png");
+            bitmap.Save("../../../../_Output/DrawColoredText.png");
+        }
+    }
+
+    /// <summary>
+    /// Draws subscript and superscript text.
+    /// </summary>
+    private static void DrawSubSupText()
+    {
+        using (var bitmap = new Bitmap(200, 200, PixelFormat.Format24bppRgb, RgbColor.White))
+        using (var gr = bitmap.GetAdvancedGraphics())
+        {
+            var text = new PlainText("X<span style='sup:true;sup-position:0.333;sup-size:0.583'>2</span>\nX<span style='sub:true;sub-position:0.333;sub-size:0.583'>2</span>", gr.CreateFont("Verdana", 50))
+            {
+                Position = new System.Drawing.PointF(30, 80),
+            };
+
+            gr.DrawText(text);
+
+            bitmap.Save("../../../../_Output/DrawSubSupText.png");
         }
     }
 }
