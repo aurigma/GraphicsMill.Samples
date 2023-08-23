@@ -8,6 +8,7 @@ internal class PlainAndBoundedTextExample
     {
         DrawPlainAndBoundedText();
         DrawMultilinePlainText();
+        PlainTextWithGradientColor();
     }
 
     /// <summary>
@@ -41,7 +42,7 @@ internal class PlainAndBoundedTextExample
                         Alignment = TextAlignment.Center,
                     },
                     Rectangle = boundedTextRect,
-                }
+                },
             };
 
             foreach (var text in texts)
@@ -82,6 +83,41 @@ vulputate suscipit facilisis.";
             graphics.DrawText(text);
 
             bitmap.Save("../../../../_Output/DrawMultilinePlainText.png");
+        }
+    }
+
+    /// <summary>
+    /// Draws plain text with gradient fill.
+    /// </summary>
+    private static void PlainTextWithGradientColor()
+    {
+        using (var bitmap = new Bitmap(600, 250, PixelFormat.Format24bppRgb, new RgbColor(255, 255, 255, 255)))
+        using (var graphics = bitmap.GetAdvancedGraphics())
+        {
+            var gradientBrush = new LinearGradientBrush()
+            {
+                BackgroundColor = RgbColor.Green,
+                StartPoint = new System.Drawing.PointF(0, 0),
+                EndPoint = new System.Drawing.PointF(600, 400),
+                ColorStops = new ColorStop[]
+                {
+                    new ColorStop() { Color = RgbColor.Aqua, Position = 0.0f },
+                    new ColorStop() { Color = RgbColor.Black, Position = 0.66f },
+                    new ColorStop() { Color = RgbColor.Violet, Position = 1 },
+                },
+            };
+
+            var dummyText = "GRADIENT";
+
+            var text = new PlainText(dummyText, graphics.CreateFont("Verdana", 110f))
+            {
+                Position = new System.Drawing.PointF(10f, 230f),
+                Brush = gradientBrush,
+            };
+
+            graphics.DrawText(text);
+
+            bitmap.Save("../../../../_Output/PlainTextWithGradientBrush.png");
         }
     }
 }
