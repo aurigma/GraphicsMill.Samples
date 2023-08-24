@@ -15,6 +15,7 @@ internal class WritingEPSAndPDFExample
         WriteRasterAndVectorGraphicsToEps();
 
         CreateBusinessCard();
+        WriteTextToPDF();
     }
 
     /// <summary>
@@ -171,6 +172,42 @@ internal class WritingEPSAndPDFExample
 
                 text = new PlainText("Back side", font, new SolidBrush(RgbColor.White), 140f, 112f, TextAlignment.Left);
                 graphics.DrawText(text);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Demonstrates writing text as PDF text.
+    /// </summary>
+    private static void WriteTextToPDF()
+    {
+        using (var writer = new PdfWriter("../../../../_Output/TextToPDF.pdf"))
+        {
+            int width = 350;
+            int height = 200;
+
+            using (var graphics = writer.GetGraphics())
+            {
+                // Text objects will be saved as a PDF text with embedded fonts.
+                // The only type of text that can't be saved as text is DoublePath text.
+                writer.TextOutputMode = PdfTextOutputMode.Text;
+
+                writer.AddPage(width, height, RgbColor.White);
+
+                var font = graphics.CreateFont("Arial", 18f);
+
+                // Plain text
+                var plainText = new PlainText("plain text", font, new SolidBrush(RgbColor.Black), 95f, 41f, TextAlignment.Center);
+                graphics.DrawText(plainText);
+
+                // Round text
+                var roundText = new Aurigma.GraphicsMill.AdvancedDrawing.Art.RoundText("round text", font)
+                {
+                    Center = new System.Drawing.PointF(width / 2.0f, height / 2.0f),
+                    Bend = 0.5f,
+                };
+
+                graphics.DrawText(roundText);
             }
         }
     }
