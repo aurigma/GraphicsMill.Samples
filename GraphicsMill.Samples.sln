@@ -177,6 +177,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C.07. GraphicsContainer", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A.17. SpotColors", "A.LoadAndSave\A.17.SpotColors\A.17. SpotColors.csproj", "{061709B8-8E10-4161-873C-BE3D00031D85}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L.03. WPFInteroperability", "L.Misc\L.03.WPFInteroperability\L.03. WPFInteroperability.csproj", "{248E2EBB-A6F6-478F-9A2A-372E67D7D5EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -491,6 +493,10 @@ Global
 		{061709B8-8E10-4161-873C-BE3D00031D85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{061709B8-8E10-4161-873C-BE3D00031D85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{061709B8-8E10-4161-873C-BE3D00031D85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{248E2EBB-A6F6-478F-9A2A-372E67D7D5EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{248E2EBB-A6F6-478F-9A2A-372E67D7D5EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{248E2EBB-A6F6-478F-9A2A-372E67D7D5EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{248E2EBB-A6F6-478F-9A2A-372E67D7D5EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -573,6 +579,7 @@ Global
 		{9C76C6CD-6D60-4282-9CBD-335AB865758B} = {BF054B8E-C17C-49CA-8F7B-748260E46CF4}
 		{E9EB0AF6-88BF-4BFC-A937-C79BFD7E94CB} = {58D52E71-AE80-4A68-84DF-3D6E2874492D}
 		{061709B8-8E10-4161-873C-BE3D00031D85} = {42B7B242-9DFF-46CA-A770-034930379E1C}
+		{248E2EBB-A6F6-478F-9A2A-372E67D7D5EB} = {1B5950A9-AE6B-4EB2-9EAC-F324C9C1BB04}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61E9CEC8-9C34-46CC-BB5C-E7AE414D7F91}
