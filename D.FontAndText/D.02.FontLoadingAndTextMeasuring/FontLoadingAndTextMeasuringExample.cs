@@ -12,6 +12,8 @@ internal class FontLoadingAndTextMeasuringExample
         LoadFontAndMeasureText();
 
         DrawTextWithFontFallback();
+
+        DrawTextWithFontAPI();
     }
 
     /// <summary>
@@ -182,6 +184,52 @@ internal class FontLoadingAndTextMeasuringExample
             graphics.DrawText(boundedText);
 
             bitmap.Save("../../../../_Output/DrawTextWithFontFallback.png");
+        }
+    }
+
+    /// <summary>
+    /// Draws text without text objects, only with getting char info + simple metrics.
+    /// </summary>
+    private static void DrawTextWithFontAPI()
+    {
+        using (var bitmap = new Bitmap(200, 200, PixelFormat.Format24bppRgb, RgbColor.White))
+        using (var gr = bitmap.GetAdvancedGraphics())
+        using (var fr = new CustomFontRegistry())
+        {
+            var psName = fr.Add("../../../../_Input/Fonts/Lobster.ttf");
+
+            gr.FontRegistry = fr;
+
+            var font = gr.CreateFont(psName, 40);
+
+            string[] lines = new string[] { "SOME", "TEXT", "TO ADD" };
+
+            float x = 10f;
+            float y = 50f;
+
+            float offsetY = 0f;
+
+            foreach (string line in lines)
+            {
+                float offsetX = 0f;
+
+                for (int i = 0; i < line.Length; i++)
+                {
+                    string chr = line[i].ToString();
+                    using (var charInfo = font.GetCharacterInfo(line[i]))
+                    {
+                        charInfo.Outline.Translate(x + offsetX, y + offsetY);
+
+                        gr.FillPath(new SolidBrush(RgbColor.Black), charInfo.Outline);
+
+                        offsetX += charInfo.AdvanceX;
+                    }
+                }
+
+                offsetY += font.Metrics.Height;
+            }
+
+            bitmap.Save("../../../../_Output/DrawTextWithFontAPI.png");
         }
     }
 }
