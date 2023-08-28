@@ -119,7 +119,7 @@ public class WPFInteroperabilityExample
     /// </summary>
     private static void ConvertFromWPF()
     {
-        using (var fs = new FileStream(@"../../../../_Input/Chicago.jpg", FileMode.Open, FileAccess.Read, FileShare.Read))
+        using (var fs = new FileStream("../../../../_Input/Chicago.jpg", FileMode.Open, FileAccess.Read, FileShare.Read))
         {
             /*
              There are not too many formats that can be converted with direct pixel copying.
@@ -130,7 +130,7 @@ public class WPFInteroperabilityExample
 
             using (var bitmap = bitmapFrame.ToAurigmaBitmap())
             {
-                bitmap.Save(@"../../../../_Output/ChicagoSavedGotFromWPF.tif");
+                bitmap.Save("../../../../_Output/ChicagoSavedGotFromWPF.tif");
             }
         }
     }
